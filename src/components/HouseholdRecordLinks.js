@@ -5,7 +5,6 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 
 const HouseholdRecordLinks = () => {
-  // Modal Functions
 
   return (
     <>
