@@ -7,7 +7,7 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
 const IndividualRecordLinks = () => {
-  // Modal Functions
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
