@@ -5,10 +5,12 @@ import App from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import individualReducer from "./features/IndividualRecordInputs";
+import householdReducer from "./features/HouseholdInputs";
 
 const store = configureStore({
   reducer: {
     individualRecord: individualReducer,
+    householdRecord: householdReducer,
   },
 });
 
