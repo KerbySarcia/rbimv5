@@ -1,0 +1,85 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 50px;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal__close__btn {
+  border: none;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  margin-left: 98%;
+  color: #425f57;
+  font-size: 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal__upload__label {
+  border: none;
+  outline: none;
+  display: inline-block;
+  background-color: #425f57;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.modal__upload__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal__upload__input {
+  display: inherit;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.modal__img {
+  height: 200px;
+  width: 200px;
+}
+
+.modal__submit__btn {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .modal {
+    overflow-y: scroll;
+  }
+
+  .modal__upload__container {
+    flex-direction: column;
+  }
+}

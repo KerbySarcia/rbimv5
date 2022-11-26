@@ -1,0 +1,140 @@
+.Login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("../images/background-image.png");
+  background-size: cover;
+}
+.Login__button:hover {
+  background-color: #fac213;
+}
+.Login__username__input,
+.Login__password__input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #eaeaea;
+  outline: none;
+}
+
+.Login__username__input:focus,
+.Login__password__input:focus {
+  outline: auto;
+  outline-color: #fac213;
+}
+
+.Login__username__text,
+.Login__password__text {
+  display: flex;
+  font-size: 0.7em;
+  margin-bottom: 0.2rem;
+}
+.Login__form {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 40vw;
+  height: 50vh;
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  align-items: center;
+}
+.Login__checkbox {
+  display: flex;
+  position: relative;
+  bottom: 1rem;
+  align-items: center;
+  height: 1rem;
+  margin-top: 2px;
+  border-radius: 10px;
+}
+.Login__checkbox__text {
+  margin-left: 0.1rem;
+  font-size: 0.7em;
+}
+.Login__button {
+  width: 100%;
+  padding: 0.7rem;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #379237;
+  border-radius: 5px;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.Login__logo--container > img {
+  width: 20vw;
+  min-width: 200px;
+}
+
+.Login__logo--container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  min-width: 250px;
+}
+
+.login__form__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #f7f7f7;
+  width: 25vw;
+  min-width: 300px;
+  padding: 1rem;
+  height: 100%;
+  border-radius: 0 6px 6px 0;
+}
+
+@media (max-width: 900px) {
+  .Login__form {
+    flex-direction: column;
+    height: 70vh;
+    min-width: 400px;
+  }
+
+  .login__form__section {
+    width: 100%;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .Login__logo--container > img {
+    min-width: 25vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .Login__form {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .login__form__section {
+    height: 50%;
+    min-height: 60vh;
+    padding: 2rem;
+  }
+
+  .Login__logo--container > img {
+    width: 70%;
+  }
+
+  .Login__logo--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .Login__checkbox {
+    position: relative;
+    bottom: 1.5rem;
+  }
+}

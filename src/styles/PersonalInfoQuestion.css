@@ -1,0 +1,11 @@
+.PersonalInfoQuestion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  border-radius: 10px;
+
+  width: 100%;
+  height: calc(100% - 9vh);
+}

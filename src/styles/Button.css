@@ -1,0 +1,35 @@
+.Button {
+  background-color: #425f57;
+  transition: all linear 0.3s;
+}
+
+.button-style {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s linear;
+}
+
+.button-style:hover {
+  background-color: #a8e890;
+}
+
+.click__function {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.isClicked {
+  background-color: #fff;
+  transition: all linear 0.3s;
+  color: #425f57;
+}

@@ -1,0 +1,83 @@
+.MobileNavbar {
+  display: flex;
+  align-items: center;
+  width: inherit;
+  background-color: #425f57;
+  color: #fff;
+  padding-block: 0.5rem;
+  display: none;
+}
+
+.MobileNavbar__title {
+  width: calc(100% - 4rem);
+  text-align: center;
+  cursor: default;
+}
+
+.MobileNavbar__icon {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.SlideMenu {
+  position: fixed;
+  opacity: 0;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.462);
+  z-index: 100;
+  transition: 0.2s ease-in-out;
+}
+
+.SlideMenu-show {
+  opacity: 1;
+  left: 0;
+}
+
+.SlideMenu__links {
+  width: 50%;
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 2;
+  padding: 2rem 0;
+}
+
+.SlideMenu__links__link > * {
+  text-decoration: none;
+  color: #425f57;
+  font-size: medium;
+  text-align: center;
+  height: 50%;
+}
+
+.SlideMenu__link {
+  transition: 0.3s linear;
+}
+
+.SlideMenu__link:hover {
+  background-color: #425f57;
+  width: 100%;
+  color: #fff;
+}
+
+.SlideMenu__links__link-bottom {
+  color: #425f57;
+  text-align: center;
+}
+
+.SlideMenu__links__link-bottom > *:hover {
+  background-color: #425f57;
+  color: white;
+  cursor: pointer;
+}
+
+@media (orientation: portrait) {
+  .MobileNavbar {
+    display: flex;
+  }
+}

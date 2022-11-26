@@ -1,0 +1,8 @@
+.HouseholdRecord {
+  display: flex;
+  width: calc(100% - 7.5rem);
+  margin-left: auto;
+  height: 98vh;
+  margin-right: 0.5rem;
+  color: #425f57;
+}

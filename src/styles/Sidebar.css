@@ -1,0 +1,26 @@
+.Sidebar {
+  background-color: #425f57;
+  width: 6rem;
+  height: 98vh;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  margin-left: 0.5rem;
+  position: fixed;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.Sidebar__bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media (orientation: portrait) {
+  .Sidebar {
+    display: none;
+  }
+}
