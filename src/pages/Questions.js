@@ -642,6 +642,15 @@ const IndividualRecordsQuestions = () => {
                       name="q33A"
                       type="text"
                       placeholder="(Barangay)"
+                      value={questions.q33A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <input
                       className="IndividualRecord__input"
@@ -774,7 +783,7 @@ const IndividualRecordsQuestions = () => {
                           })
                         )
                       }
-                  />
+                    />
                   </div>
                   <label>
                     Q38A. Reasons for leaving the previous residence
@@ -831,7 +840,7 @@ const IndividualRecordsQuestions = () => {
                         })
                       )
                     }
-                />
+                  />
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q39. Return to Previous Residence</label>
@@ -902,10 +911,10 @@ const IndividualRecordsQuestions = () => {
                   <label>Q40C. Reason for transfering in this barangay</label>
                   <input
                     className="IndividualRecord__input"
-                    name="q30C"
+                    name="q40C"
                     type="text"
                     placeholder=""
-                    value={questions.q30C}
+                    value={questions.q40C}
                     onChange={(e) =>
                       dispatch(
                         onChangeQuestions({
