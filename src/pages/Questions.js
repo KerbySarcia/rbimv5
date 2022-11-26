@@ -536,31 +536,67 @@ const IndividualRecordsQuestions = () => {
                   <label>Q27. Facility Visited</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q27"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q27}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q28. Reason of Visit</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q28"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q28}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q29. Disability</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q29"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q29}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q30. Solo Parent</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q30"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q30}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
               </section>
               <section className="IndividualRecord__sections IndividualRecord__row">
@@ -569,86 +605,176 @@ const IndividualRecordsQuestions = () => {
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q31"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q31}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>Q32. Registed Voter</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q32"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q32}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q33. Previous Residence (Within Five Years Ago)</label>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q33A"
                       type="text"
                       placeholder="(Barangay)"
-                    ></input>
+                    />
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q33B"
                       type="text"
                       placeholder="(Municipality)"
-                    ></input>
+                      value={questions.q33B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>Q34. Previous Residence (Within Six Months Ago)</label>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q34A"
                       type="text"
                       placeholder="(Barangay)"
-                    ></input>
+                      value={questions.q34A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q34B"
                       type="text"
                       placeholder="(Municipality)"
-                    ></input>
+                      value={questions.q34B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>Q35. Length of Stay in Barangay</label>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q35A"
                       type="text"
                       placeholder="(No. of Years)"
-                    ></input>
+                      value={questions.q35A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q35B"
                       type="text"
                       placeholder="(No. of Months)"
-                    ></input>
+                      value={questions.q35B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q36. Type of Resident</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q36"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q36}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q37. Date of Transfer</label>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q37A"
                       type="text"
                       placeholder="(MM Month)"
-                    ></input>
+                      value={questions.q37A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q37B"
                       type="text"
                       placeholder="(YYYY Years)"
-                    ></input>
+                      value={questions.q37B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                  />
                   </div>
                   <label>
                     Q38A. Reasons for leaving the previous residence
@@ -656,74 +782,155 @@ const IndividualRecordsQuestions = () => {
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q38A"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q38A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>
                     Q38B. Reasons for leaving the previous residence
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q38B"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q38B}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q38C. Reasons for leaving the previous residence
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q38C"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q38C}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                />
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q39. Return to Previous Residence</label>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q39A"
                       type="text"
                       placeholder="(MM Month)"
-                    ></input>
+                      value={questions.q39A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q39B"
                       type="text"
                       placeholder="(YYYY Year)"
-                    ></input>
+                      value={questions.q39B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>Q40A. Reason for transfering in this barangay</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q40A"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q40A}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q40B. Reason for transfering in this barangay</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q40B"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q40B}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q40C. Reason for transfering in this barangay</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q30C"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q30C}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q41. Duration of stay current barangay</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q41"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q41}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
               </section>
               <section className="IndividualRecord__sections IndividualRecord__row">
@@ -733,32 +940,68 @@ const IndividualRecordsQuestions = () => {
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q42A"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q42A}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q42B. CTC information: Was the CTC issued in this barangay?
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q42B"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q42B}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q43. Skills Development Training</label>
                   <textarea
                     className="IndividualRecord__text__area"
-                    name=""
+                    name="q43"
                     placeholder=""
                     rows="5"
+                    value={questions.q43}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
                   ></textarea>
                   <label>Q44. Skills</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q44"
                     placeholder=""
-                  ></input>
+                    value={questions.q44}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>
@@ -768,9 +1011,18 @@ const IndividualRecordsQuestions = () => {
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q45"
                     type="text"
                     placeholder=""
+                    value={questions.q45}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
                   ></input>
                   <label>
                     Q46. Do you own or amortize this lot occupied by your
@@ -779,38 +1031,74 @@ const IndividualRecordsQuestions = () => {
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q46"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q46}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q47. What type of fuel does this household use for lighting?
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q47"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q47}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q48. What kind of fuel does this household use most of the
                     time for cooking?
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q48"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q48}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q49. What is the household's main source of drinking water?
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q49"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q49}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>
@@ -820,40 +1108,85 @@ const IndividualRecordsQuestions = () => {
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q50A"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q50A}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q50B. Do you segregate Garbage?</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q50B"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q50B}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q51. What type of toilet facility does this household use?
                   </label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q51"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q51}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q52. Type of Building/House</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q52"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q52}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Q53. Construction Materials of the outer wall</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q53"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q53}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
               </section>
               <section className="IndividualRecord__sections IndividualRecord__row">
@@ -866,17 +1199,35 @@ const IndividualRecordsQuestions = () => {
                   <label>Age:</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q54Age"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q54Age}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q54CauseofDeath"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q54CauseofDeath}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>
                     Q55. Do you have a child HH member below 5 years old who
                     died in the past 12 months? how old is she/he what is the
@@ -885,24 +1236,51 @@ const IndividualRecordsQuestions = () => {
                   <label>Age:</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q55Age"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q55Age}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Sex:</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q55Sex"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q55Sex}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name=""
+                    name="q55CauseofDeath"
                     type="text"
                     placeholder=""
-                  ></input>
+                    value={questions.q55CauseofDeath}
+                    onChange={(e) =>
+                      dispatch(
+                        onChangeQuestions({
+                          name: e.target.name,
+                          value: e.target.value,
+                        })
+                      )
+                    }
+                  />
                 </div>
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>
@@ -913,28 +1291,55 @@ const IndividualRecordsQuestions = () => {
                     <label>1.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q56A"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q56A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>2.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q56B"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q56B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>3.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q56C"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q56C}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>
                     Q57. What do you think are the primary needs of this
@@ -944,28 +1349,55 @@ const IndividualRecordsQuestions = () => {
                     <label>1.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q57A"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q57A}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>2.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q57B"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q57B}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>3.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q57C"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q57C}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <label>
                     Q58. Where does your household intend to stay five years
@@ -975,28 +1407,55 @@ const IndividualRecordsQuestions = () => {
                     <label>Barangay.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q58Barangay"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q58Barangay}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>Municipality.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q58Municipality"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q58Municipality}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                   <div className="IndividualRecord__row">
                     <label>Province.</label>
                     <input
                       className="IndividualRecord__input"
-                      name=""
+                      name="q58Province"
                       type="text"
                       placeholder=""
-                    ></input>
+                      value={questions.q58Province}
+                      onChange={(e) =>
+                        dispatch(
+                          onChangeQuestions({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__Questions__Row">
