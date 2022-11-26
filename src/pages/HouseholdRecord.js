@@ -1,8 +1,13 @@
 import React from "react";
 import "../styles/HouseholdRecord.css";
 import HouseholdRecordLinks from "../components/HouseholdRecordLinks";
+import { useSelector, useDispatch } from "react-redux";
+import { onChange } from "../features/HouseholdInputs";
 
 const HouseholdRecord = () => {
+  const household = useSelector((state) => state.householdRecord.value);
+  const dispatch = useDispatch();
+  console.log(household)
   return (
     <div className="IndividualRecord">
       <div className="full__width IndividualRecord__column">
@@ -13,7 +18,7 @@ const HouseholdRecord = () => {
               <div className="IndividualRecord__section__flex-wrap">
                 <div className="IndividualRecord__input__box">
                   <label
-                    for="record-number"
+                    for="recordNumber"
                     className="IndividualRecord__subtitle"
                   >
                     No:
@@ -22,7 +27,13 @@ const HouseholdRecord = () => {
                     className="IndividualRecord__input"
                     type="number"
                     min="1"
-                    name="record-number"
+                    name="recordNumber"
+                    value={household.recordNumber}
+                    onChange={(e) =>
+                      dispatch(
+                        onChange({ name: e.target.name, value: e.target.value })
+                      )
+                    }
                   />
                 </div>
                 <div className="IndividualRecord__input__box">
@@ -33,11 +44,17 @@ const HouseholdRecord = () => {
                     className="IndividualRecord__input"
                     type="text"
                     name="household"
+                    value={household.household}
+                    onChange={(e) =>
+                      dispatch(
+                        onChange({ name: e.target.name, value: e.target.value })
+                      )
+                    }
                   />
                 </div>
                 <div className="IndividualRecord__input__box">
                   <label
-                    for="instit-quarter"
+                    for="institutionalLivingQuarter"
                     className="IndividualRecord__subtitle"
                   >
                     Institutional Living Quarter:
@@ -45,7 +62,13 @@ const HouseholdRecord = () => {
                   <input
                     className="IndividualRecord__input"
                     type="text"
-                    name="instit-quarter"
+                    name="institutionalLivingQuarter"
+                    value={household.institutionalLivingQuarter}
+                    onChange={(e) =>
+                      dispatch(
+                        onChange({ name: e.target.name, value: e.target.value })
+                      )
+                    }
                   />
                 </div>
               </div>
@@ -72,6 +95,15 @@ const HouseholdRecord = () => {
                       type="text"
                       name="province"
                       placeholder="e.g (Pampanga)"
+                      value={household.province}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <label
                       for="municipality"
@@ -84,6 +116,15 @@ const HouseholdRecord = () => {
                       type="text"
                       name="municipality"
                       placeholder="e.g (San Fernando)"
+                      value={household.municipality}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <label
                       for="barangay"
@@ -96,11 +137,20 @@ const HouseholdRecord = () => {
                       type="text"
                       name="barangay"
                       placeholder="e.g (San Juan)"
+                      value={household.barangay}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                   <div className="IndividualRecord__input__box__1">
                     <label
-                      for="province"
+                      for="nameOfRespondent"
                       className="IndividualRecord__subtitle"
                     >
                       Name of Respondent:
@@ -108,11 +158,20 @@ const HouseholdRecord = () => {
                     <input
                       className="IndividualRecord__input"
                       type="text"
-                      name="province"
+                      name="nameOfRespondent"
                       placeholder="e.g (Juan Pedro)"
+                      value={household.nameOfRespondent}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <label
-                      for="municipality"
+                      for="householdHead"
                       className="IndividualRecord__subtitle"
                     >
                       Household Head
@@ -120,11 +179,20 @@ const HouseholdRecord = () => {
                     <input
                       className="IndividualRecord__input"
                       type="text"
-                      name="municipality"
+                      name="householdHead"
                       placeholder="e.g (Juan Pedro)"
+                      value={household.householdHead}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <label
-                      for="barangay"
+                      for="totalNumberOfHouseholdMembers"
                       className="IndividualRecord__subtitle"
                     >
                       Total No. of Household Members:
@@ -133,8 +201,16 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="number"
                       min="1"
-                      name="barangay-members"
-                      value="1"
+                      name="totalNumberOfHouseholdMembers"
+                      value={household.totalNumberOfHouseholdMembers}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
@@ -146,17 +222,47 @@ const HouseholdRecord = () => {
                     <input
                       className="IndividualRecord__input"
                       type="text"
+                      name="addressRoom"
                       placeholder="(Room/Floor/Unit No. and Building Name)"
+                      value={household.addressRoom}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(House/Lot and Block No.)"
+                      name="addressHouse"
+                      value={household.addressHouse}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(Street Name)"
+                      name="addressStreet"
+                      value={household.addressStreet}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
@@ -170,7 +276,20 @@ const HouseholdRecord = () => {
                     <label for="visit">Visit</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="text" />
+                    <input
+                      className="IndividualRecord__input"
+                      type="text"
+                      name="visit"
+                      value={household.visit}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
@@ -178,7 +297,20 @@ const HouseholdRecord = () => {
                     <label for="visit">Date of Visit</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="date" />
+                    <input
+                      className="IndividualRecord__input"
+                      name="dateOfVisit"
+                      type="date"
+                      value={household.dateOfVisit}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
@@ -186,58 +318,131 @@ const HouseholdRecord = () => {
                     <label for="visit">Time Start</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="time" />
+                    <input
+                      className="IndividualRecord__input"
+                      type="time"
+                      name="timeStart"
+                      value={household.timeStart}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Time End</label>
+                    <label for="timeEnd">Time End</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="time" />
+                    <input
+                      className="IndividualRecord__input"
+                      type="time"
+                      name="timeEnd"
+                      value={household.timeEnd}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Result</label>
+                    <label for="result">Result</label>
                   </div>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(C, CB, R)"
+                      name="result"
+                      value={household.result}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Date of Next Visit</label>
+                    <label for="dateOfNextVisit">Date of Next Visit</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="date" />
+                    <input
+                      className="IndividualRecord__input"
+                      type="date"
+                      name="dateOfNextVisit"
+                      value={household.dateOfNextVisit}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Name of Interviewer, Initial/Date</label>
+                    <label for="nameOfInterviewer">
+                      Name of Interviewer, Initial/Date
+                    </label>
                   </div>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(e.g Pablo, L / mm/dd/yyyy)"
+                      value={household.nameOfInterviewer}
+                      name="nameOfInterviewer"
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Name of Supervisor, Initial/Date</label>
+                    <label for="nameOfSupervisor">
+                      Name of Supervisor, Initial/Date
+                    </label>
                   </div>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(e.g Escobar, P / mm/dd/yyyy)"
+                      name="nameOfSupervisor"
+                      value={household.nameOfSupervisor}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
@@ -248,27 +453,52 @@ const HouseholdRecord = () => {
               <div className="IndividualRecord__input__container IndividualRecord__row IndividualRecord__responsive">
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Date Encoded</label>
+                    <label for="dateEncoded">Date Encoded</label>
                   </div>
                   <div className="IndividualRecord__row">
-                    <input className="IndividualRecord__input" type="date" />
+                    <input
+                      className="IndividualRecord__input"
+                      type="date"
+                      name="dateEncoded"
+                      value={household.dateEncoded}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
+                    />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">Name and Initial of Encoder</label>
+                    <label for="nameAndInitialOfEncoder">
+                      Name and Initial of Encoder
+                    </label>
                   </div>
                   <div className="IndividualRecord__row">
                     <input
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(e.g Pablo, L)"
+                      name="nameAndInitialOfEncoder"
+                      value={household.nameAndInitialOfEncoder}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>
                 <div className="IndividualRecord__input__box__2 IndividualRecord__column">
                   <div className="IndividualRecord__row">
-                    <label for="visit">
+                    <label for="nameOfSupervisorInitialAndDate">
                       Name of Supervisor, Initial and Date
                     </label>
                   </div>
@@ -277,6 +507,16 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(e.g Escobar, P / mm/dd/yyyy)"
+                      name="nameOfSupervisorInitialAndDate"
+                      value={household.nameOfSupervisorInitialAndDate}
+                      onChange={(e) =>
+                        dispatch(
+                          onChange({
+                            name: e.target.name,
+                            value: e.target.value,
+                          })
+                        )
+                      }
                     />
                   </div>
                 </div>

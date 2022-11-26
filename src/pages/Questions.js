@@ -8,7 +8,7 @@ const IndividualRecordsQuestions = () => {
 
   const questions = useSelector((state) => state.individualRecord.questions);
   const dispatch = useDispatch();
-  console.log(questions);
+
   return (
     <>
       <div className="IndividualRecord">
