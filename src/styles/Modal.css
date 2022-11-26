@@ -1,4 +1,4 @@
-.modal {
+.IndividualRecord__modal {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,19 +21,23 @@
   z-index: 1000;
 }
 
-.modal__close__btn {
+.IndividualRecord__modal__close__btn {
+  display: block;
   border: none;
   background-color: white;
   height: 30px;
   width: 30px;
-  margin-left: 98%;
   color: #425f57;
   font-size: 2rem;
   border-radius: 10px;
   cursor: pointer;
+  position: relative;
+    float: right;
+    top: -20px;
+    right: -20px;
 }
 
-.modal__upload__label {
+.IndividualRecord__modal__upload__label {
   border: none;
   outline: none;
   display: inline-block;
@@ -46,7 +50,7 @@
   margin-top: 1rem;
 }
 
-.modal__upload__container {
+.IndividualRecord__modal__upload__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,7 +58,7 @@
   height: 100%;
 }
 
-.modal__upload__input {
+.IndividualRecord__modal__upload__input {
   display: inherit;
   flex-direction: column;
   justify-content: center;
@@ -62,24 +66,38 @@
   margin: 20px;
 }
 
-.modal__img {
+.IndividualRecord__modal__img {
   height: 200px;
   width: 200px;
 }
 
-.modal__submit__btn {
+.IndividualRecord__modal__submit__btn {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
 
+.IndividualRecord__modal__row {
+  display: inherit;
+}
+
+@media (max-width: 1200px) {
+ .IndividualRecord__modal__upload__container {
+    flex-direction: column;
+ }
+}
+
 @media (max-width: 600px) {
-  .modal {
+  .IndividualRecord__modal {
     overflow-y: scroll;
   }
 
-  .modal__upload__container {
+  .IndividualRecord__modal__upload__container {
+    flex-direction: column;
+  }
+
+  .IndividualRecord__modal__row {
     flex-direction: column;
   }
 }

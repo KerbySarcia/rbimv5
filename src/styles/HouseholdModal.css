@@ -1,0 +1,52 @@
+.Household__modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px;
+    width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    z-index: 1000;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.Household__modal__container {
+    display: relative;
+    width: 100%;
+    height: 100%;
+}
+  
+.Household__modal__close__btn {
+    border: none;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    color: #425f57;
+    font-size: 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    float: right;
+    top: 15px;
+    right: 15px;
+}
+
+.Household__modal__submit__btn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
