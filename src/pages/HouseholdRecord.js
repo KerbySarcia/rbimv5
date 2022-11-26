@@ -7,6 +7,7 @@ import { onChange } from "../features/HouseholdInputs";
 const HouseholdRecord = () => {
   const household = useSelector((state) => state.householdRecord.value);
   const dispatch = useDispatch();
+  console.log(household)
   return (
     <div className="IndividualRecord">
       <div className="full__width IndividualRecord__column">
@@ -62,7 +63,7 @@ const HouseholdRecord = () => {
                     className="IndividualRecord__input"
                     type="text"
                     name="institutionalLivingQuarter"
-                    value={individualRecord.institutionalLivingQuarter}
+                    value={household.institutionalLivingQuarter}
                     onChange={(e) =>
                       dispatch(
                         onChange({ name: e.target.name, value: e.target.value })
@@ -94,7 +95,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="province"
                       placeholder="e.g (Pampanga)"
-                      value={individualRecord.province}
+                      value={household.province}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -115,7 +116,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="municipality"
                       placeholder="e.g (San Fernando)"
-                      value={individualRecord.municipality}
+                      value={household.municipality}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -136,7 +137,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="barangay"
                       placeholder="e.g (San Juan)"
-                      value={individualRecord.barangay}
+                      value={household.barangay}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -159,7 +160,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="nameOfRespondent"
                       placeholder="e.g (Juan Pedro)"
-                      value={individualRecord.nameOfRespondent}
+                      value={household.nameOfRespondent}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -180,7 +181,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="householdHead"
                       placeholder="e.g (Juan Pedro)"
-                      value={individualRecord.householdHead}
+                      value={household.householdHead}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -201,7 +202,7 @@ const HouseholdRecord = () => {
                       type="number"
                       min="1"
                       name="totalNumberOfHouseholdMembers"
-                      value={individualRecord.totalNumberOfHouseholdMembers}
+                      value={household.totalNumberOfHouseholdMembers}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -223,7 +224,7 @@ const HouseholdRecord = () => {
                       type="text"
                       name="addressRoom"
                       placeholder="(Room/Floor/Unit No. and Building Name)"
-                      value={individualRecord.addressRoom}
+                      value={household.addressRoom}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -238,7 +239,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(House/Lot and Block No.)"
                       name="addressHouse"
-                      value={individualRecord.addressHouse}
+                      value={household.addressHouse}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -253,7 +254,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(Street Name)"
                       name="addressStreet"
-                      value={individualRecord.addressStreet}
+                      value={household.addressStreet}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -279,7 +280,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="text"
                       name="visit"
-                      value={individualRecord.visit}
+                      value={household.visit}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -300,7 +301,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       name="dateOfVisit"
                       type="date"
-                      value={individualRecord.dateOfVisit}
+                      value={household.dateOfVisit}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -321,7 +322,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="time"
                       name="timeStart"
-                      value={individualRecord.timeStart}
+                      value={household.timeStart}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -342,7 +343,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="time"
                       name="timeEnd"
-                      value={individualRecord.timeEnd}
+                      value={household.timeEnd}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -364,7 +365,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(C, CB, R)"
                       name="result"
-                      value={individualRecord.result}
+                      value={household.result}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -385,7 +386,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="date"
                       name="dateOfNextVisit"
-                      value={individualRecord.dateOfNextVisit}
+                      value={household.dateOfNextVisit}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -408,7 +409,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="text"
                       placeholder="(e.g Pablo, L / mm/dd/yyyy)"
-                      value={individualRecord.nameOfInterviewer}
+                      value={household.nameOfInterviewer}
                       name="nameOfInterviewer"
                       onChange={(e) =>
                         dispatch(
@@ -433,7 +434,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(e.g Escobar, P / mm/dd/yyyy)"
                       name="nameOfSupervisor"
-                      value={individualRecord.nameOfSupervisor}
+                      value={household.nameOfSupervisor}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -459,7 +460,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="date"
                       name="dateEncoded"
-                      value={individualRecord.dateEncoded}
+                      value={household.dateEncoded}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -483,7 +484,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(e.g Pablo, L)"
                       name="nameAndInitialOfEncoder"
-                      value={individualRecord.nameAndInitialOfEncoder}
+                      value={household.nameAndInitialOfEncoder}
                       onChange={(e) =>
                         dispatch(
                           onChange({
@@ -507,7 +508,7 @@ const HouseholdRecord = () => {
                       type="text"
                       placeholder="(e.g Escobar, P / mm/dd/yyyy)"
                       name="nameOfSupervisorInitialAndDate"
-                      value={individualRecord.nameOfSupervisorInitialAndDate}
+                      value={household.nameOfSupervisorInitialAndDate}
                       onChange={(e) =>
                         dispatch(
                           onChange({
