@@ -54,6 +54,10 @@
   color: white;
 }
 
+.Reports__logo {
+  margin-right: 30px;
+}
+
 @media (max-width: 1200px) {
   .IndividualLinks__box {
     flex-direction: column;
