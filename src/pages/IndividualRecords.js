@@ -5,24 +5,42 @@ import "../styles/IndividualRecord.css";
 import { onChange } from "../features/IndividualRecordInputs";
 import { useDispatch, useSelector } from "react-redux";
 //drop down
-import { useTheme } from '@mui/material/styles';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useTheme } from "@mui/material/styles";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
+
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
+  "& .MuiInputBase-input": {
+    borderRadius: 10,
+    position: "relative",
+    backgroundColor: "#f1f6f9",
+    border: "1px rgba(44, 44, 44, 0.5) solid",
+    fontSize: 14,
+    padding: "6px",
+    height: 10,
+    transition: theme.transitions.create(["border-color", "box-shadow"]),
+    "&:focus": {
+      borderColor: "#fac213",
+    },
+  },
+  width: "98%",
+}));
 
 const names = [
-  'maburak',
-  'mabatu',
-  'madalumdum',
-  'makalbug',
-  'malubak',
-  'makantu',
-  'bugbugan street',
-  'sanpablo',
-  'US',
-  'Canada',
+  "maburak",
+  "mabatu",
+  "madalumdum",
+  "makalbug",
+  "malubak",
+  "makantu",
+  "bugbugan street",
+  "sanpablo",
+  "US",
+  "Canada",
 ];
 
 function getStyles(name, personName, theme) {
@@ -63,14 +81,14 @@ const IndividualRecord = () => {
 
   const handleChange = (event) => {
     const {
-      target: { value },
+      target: { value, name },
     } = event;
+    dispatch(onChange({ name: name, value: value }));
     setPersonName(
       // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
+      typeof value === "string" ? value.split(",") : value
     );
   };
-
 
   useEffect(() => {
     localStorage.setItem("user-answers", JSON.stringify(items));
@@ -200,26 +218,27 @@ const IndividualRecord = () => {
                     >
                       Barangay:
                     </label>
-                    <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel id="demo-multiple-name-label">Barangay</InputLabel>
-                    <Select
-                       labelId="demo-multiple-name-label"
-                       id="demo-multiple-name"
-                       value={personName}
-                       onChange={handleChange}
-                       input={<OutlinedInput label="Barangay" />}
-                       MenuProps={MenuProps}
-                       >
-                     {names.map((name) => (
-                    <MenuItem
-                      key={name}
-                       value={name}
-                        style={getStyles(name, personName, theme)}
+                    <FormControl sx={{ m: 1, width: "100%" }}>
+                      <InputLabel id="demo-multiple-name-label"></InputLabel>
+                      <Select
+                        labelId="demo-multiple-name-label"
+                        id="demo-multiple-name"
+                        value={individualRecord.barangay}
+                        name="barangay"
+                        onChange={handleChange}
+                        input={<BootstrapInput />}
+                        MenuProps={MenuProps}
                       >
-                         {name}
-                     </MenuItem>
-                     ))}
-                    </Select>
+                        {names.map((name) => (
+                          <MenuItem
+                            key={name}
+                            value={name}
+                            style={getStyles(name, personName, theme)}
+                          >
+                            {name}
+                          </MenuItem>
+                        ))}
+                      </Select>
                     </FormControl>
                   </div>
                   <div className="IndividualRecord__input__box__1">
