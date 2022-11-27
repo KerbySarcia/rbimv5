@@ -1,30 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDom from "react-dom";
 import "../styles/HouseholdModal.css";
-import "../styles/IndividualRecord.css"
-import { useSelector, useDispatch } from "react-redux"
-import { onChangeQuestions } from "../features/IndividualRecordInputs"
+import "../styles/IndividualRecord.css";
+import { useSelector, useDispatch } from "react-redux";
+import { onChangeQuestions } from "../features/IndividualRecordInputs";
 
-export default function Modal({ open, onClose }) {
-
+export default function Modal() {
   const questions = useSelector((state) => state.individualRecord.questions);
   const dispatch = useDispatch();
 
-  if (!open) return null;
+  const [open, setOpen] = useState(true);
 
   return ReactDom.createPortal(
     <>
-      <div className='overlay' />
-      <div className='Household__modal'>
+      <div className={`overlay ${!open ? "closeModal" : ""}`} />
+      <div className={`Household__modal ${!open ? "closeModal" : ""}`}>
         <div className="Household__modal__container">
-        <button
-          onClick={onClose}
-          className='Household__modal__close__btn'>
+          <button
+            onClick={() => setOpen((value) => !value)}
+            className="Household__modal__close__btn"
+          >
             &#10006;
-        </button>
-        <div className="IndividualRecord__Questions__Container">
-          <form action="" method="POST">
-            <section className="IndividualRecord__sections IndividualRecord__row">
+          </button>
+          <div className="IndividualRecord__Questions__Container">
+            <form action="" method="POST">
+              <section className="IndividualRecord__sections IndividualRecord__row">
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q1. Name:</label>
                   <div className="IndividualRecord__row">
@@ -304,8 +304,8 @@ export default function Modal({ open, onClose }) {
                     }
                   />
                 </div>
-            </section>
-            <section className="IndividualRecord__sections IndividualRecord__row">
+              </section>
+              <section className="IndividualRecord__sections IndividualRecord__row">
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q15. Monthly Income:</label>
                   <div className="IndividualRecord__row">
@@ -606,8 +606,8 @@ export default function Modal({ open, onClose }) {
                     }
                   />
                 </div>
-            </section>
-            <section className="IndividualRecord__sections IndividualRecord__row">
+              </section>
+              <section className="IndividualRecord__sections IndividualRecord__row">
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q31. Registered Senior Citizen:</label>
                   <div className="IndividualRecord__row">
@@ -949,8 +949,8 @@ export default function Modal({ open, onClose }) {
                     }
                   />
                 </div>
-            </section>
-            <section className="IndividualRecord__sections IndividualRecord__row">
+              </section>
+              <section className="IndividualRecord__sections IndividualRecord__row">
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>
                     Q42A. CTC information: Does ____ have a valid CTC
@@ -1205,8 +1205,8 @@ export default function Modal({ open, onClose }) {
                     }
                   />
                 </div>
-            </section>
-            <section className="IndividualRecord__sections IndividualRecord__row">
+              </section>
+              <section className="IndividualRecord__sections IndividualRecord__row">
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>
                     Q54. Do you have any female HH members who died in the past
@@ -1481,9 +1481,9 @@ export default function Modal({ open, onClose }) {
                     <button className="confirm__btn">Save</button>
                   </div>
                 </div>
-            </section>
-          </form>
-        </div>
+              </section>
+            </form>
+          </div>
         </div>
       </div>
     </>,
