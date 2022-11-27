@@ -76,6 +76,16 @@
   cursor: pointer;
 }
 
+.SlideMenu__btn {
+  text-decoration: none;
+  color: #425f57;
+  font-size: medium;
+  text-align: center;
+  height: 50%;
+  border: hidden;
+  background-color: white;
+}
+
 @media (orientation: portrait) {
   .MobileNavbar {
     display: flex;

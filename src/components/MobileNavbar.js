@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../styles/MobileNavbar.css";
 import { Link } from "react-router-dom";
+import Modal from './SettingsModal'
 
 const MobileNavbar = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="MobileNavbar">
@@ -14,21 +16,20 @@ const MobileNavbar = () => {
       <h3 className="MobileNavbar__title">RBIM</h3>
 
       <div
-        onClick={() => setIsClicked((prevValue) => !prevValue)}
-        className={`SlideMenu ${isClicked ? "SlideMenu-show" : ""} `}
-      >
+        // TODO: when overlay clicked close sidemenu
+        className={`SlideMenu ${isClicked ? "SlideMenu-show" : ""} `}>
         <div className="SlideMenu__links">
           <div className="SlideMenu__links__link">
-            <Link to="/">
+            <Link to="/" onClick={() => setIsClicked((prevValue) => !prevValue)}>
               <h3 className="SlideMenu__link">Home</h3>
             </Link>
-            <Link to="/individual-records">
+            <Link to="/individual-records" onClick={() => setIsClicked((prevValue) => !prevValue)}>
               <h3 className="SlideMenu__link">Individual Record</h3>
             </Link>
-            <Link to="/household-record">
+            <Link to="/household-record" onClick={() => setIsClicked((prevValue) => !prevValue)}>
               <h3 className="SlideMenu__link">Household Record</h3>
             </Link>
-            <Link to="/reports">
+            <Link to="/reports" onClick={() => setIsClicked((prevValue) => !prevValue)}>
               <h3 className="SlideMenu__link">Reports</h3>
             </Link>
           </div>
@@ -36,7 +37,16 @@ const MobileNavbar = () => {
           <div className="SlideMenu__links__link-bottom">
             <h3 className="SlideMenu__link">Account</h3>
             <h3 className="SlideMenu__link">Logout</h3>
-            <h3 className="SlideMenu__link">Settings</h3>
+            <button className="SlideMenu__btn" onClick={() => {
+              setIsOpen(true)
+              setIsClicked(false)
+            }}>
+              <h3 className="SlideMenu__link">Settings</h3>
+            </button>
+            <Modal open={isOpen} onClose={() => {
+              setIsOpen(false)
+              setIsClicked(false)
+            }} />
           </div>
         </div>
       </div>

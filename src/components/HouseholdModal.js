@@ -19,6 +19,8 @@ export default function Modal({ open, onClose }) {
 
   if (!open) return null;
 
+  if (!open) return null;
+  
   return ReactDom.createPortal(
     <>
       <div className="overlay" />

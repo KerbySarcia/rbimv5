@@ -6,6 +6,8 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
+import logo from "../images/RBIM_LOGO.png";
+
 const IndividualRecordLinks = () => {
 
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +17,7 @@ const IndividualRecordLinks = () => {
       <section>
         <div className="IndividualLinks__box IndividualLinks__row">
           <div className="IndividualLinks__Title">
+            <img src={logo} width="50" alt="" className="Reports__logo" />
             <h1>Individual Records</h1>
           </div>
           <div className="IndividualLinks__row">
