@@ -1,4 +1,118 @@
 .AboutUs {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    background-color: #e7ecef;
+    color: #425f57;
     padding-top: 9px;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    overflow-x: hidden;
+}
+
+.AboutUs__Sections {
+    display: inherit;
+    position: relative;
+    width: calc(100% - 6.5rem);
+    height: fit-content;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.AboutUs__Text__Container > h1 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.AboutUs__Text__Container > span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.AboutUs__Logo {
+    position: relative;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.AboutUs__Text__Container {
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 30vw;
+    font-display: center;
+    text-align: center;
+}
+
+.AboutUs__Team__Card {
+    display: inherit;
+    flex-direction: column;
+    background: white;
+    width: 300px;
+    height: 500px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 500ms ease-in-out;
+}
+
+.AboutUs__Team__Card > img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.AboutUs__Team__Card__Info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.AboutUs__Team__Card:hover {
+    transform: scale(1.05);
+}
+
+.AboutUs__Footer {
+    display: inherit;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 9px;
+    padding: 10px;
+    width: 100%;
+    height: fit-content;
+    background-color: #425f57;
+    color: black;
+}
+
+.AboutUs__Footer > section {
+    display: inherit;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 1350px) {
+    .AboutUs__Team__Card {
+        width: 200px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .AboutUs__Text__Container {
+        padding: 5px 20vw;
+    }
+}
+
+@media (max-width: 850px) {
+    .AboutUs__Sections {
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .AboutUs__Sections {
+        flex-direction: column;
+    }
 }
