@@ -77,7 +77,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q1MiddleName === ""
                             ? "redborder"
@@ -100,7 +100,7 @@ export default function Modal({ open, onClose }) {
                   </div>
                   <label>Q2. Relationship with the Household Head</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q2 === ""
                           ? "redborder"
@@ -122,7 +122,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q3. Sex</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q3 === ""
                           ? "redborder"
@@ -144,7 +144,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q4. Age</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q4 === ""
                           ? "redborder"
@@ -167,7 +167,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q5. Date of Birth</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q5Month === ""
                             ? "redborder"
@@ -188,7 +188,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q5Year === ""
                             ? "redborder"
@@ -215,7 +215,7 @@ export default function Modal({ open, onClose }) {
                   <input
                     className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q6=== ""
+                        ? questions.q6 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -235,7 +235,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q7. Nationality</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q7 === ""
                           ? "redborder"
@@ -257,9 +257,9 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q8. Marital Status</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q8=== ""
+                        ? questions.q8 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -279,7 +279,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q9. Religion</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q9 === ""
                           ? "redborder"
@@ -301,7 +301,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q10. Ethnicity</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q10 === ""
                           ? "redborder"
@@ -325,7 +325,7 @@ export default function Modal({ open, onClose }) {
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q11. Highest Level of Education Completed</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q11 === ""
                           ? "redborder"
@@ -391,9 +391,9 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q14. Place of School</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q14=== ""
+                        ? questions.q14 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -418,7 +418,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q15. Monthly Income:</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q15 === ""
                             ? "redborder"
@@ -441,7 +441,7 @@ export default function Modal({ open, onClose }) {
                   </div>
                   <label>Q16. Source of Income</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q16 === ""
                           ? "redborder"
@@ -463,7 +463,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q17. Status of Work/Business</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q17 === ""
                           ? "redborder"
@@ -485,7 +485,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q18. Place of Work</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q18 === ""
                           ? "redborder"
@@ -508,7 +508,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q19. Place of Delivery</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q19 === ""
                             ? "redborder"
@@ -533,7 +533,7 @@ export default function Modal({ open, onClose }) {
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q20. Person who Assisted the Delivery</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q20 === ""
                           ? "redborder"
@@ -555,7 +555,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q21. Immunization</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q21 === ""
                           ? "redborder"
@@ -578,7 +578,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q22. Living Children</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q22A === ""
                             ? "redborder"
@@ -646,7 +646,7 @@ export default function Modal({ open, onClose }) {
                   <input
                     className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q24A === ""
+                        ? questions.q24 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -667,7 +667,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q25. Intention ot Use FP</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q25A === ""
                             ? "redborder"
@@ -688,7 +688,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q25B === ""
                             ? "redborder"
@@ -713,7 +713,7 @@ export default function Modal({ open, onClose }) {
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q26. Health Insurance</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q26 === ""
                           ? "redborder"
@@ -735,9 +735,9 @@ export default function Modal({ open, onClose }) {
                   ></input>
                   <label>Q27. Facility Visited</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q27=== ""
+                        ? questions.q27 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -757,9 +757,9 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q28. Reason of Visit</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q28=== ""
+                        ? questions.q28 === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -779,7 +779,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q29. Disability</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q29 === ""
                           ? "redborder"
@@ -801,7 +801,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q30. Solo Parent</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q30 === ""
                           ? "redborder"
@@ -828,7 +828,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q31. Registered Senior Citizen:</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q31 === ""
                             ? "redborder"
@@ -851,7 +851,7 @@ export default function Modal({ open, onClose }) {
                   </div>
                   <label>Q32. Registed Voter</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q32 === ""
                           ? "redborder"
@@ -874,7 +874,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q33. Previous Residence (Within Five Years Ago)</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q33A === ""
                             ? "redborder"
@@ -895,7 +895,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q33B === ""
                             ? "redborder"
@@ -919,7 +919,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q34. Previous Residence (Within Six Months Ago)</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q34A === ""
                             ? "redborder"
@@ -940,7 +940,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q34B === ""
                             ? "redborder"
@@ -964,7 +964,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q35. Length of Stay in Barangay</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q35A === ""
                             ? "redborder"
@@ -985,7 +985,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q35B === ""
                             ? "redborder"
@@ -1010,7 +1010,7 @@ export default function Modal({ open, onClose }) {
                 <div className="IndividualRecord__Questions__Row IndividualRecord__column">
                   <label>Q36. Type of Resident</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q36 === ""
                           ? "redborder"
@@ -1033,7 +1033,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q37. Date of Transfer</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q37A === ""
                             ? "redborder"
@@ -1054,7 +1054,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q37B === ""
                             ? "redborder"
@@ -1080,7 +1080,7 @@ export default function Modal({ open, onClose }) {
                   </label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q38A === ""
                             ? "redborder"
@@ -1105,7 +1105,7 @@ export default function Modal({ open, onClose }) {
                     Q38B. Reasons for leaving the previous residence
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q38B === ""
                           ? "redborder"
@@ -1129,7 +1129,7 @@ export default function Modal({ open, onClose }) {
                     Q38C. Reasons for leaving the previous residence
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q38C === ""
                           ? "redborder"
@@ -1154,7 +1154,7 @@ export default function Modal({ open, onClose }) {
                   <label>Q39. Return to Previous Residence</label>
                   <div className="IndividualRecord__row">
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q39A === ""
                             ? "redborder"
@@ -1175,7 +1175,7 @@ export default function Modal({ open, onClose }) {
                       }
                     />
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q39B === ""
                             ? "redborder"
@@ -1198,7 +1198,7 @@ export default function Modal({ open, onClose }) {
                   </div>
                   <label>Q40A. Reason for transfering in this barangay</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q40A === ""
                           ? "redborder"
@@ -1220,7 +1220,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q40B. Reason for transfering in this barangay</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q40B === ""
                           ? "redborder"
@@ -1264,7 +1264,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q41. Duration of stay current barangay</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q41 === ""
                           ? "redborder"
@@ -1292,7 +1292,7 @@ export default function Modal({ open, onClose }) {
                     Q42A. CTC information: Does ____ have a valid CTC
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q42A === ""
                           ? "redborder"
@@ -1316,7 +1316,7 @@ export default function Modal({ open, onClose }) {
                     Q42B. CTC information: Was the CTC issued in this barangay?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q42B === ""
                           ? "redborder"
@@ -1338,7 +1338,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q43. Skills Development Training</label>
                   <textarea
-                     className={`IndividualRecord__text__area${
+                    className={`IndividualRecord__text__area ${
                       showRed
                         ? questions.q43 === ""
                           ? "redborder"
@@ -1347,7 +1347,6 @@ export default function Modal({ open, onClose }) {
                     }`}
                     name="q43"
                     placeholder=""
-                    onResize={false}
                     rows="5"
                     value={questions.q43}
                     onChange={(e) =>
@@ -1361,7 +1360,7 @@ export default function Modal({ open, onClose }) {
                   ></textarea>
                   <label>Q44. Skills</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q44 === ""
                           ? "redborder"
@@ -1388,7 +1387,7 @@ export default function Modal({ open, onClose }) {
                     with consent of owner or ren-free without consent of owner?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q45 === ""
                           ? "redborder"
@@ -1414,7 +1413,7 @@ export default function Modal({ open, onClose }) {
                     consent of owner or ren-free without consent of owner?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q46 === ""
                           ? "redborder"
@@ -1438,7 +1437,7 @@ export default function Modal({ open, onClose }) {
                     Q47. What type of fuel does this household use for lighting?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q47 === ""
                           ? "redborder"
@@ -1463,7 +1462,7 @@ export default function Modal({ open, onClose }) {
                     time for cooking?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q48 === ""
                           ? "redborder"
@@ -1487,7 +1486,7 @@ export default function Modal({ open, onClose }) {
                     Q49. What is the household's main source of drinking water?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q49 === ""
                           ? "redborder"
@@ -1515,7 +1514,7 @@ export default function Modal({ open, onClose }) {
                     vegetables, fish and chicken entrails and others?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q50A === ""
                           ? "redborder"
@@ -1537,7 +1536,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q50B. Do you segregate Garbage?</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q50B === ""
                           ? "redborder"
@@ -1561,7 +1560,7 @@ export default function Modal({ open, onClose }) {
                     Q51. What type of toilet facility does this household use?
                   </label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q51 === ""
                           ? "redborder"
@@ -1583,7 +1582,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q52. Type of Building/House</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q52 === ""
                           ? "redborder"
@@ -1605,7 +1604,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Q53. Construction Materials of the outer wall</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q53 === ""
                           ? "redborder"
@@ -1636,7 +1635,7 @@ export default function Modal({ open, onClose }) {
                   </label>
                   <label>Age:</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q54Age === ""
                           ? "redborder"
@@ -1658,9 +1657,9 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Cause of Death:</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
-                        ? questions.q54CauseOfDeath=== ""
+                        ? questions.q54CauseOfDeath === ""
                           ? "redborder"
                           : "IndividualRecord__input"
                         : ""
@@ -1707,7 +1706,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Sex:</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q55Sex === ""
                           ? "redborder"
@@ -1729,7 +1728,7 @@ export default function Modal({ open, onClose }) {
                   />
                   <label>Cause of Death:</label>
                   <input
-                     className={`IndividualRecord__input ${
+                    className={`IndividualRecord__input ${
                       showRed
                         ? questions.q55CauseOfDeath === ""
                           ? "redborder"
@@ -1834,7 +1833,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>1.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q57A === ""
                             ? "redborder"
@@ -1858,7 +1857,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>2.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q57B === ""
                             ? "redborder"
@@ -1882,7 +1881,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>3.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q57C === ""
                             ? "redborder"
@@ -1910,7 +1909,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>Barangay.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q58Barangay === ""
                             ? "redborder"
@@ -1934,7 +1933,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>Municipality.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q58Municipality === ""
                             ? "redborder"
@@ -1958,7 +1957,7 @@ export default function Modal({ open, onClose }) {
                   <div className="IndividualRecord__row">
                     <label>Province.</label>
                     <input
-                       className={`IndividualRecord__input ${
+                      className={`IndividualRecord__input ${
                         showRed
                           ? questions.q58Province === ""
                             ? "redborder"
