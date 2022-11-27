@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import "../styles/MobileNavbar.css";
 import { Link } from "react-router-dom";
+import Modal from './SettingsModal'
 
 const MobileNavbar = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="MobileNavbar">
@@ -36,7 +38,16 @@ const MobileNavbar = () => {
           <div className="SlideMenu__links__link-bottom">
             <h3 className="SlideMenu__link">Account</h3>
             <h3 className="SlideMenu__link">Logout</h3>
-            <h3 className="SlideMenu__link">Settings</h3>
+            <button className="SlideMenu__link" onClick={() => {
+              setIsOpen(true)
+              setIsClicked(false)
+            }}>
+              <h3 className="SlideMenu__link">Settings</h3>
+            </button>
+            <Modal open={isOpen} onClose={() => {
+              setIsOpen(false)
+              
+            }} />
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import HouseholdRecord from "./pages/HouseholdRecord";
 import Reports from "./pages/Reports";
 import SharedLayout from "./pages/SharedLayout";
 import HouseholdRecordQuestions from "./pages/HouseholdRecordQuestions";
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
@@ -31,8 +32,10 @@ const App = () => {
               element={<HouseholdRecordQuestions />}
             />
             <Route path="reports" element={<Reports />} />
+            <Route path="about-the-team" element={<AboutUs />} />
           </Route>
           <Route path="login" element={<Login />} />
+          
         </Routes>
       </BrowserRouter>
     </div>

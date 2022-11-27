@@ -64,7 +64,6 @@ const MenuProps = {
 };
 
 const IndividualRecord = () => {
-  // TODO: Save inputted data to localstorage using useState, useEffect
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
   const individualRecord = useSelector((state) => state.individualRecord.value);

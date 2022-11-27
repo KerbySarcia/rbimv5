@@ -11,6 +11,8 @@ export default function Modal() {
 
   const [open, setOpen] = useState(true);
 
+  if (!open) return null;
+  
   return ReactDom.createPortal(
     <>
       <div className={`overlay ${!open ? "closeModal" : ""}`} />

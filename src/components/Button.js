@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Button.css";
 
-const Button = ({ isClicked, iconSelected, iconDefault, name }) => {
+const Button = ({ isClicked, iconSelected, iconDefault, name, }) => {
   return (
     <div className={`${isClicked ? "isClicked" : "Button"} button-style`}>
       {isClicked ? iconSelected : iconDefault}

@@ -19,6 +19,22 @@
   justify-content: space-around;
 }
 
+.Sidebar__btn {
+  margin: 3px 0px;
+  color: white;
+  background-color: #425f57;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
+  transition: 500ms;
+}
+
+.Sidebar__btn:hover {
+  background-color: #a8e890;
+}
+
 @media (orientation: portrait) {
   .Sidebar {
     display: none;

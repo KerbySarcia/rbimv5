@@ -32,9 +32,9 @@
   border-radius: 10px;
   cursor: pointer;
   position: relative;
-    float: right;
-    top: -20px;
-    right: -20px;
+  float: right;
+  top: -20px;
+  right: -20px;
 }
 
 .IndividualRecord__modal__upload__label {
