@@ -3,23 +3,28 @@ import ReactDom from "react-dom";
 import "../styles/HouseholdModal.css";
 import "../styles/IndividualRecord.css";
 import { useSelector, useDispatch } from "react-redux";
-import { onChangeQuestions } from "../features/IndividualRecordInputs";
+import { onChangeQuestions, isEmpty } from "../features/HouseholdInputs";
 
-export default function Modal() {
-  const questions = useSelector((state) => state.individualRecord.questions);
+import { addToIndividual } from "../features/HouseholdInputs";
+
+export default function Modal({ open, onClose }) {
+  const questions = useSelector((state) => state.householdRecord.questions);
+  const individual = useSelector((state) => state.householdRecord.individual);
+  const [showRed, setShowRed] = useState(false);
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(true);
+  const handleAction = (e) => {
+    e.preventDefault();
+  };
+
+  if (!open) return null;
 
   return ReactDom.createPortal(
     <>
-      <div className={`overlay ${!open ? "closeModal" : ""}`} />
-      <div className={`Household__modal ${!open ? "closeModal" : ""}`}>
+      <div className="overlay" />
+      <div className="Household__modal">
         <div className="Household__modal__container">
-          <button
-            onClick={() => setOpen((value) => !value)}
-            className="Household__modal__close__btn"
-          >
+          <button onClick={onClose} className="Household__modal__close__btn">
             &#10006;
           </button>
           <div className="IndividualRecord__Questions__Container">
@@ -29,9 +34,16 @@ export default function Modal() {
                   <label>Q1. Name:</label>
                   <div className="IndividualRecord__row">
                     <input
-                      className="IndividualRecord__input"
+                      className={`IndividualRecord__input ${
+                        showRed
+                          ? questions.q1Surname === ""
+                            ? "redborder"
+                            : "IndividualRecord__input"
+                          : ""
+                      }`}
                       name="q1Surname"
                       value={questions.q1Surname}
+                      required
                       onChange={(e) =>
                         dispatch(
                           onChangeQuestions({
@@ -44,7 +56,13 @@ export default function Modal() {
                       placeholder="Surname"
                     />
                     <input
-                      className="IndividualRecord__input"
+                      className={`IndividualRecord__input ${
+                        showRed
+                          ? questions.q1FirstName === ""
+                            ? "redborder"
+                            : "IndividualRecord__input"
+                          : ""
+                      }`}
                       type="text"
                       placeholder="First Name"
                       name="q1FirstName"
@@ -1232,10 +1250,10 @@ export default function Modal() {
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name="q54CauseofDeath"
+                    name="q54CauseOfDeath"
                     type="text"
                     placeholder=""
-                    value={questions.q54CauseofDeath}
+                    value={questions.q54CauseOfDeath}
                     onChange={(e) =>
                       dispatch(
                         onChangeQuestions({
@@ -1285,10 +1303,10 @@ export default function Modal() {
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name="q55CauseofDeath"
+                    name="q55CauseOfDeath"
                     type="text"
                     placeholder=""
-                    value={questions.q55CauseofDeath}
+                    value={questions.q55CauseOfDeath}
                     onChange={(e) =>
                       dispatch(
                         onChangeQuestions({
@@ -1476,13 +1494,23 @@ export default function Modal() {
                   </div>
                 </div>
                 <div className="IndividualRecord__Questions__Row">
-                  <div className="IndividualRecord__finish">
-                    <button className="danger__btn">Cancel</button>
-                    <button className="confirm__btn">Save</button>
-                  </div>
+                  <button
+                    onClick={(e) => {
+                      handleAction(e);
+                      if (isEmpty()) {
+                        setShowRed(true);
+                        return;
+                      }
+                      dispatch(addToIndividual());
+                      onClose();
+                    }}
+                  >
+                    ADD
+                  </button>
                 </div>
               </section>
             </form>
+            ;
           </div>
         </div>
       </div>
