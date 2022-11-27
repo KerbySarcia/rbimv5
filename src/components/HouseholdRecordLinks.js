@@ -1,15 +1,11 @@
-import React, { useState} from 'react'
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/IndividualRecordLinks.css";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import Modal from '../components/HouseholdModal'
 
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 
 const HouseholdRecordLinks = () => {
-
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <>
       <section>
@@ -47,8 +43,6 @@ const HouseholdRecordLinks = () => {
                 Household Records
               </span>
             </NavLink>
-            <button onClick={() => setIsOpen(true)}>OPen MOdal</button>
-            <Modal open={isOpen} onClose={() => setIsOpen(false)} />
           </div>
         </div>
       </section>
