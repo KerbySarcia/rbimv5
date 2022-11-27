@@ -22,22 +22,26 @@ export default function SettingsModal({open, onClose}) {
                 <Link
                   className="Settings__modal__btn"
                   end
-                  to="">
+                  to=""
+                  onClick={onClose}>
                   <li>Account</li>
                 </Link>
                 <Link
                   className="Settings__modal__btn"
-                  to="">
+                  to=""
+                  onClick={onClose}>
                   <li>Import From Excel Data</li>
                 </Link>
                 <Link
                   className="Settings__modal__btn"
-                  to="">
+                  to=""
+                  onClick={onClose}>
                   <li>Export To Excel Data</li>
                 </Link>
                 <Link
                   className="Settings__modal__btn"
-                  to="about-the-team">
+                  to="about-the-team"
+                  onClick={onClose}>
                   <li>About Us</li>
                 </Link>
               </ul>
