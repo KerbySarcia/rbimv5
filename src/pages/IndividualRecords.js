@@ -67,7 +67,7 @@ const IndividualRecord = () => {
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
   const individualRecord = useSelector((state) => state.individualRecord.value);
-  console.log(individualRecord);
+
   useEffect(() => {
     const data = localStorage.getItem("user-answers");
     if (data) {
