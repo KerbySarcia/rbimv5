@@ -11,27 +11,29 @@ import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
 import NoteAddOutlinedIcon from "@mui/icons-material/NoteAddOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const ButtonGroup = ({ button }) => {
+  const location = useLocation();
+
   const [isClicked, setIsClicked] = useState([
     {
       name: "Home",
-      click: true,
+      click: location.pathname === "/" ? true : false,
     },
 
     {
       name: "Add",
-      click: false,
+      click: location.pathname.includes("individual-records") ? true : false,
     },
 
     {
       name: "Map",
-      click: false,
+      click: location.pathname.includes("household-record") ? true : false,
     },
 
     {
       name: "Table",
-      click: false,
+      click: location.pathname.includes("reports") ? true : false,
     },
   ]);
 

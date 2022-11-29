@@ -3,13 +3,17 @@ import ReactDom from "react-dom";
 import "../styles/HouseholdModal.css";
 import "../styles/IndividualRecord.css";
 import { useSelector, useDispatch } from "react-redux";
-import { onChangeQuestions, isEmpty } from "../features/HouseholdInputs";
+import {
+  onChangeQuestions,
+  updateHouseholdRecord,
+} from "../features/HouseholdInputs";
 
-import { addToIndividual } from "../features/HouseholdInputs";
+import { addToIndividual, eraseQuestions } from "../features/HouseholdInputs";
 
-export default function Modal({ open, onClose }) {
+export default function Modal({ open, onClose, id }) {
   const questions = useSelector((state) => state.householdRecord.questions);
   const individual = useSelector((state) => state.householdRecord.individual);
+
   const [showRed, setShowRed] = useState(false);
   const dispatch = useDispatch();
 
@@ -19,14 +23,18 @@ export default function Modal({ open, onClose }) {
 
   if (!open) return null;
 
-  if (!open) return null;
-  
   return ReactDom.createPortal(
     <>
       <div className="overlay" />
       <div className="Household__modal">
         <div className="Household__modal__container">
-          <button onClick={onClose} className="Household__modal__close__btn">
+          <button
+            onClick={() => {
+              onClose();
+              id && dispatch(eraseQuestions());
+            }}
+            className="Household__modal__close__btn"
+          >
             &#10006;
           </button>
           <div className="IndividualRecord__Questions__Container">
@@ -1981,24 +1989,32 @@ export default function Modal({ open, onClose }) {
                     />
                   </div>
                 </div>
-                <div className="IndividualRecord__Questions__Row">
-                  <button
-                    onClick={(e) => {
-                      handleAction(e);
-                      if (isEmpty()) {
-                        setShowRed(true);
-                        return;
-                      }
-                      dispatch(addToIndividual());
-                      onClose();
-                    }}
-                  >
-                    ADD
-                  </button>
-                </div>
+                <div className="IndividualRecord__Questions__Row"></div>
               </section>
             </form>
-            ;
+            <div className="center__button__add">
+              <button
+                className="add__btn"
+                onClick={(e) => {
+                  handleAction(e);
+                  for (const property in questions) {
+                    if (questions[property] === "") {
+                      setShowRed(true);
+                      return;
+                    }
+                  }
+
+                  id
+                    ? dispatch(updateHouseholdRecord({ id: id }))
+                    : dispatch(addToIndividual());
+
+                  setShowRed(false);
+                  onClose();
+                }}
+              >
+                {id ? "update" : "add"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

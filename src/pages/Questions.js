@@ -1,11 +1,10 @@
-import React from "react"
-import "../styles/IndividualRecord.css"
-import IndividualRecordLinks from "../components/IndividualRecordLinks"
-import { useSelector, useDispatch } from "react-redux"
-import { onChangeQuestions } from "../features/IndividualRecordInputs"
+import React from "react";
+import "../styles/IndividualRecord.css";
+import IndividualRecordLinks from "../components/IndividualRecordLinks";
+import { useSelector, useDispatch } from "react-redux";
+import { onChangeQuestions } from "../features/IndividualRecordInputs";
 
 const IndividualRecordsQuestions = () => {
-
   const questions = useSelector((state) => state.individualRecord.questions);
   const dispatch = useDispatch();
 
@@ -1465,12 +1464,6 @@ const IndividualRecordsQuestions = () => {
                         )
                       }
                     />
-                  </div>
-                </div>
-                <div className="IndividualRecord__Questions__Row">
-                  <div className="IndividualRecord__finish">
-                    <button className="danger__btn">Cancel</button>
-                    <button className="confirm__btn">Save</button>
                   </div>
                 </div>
               </section>

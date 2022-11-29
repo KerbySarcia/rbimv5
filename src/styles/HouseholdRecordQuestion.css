@@ -7,12 +7,42 @@
   padding: 0.5rem;
 }
 
+table,
+td,
+th {
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #425f57;
+  color: white;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+.small__width__dateOfBirth {
+  width: 20%;
+}
+
+.small__width {
+  width: 30vw;
+  max-width: 300px;
+}
+
 .HouseholdRecordQuestions__table {
   display: flex;
   position: relative;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   height: inherit;
   background-color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
@@ -21,6 +51,15 @@
   margin-top: 0.5rem;
   padding: 0.5rem;
   margin-left: 0.5rem;
+
+  width: 100%;
+}
+
+.HouseholdRecordQuestions__noRecords {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (orientation: portrait) {
