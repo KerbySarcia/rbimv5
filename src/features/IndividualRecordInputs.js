@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const individualSlice = createSlice({
   name: "IndividualRecord",
   initialState: {
+    isEmpty: true,
     value: {
       recordNumber: "",
       household: "",
@@ -117,9 +118,24 @@ export const individualSlice = createSlice({
   reducers: {
     onChange: (state, action) => {
       state.value[action.payload.name] = action.payload.value;
+      for (const properties in state.value) {
+        if (state.value[properties] === "") {
+          console.log(state.value[properties]);
+          state.isEmpty = true;
+          return;
+        }
+      }
+      state.isEmpty = false;
     },
     onChangeQuestions: (state, action) => {
       state.questions[action.payload.name] = action.payload.value;
+      for (const properties in state.questions) {
+        if (state.questions[properties] === "") {
+          state.isEmpty = true;
+          return;
+        }
+      }
+      state.isEmpty = false;
     },
   },
 });
