@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import "../styles/Sidebar.css";
 import ButtonGroup from "./ButtonGroup";
 import Modal from './SettingsModal'
+import Logout from './Logout'
 
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
-import { useNavigate } from "react-router-dom";
+
 
 const Sidebar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [logOut, setlogOut] = useState(false);
 
-  const navigate = useNavigate()
+  
 
   return (
     <div className="Sidebar">
@@ -24,10 +26,7 @@ const Sidebar = () => {
           <AccountBoxOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
         <button
-          onClick={()=>{
-            localStorage.removeItem('dataKey')
-            navigate('/login')
-          }}
+          onClick={() => setlogOut(true)}
           className="Sidebar__btn">
           <LogoutOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
@@ -37,6 +36,7 @@ const Sidebar = () => {
           <SettingsOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)} />
+        <Logout open={logOut} onClose={() => setlogOut(false)} />
       </div>
     </div>
   );

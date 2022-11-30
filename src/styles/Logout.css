@@ -1,0 +1,58 @@
+.Logout__modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px;
+    padding-bottom: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.Logout__modal >h2 {
+    color: #425f57;
+}
+
+.Logout__modal__cancel {
+    margin: 20px;
+    width: 120px;
+    height: 70px;
+    background-color: gainsboro;
+    color: #425f57;
+    font-size: 1.2rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 10px;
+    transition: 300ms all;
+}
+
+.Logout__modal__confirm {
+    margin: 20px;
+    width: 120px;
+    height: 70px;
+    background-color: red;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    transition: 300ms all;
+}
+
+.Logout__modal__cancel:hover,
+.Logout__modal__confirm:hover {
+    transform: scale(1.1);
+}
