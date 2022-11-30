@@ -6,10 +6,13 @@ import Modal from './SettingsModal'
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigate = useNavigate()
 
   return (
     <div className="Sidebar">
@@ -21,6 +24,10 @@ const Sidebar = () => {
           <AccountBoxOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
         <button
+          onClick={()=>{
+            localStorage.removeItem('dataKey')
+            navigate('/login')
+          }}
           className="Sidebar__btn">
           <LogoutOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
