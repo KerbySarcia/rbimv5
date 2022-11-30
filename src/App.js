@@ -35,7 +35,6 @@ const App = () => {
             <Route path="about-the-team" element={<AboutUs />} />
           </Route>
           <Route path="login" element={<Login />} />
-          
         </Routes>
       </BrowserRouter>
     </div>

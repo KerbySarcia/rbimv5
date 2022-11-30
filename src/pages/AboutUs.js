@@ -13,7 +13,7 @@ const AboutUs = () => {
             src={logo} alt='RBIM Logo'/>
           <span>About Us - Group 3</span>
           <h1>The RBIM Project</h1>
-          <p>This is aThesis Project of the Group 3 in WebSystems Subject of the Bachelor of Science in Computer Science Course in Don Honorio Ventura State University (DHVSU).</p>
+          <p>This is a Thesis Project of the Group 3 in WebSystems Subject of the Bachelor of Science in Computer Science Course in Don Honorio Ventura State University (DHVSU).</p>
         </div>
       </section>
       <section className='AboutUs__Sections'>
