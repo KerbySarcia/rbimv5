@@ -2,11 +2,20 @@ import React from "react";
 import "../styles/IndividualRecord.css";
 import IndividualRecordLinks from "../components/IndividualRecordLinks";
 import { useSelector, useDispatch } from "react-redux";
-import { onChangeQuestions } from "../features/IndividualRecordInputs";
+import {
+  onChangeQuestions,
+  submitToDatabase,
+} from "../features/IndividualRecordInputs";
+import { useNavigate } from "react-router-dom";
 
 const IndividualRecordsQuestions = () => {
   const questions = useSelector((state) => state.individualRecord.questions);
+  const individualRecordValue = useSelector(
+    (state) => state.individualRecord.value
+  );
+  const isEmpty = useSelector((state) => state.individualRecord.isEmpty);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -1197,8 +1206,8 @@ const IndividualRecordsQuestions = () => {
                   />
                 </div>
               </section>
-              <section className="IndividualRecord__sections IndividualRecord__row">
-                <div className="IndividualRecord__Questions__Row IndividualRecord__column">
+              <section className="IndividualRecord__sections IndividualRecord__row IndividualRecord__grid">
+                <div className="">
                   <label>
                     Q54. Do you have any female HH members who died in the past
                     12 months? How old is she and what is the cause of her
@@ -1223,10 +1232,10 @@ const IndividualRecordsQuestions = () => {
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name="q54CauseofDeath"
+                    name="q54CauseOfDeath"
                     type="text"
                     placeholder=""
-                    value={questions.q54CauseofDeath}
+                    value={questions.q54CauseOfDeath}
                     onChange={(e) =>
                       dispatch(
                         onChangeQuestions({
@@ -1276,10 +1285,10 @@ const IndividualRecordsQuestions = () => {
                   <label>Cause of Death:</label>
                   <input
                     className="IndividualRecord__input"
-                    name="q55CauseofDeath"
+                    name="q55CauseOfDeath"
                     type="text"
                     placeholder=""
-                    value={questions.q55CauseofDeath}
+                    value={questions.q55CauseOfDeath}
                     onChange={(e) =>
                       dispatch(
                         onChangeQuestions({
@@ -1290,7 +1299,7 @@ const IndividualRecordsQuestions = () => {
                     }
                   />
                 </div>
-                <div className="IndividualRecord__Questions__Row IndividualRecord__column">
+                <div className="">
                   <label>
                     Q56. What are the common diseases that cause death in the
                     barangay?
@@ -1468,6 +1477,25 @@ const IndividualRecordsQuestions = () => {
                 </div>
               </section>
             </form>
+            <div
+              className={`${
+                isEmpty.isEmptyQuestions ||
+                isEmpty.isEmptyIndividualRecordQuestions
+                  ? "IndividualRecord__button__add__disabled"
+                  : ""
+              } IndividualRecord__button__add`}
+            >
+              <button
+                onClick={() => {
+                  dispatch(
+                    submitToDatabase({ questions, individualRecordValue })
+                  );
+                  navigate("/individual-records");
+                }}
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       </div>

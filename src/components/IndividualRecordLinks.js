@@ -5,14 +5,11 @@ import "../styles/IndividualRecordLinks.css";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import { useSelector, useDispatch } from "react-redux";
 
 import logo from "../images/RBIM_LOGO.png";
 
 const IndividualRecordLinks = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isEmpty = useSelector((state) => state.individualRecord.isEmpty);
-  console.log(isEmpty);
 
   return (
     <>
@@ -23,7 +20,6 @@ const IndividualRecordLinks = () => {
             <h1>Individual Records</h1>
           </div>
           <div className="IndividualLinks__row">
-            {!isEmpty && <button>Submit</button>}
             <NavLink
               style={({ isActive }) => {
                 return isActive

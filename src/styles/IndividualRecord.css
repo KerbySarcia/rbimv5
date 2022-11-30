@@ -35,7 +35,7 @@
 }
 
 .IndividualRecord__Form__Container {
-  height: 100%;
+  height: calc(100vh - 6rem);
   width: 99.5%;
   position: relative;
   margin: 10px 0 0 10px;
@@ -44,7 +44,7 @@
 .IndividualRecord__sections {
   margin: 0 0 10px 0;
   padding: 1vh 5vh 1vh 5vh;
-  background: white;
+  background-color: white;
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -309,4 +309,34 @@
 
 .redborder {
   border: 1px solid red;
+}
+
+.IndividualRecord__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.IndividualRecord__button__add {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+.IndividualRecord__button__add > button {
+  color: white;
+  background-color: #425f57;
+  border: none;
+  border-radius: 5px;
+  padding: 0.2rem 2rem;
+  text-transform: capitalize;
+  opacity: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.IndividualRecord__button__add__disabled > button {
+  pointer-events: none;
+  opacity: 50%;
 }
