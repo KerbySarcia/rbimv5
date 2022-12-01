@@ -3,6 +3,7 @@ import "../styles/Sidebar.css";
 import ButtonGroup from "./ButtonGroup";
 import Modal from './SettingsModal'
 import Logout from './Logout'
+import Account from './Accounts'
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +15,7 @@ const Sidebar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [logOut, setlogOut] = useState(false);
+  const [accounts, setAccounts] = useState(false);
 
   const isLoggedIn = useSelector(state => state.sessionRecord.login)
   
@@ -29,10 +31,10 @@ const Sidebar = () => {
   return (
     <div className="Sidebar">
       <ButtonGroup />
-
       <div className="Sidebar__bottom">
         <button
-          className="Sidebar__btn Sidebar__btn__gray">
+          onClick={() => setAccounts(true)}
+          className="Sidebar__btn">
           <AccountBoxOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
         <button
@@ -47,6 +49,7 @@ const Sidebar = () => {
         </button>
         <Modal open={isOpen} onClose={() => setIsOpen(false)} />
         <Logout open={logOut} onClose={() => setlogOut(false)} />
+        <Account open={accounts} onClose={() => setAccounts(false)} />
       </div>
     </div>
   );

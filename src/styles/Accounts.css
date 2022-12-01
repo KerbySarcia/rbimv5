@@ -1,0 +1,83 @@
+.Accounts__modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.Accounts__modal__close__btn {
+    display: block;
+    border: none;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    color: #425f57;
+    font-size: 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    top: -20px;
+    right: -20px;
+}
+
+.Accounts__modal >h1 {
+    color: #425f57;
+}
+
+.Accounts__modal__container {
+    margin: 10px;
+    display: flex;
+}
+
+.Accounts__modal__form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Accounts__modal__form > input {
+    border-style: none;
+    background-color: gainsboro;
+    border-radius: 10px;
+    color: black;
+    text-indent: 10px;
+    height: 50px;
+    width: 300px;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.Accounts__modal__table {
+    display: flex;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
+    background-color: gainsboro;
+}
+
+@media (orientation: portrait) {
+    .Accounts__modal__container {
+        flex-direction: column;
+    }
+
+    .Accounts__modal__table {
+        max-width: 100%;
+    }
+}
