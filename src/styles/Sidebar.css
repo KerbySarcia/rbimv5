@@ -40,3 +40,7 @@
     display: none;
   }
 }
+
+.Sidebar__btn__gray {
+  color: gray;
+}

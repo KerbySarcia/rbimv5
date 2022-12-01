@@ -1,20 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Sidebar.css";
 import ButtonGroup from "./ButtonGroup";
 import Modal from './SettingsModal'
 import Logout from './Logout'
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
-
 
 const Sidebar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [logOut, setlogOut] = useState(false);
 
+  const isLoggedIn = useSelector(state => state.sessionRecord.login)
   
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const items = JSON.parse(sessionStorage.getItem('dataKey'))
+    if(isLoggedIn === false && !items){
+      navigate('/login')
+    }
+  }, [isLoggedIn])
 
   return (
     <div className="Sidebar">
@@ -22,7 +32,7 @@ const Sidebar = () => {
 
       <div className="Sidebar__bottom">
         <button
-          className="Sidebar__btn">
+          className="Sidebar__btn Sidebar__btn__gray">
           <AccountBoxOutlinedIcon sx={{ fontSize: "xx-large" }} />
         </button>
         <button
