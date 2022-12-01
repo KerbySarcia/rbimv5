@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
 import "../styles/Modal.css";
 import Photo from "../images/person.svg";
 import Signature from "../images/language.svg";
 import ThumbR from "../images/finger-print.svg";
 import ThumbL from "../images/finger-print.svg";
+import {
+  onChangeImage,
+  onChangeQuestions,
+} from "../features/IndividualRecordInputs";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Modal({ open, onClose }) {
+  const imageInfo = useSelector(
+    (state) => state.individualRecord.imageInformation
+  );
+
+  const dispatch = useDispatch();
+
   const [photo, setPhoto] = useState(null);
   const [sig, setSig] = useState(null);
   const [thumbL, setThumbL] = useState(null);
   const [thumbR, setThumbR] = useState(null);
+  const [notImage, setNotImage] = useState(false);
+
+  useEffect(() => {
+    setPhoto(imageInfo.photo);
+    setSig(imageInfo.signature);
+    setThumbL(imageInfo.leftThumbMark);
+    setThumbR(imageInfo.rightThumbMark);
+  }, [imageInfo]);
 
   // TODO: fix background scrolling bug
   if (!open) return null;
@@ -30,6 +49,16 @@ export default function Modal({ open, onClose }) {
             <div className="IndividualRecord__modal__row">
               <div className="IndividualRecord__modal__upload__input">
                 <div className="IndividualRecord__modal__img">
+                  {notImage && (
+                    <h6
+                      style={{
+                        color: "red",
+                        textAlign: "center",
+                      }}
+                    >
+                      This is not a photo
+                    </h6>
+                  )}
                   {photo ? (
                     <img width={200} src={URL.createObjectURL(photo)} alt="" />
                   ) : (
@@ -40,16 +69,31 @@ export default function Modal({ open, onClose }) {
                   className="IndividualRecord__modal__upload__label"
                   for="photo-upload"
                 >
-                  {" "}
                   Upload Photo
                 </label>
                 <input
                   onChange={(e) => {
-                    setPhoto(e.target.files[0]);
+                    if (
+                      e.target.files[0].name.includes("jpeg") ||
+                      e.target.files[0].name.includes("png") ||
+                      e.target.files[0].name.includes("jpg")
+                    ) {
+                      dispatch(
+                        onChangeImage({
+                          name: e.target.name,
+                          value: e.target.files[0],
+                        })
+                      );
+                      setNotImage(false);
+                    } else {
+                      setNotImage(true);
+                      setPhoto(null);
+                    }
                   }}
                   id="photo-upload"
                   type="file"
                   accept="image"
+                  name="photo"
                   hidden
                 />
               </div>
@@ -69,10 +113,18 @@ export default function Modal({ open, onClose }) {
                   Upload Signature
                 </label>
                 <input
-                  onChange={(e) => setSig(e.target.files[0])}
+                  onChange={(e) =>
+                    dispatch(
+                      onChangeImage({
+                        name: e.target.name,
+                        value: e.target.files[0],
+                      })
+                    )
+                  }
                   id="signature-upload"
                   type="file"
                   accept="image"
+                  name="signature"
                   hidden
                 />
               </div>
@@ -94,10 +146,18 @@ export default function Modal({ open, onClose }) {
                   Upload L-Thumb Mark
                 </label>
                 <input
-                  onChange={(e) => setThumbL(e.target.files[0])}
+                  onChange={(e) =>
+                    dispatch(
+                      onChangeImage({
+                        name: e.target.name,
+                        value: e.target.files[0],
+                      })
+                    )
+                  }
                   id="left-thumb-upload"
                   type="file"
                   accept="image"
+                  name="leftThumbMark"
                   hidden
                 />
               </div>
@@ -117,10 +177,18 @@ export default function Modal({ open, onClose }) {
                   Upload R-Thumb Mark
                 </label>
                 <input
-                  onChange={(e) => setThumbR(e.target.files[0])}
+                  onChange={(e) =>
+                    dispatch(
+                      onChangeImage({
+                        name: e.target.name,
+                        value: e.target.files[0],
+                      })
+                    )
+                  }
                   id="right-thumb-upload"
                   type="file"
                   accept="image"
+                  name="rightThumbMark"
                   hidden
                 />
               </div>

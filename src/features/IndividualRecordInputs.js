@@ -153,7 +153,6 @@ export const individualSlice = createSlice({
     },
     onChangeImage: (state, action) => {
       state.imageInformation[action.payload.name] = action.payload.value;
-      console.log(state.imageInformation);
     },
     submitToDatabase: (state, action) => {
       console.log([
