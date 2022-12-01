@@ -20,7 +20,7 @@ export const sessionSlice = createSlice({
 				state.login = false
 			} else state.login = true
 
-			localStorage.setItem('dataKey', JSON.stringify(state.value));
+			sessionStorage.setItem('dataKey', JSON.stringify(state.value));
 		}
 	}
 })

@@ -1,0 +1,18 @@
+.DateTime {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.DateTime__date {
+    font-weight: 300;
+    font-size: 2rem;
+    color: gainsboro;
+}
+
+.DateTime__time {
+    font-weight: bold;
+    font-size: 4rem;
+    color: greenyellow;
+}

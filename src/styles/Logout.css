@@ -56,3 +56,28 @@
 .Logout__modal__confirm:hover {
     transform: scale(1.1);
 }
+
+@media (orientation:portrait) {
+    .Logout__modal > h2 {
+        text-align: center;
+    }
+
+    .Logout__modal__cancel,
+    .Logout__modal__confirm {
+        width: 80px;
+        height: 50px;
+        font-size: .8rem;
+    }
+}
+
+@media (max-width: 680px) {
+    .Logout__modal {
+        width: 80%;
+    }
+
+    .Logout__modal__cancel,
+    .Logout__modal__confirm {
+        margin: 5px;
+        font-size: .8rem;
+    }
+}

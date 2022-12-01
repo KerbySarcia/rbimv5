@@ -21,7 +21,7 @@ export default function Logout({open, onClose}) {
 				</button>
 				<button
 					onClick={()=>{
-            localStorage.removeItem('dataKey')
+            sessionStorage.removeItem('dataKey')
             navigate('/login')}}
 						className='Logout__modal__confirm'>
 							Confirm

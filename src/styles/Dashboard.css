@@ -24,12 +24,39 @@
   transition: all 0.3s linear;
 }
 
+.container-one {
+  padding: 10px;
+}
+
 .container-three {
   grid-row-start: span 2;
 }
 
 .container-four {
   grid-column: span 2;
+}
+
+.Dashboard__one__time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background-color: #012a4a;
+  border-radius: 10px;
+  height: 50%;
+  width: 90%;
+  padding: 0;
+}
+
+.Dashboard__one__time > h1 {
+  color: greenyellow;
+  font-size: 4rem;
+}
+
+.Dashboard__one__time > p {
+  color: greenyellow;
+  font-size: 1rem;
 }
 
 @media (max-width: 990px) {
