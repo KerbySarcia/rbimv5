@@ -52,10 +52,7 @@ switch($method){
     $identificationStatement->execute();
 
     //Inserts value to interviewInformation
-<<<<<<< Updated upstream
-=======
    
->>>>>>> Stashed changes
     $interviewInformationQuery = "INSERT INTO interview_information(id,Visit, Date_of_Visit,Time_Start, Time_End,Result,Date_of_Next_Visit, Name_of_Interviewer_Initial_Date, Name_of_Supervisor_Initial_Date)
                                 VALUES(:id, :Visit, :Date_of_Visit, :Time_Start, :Time_End,:Result, :Date_of_Next_Visit, :Name_of_Interviewer_Initial_Date, :Name_of_Supervisor_Initial_Date)";
     $interviewInformationStatement = $conn->prepare($interviewInformationQuery);
@@ -69,8 +66,6 @@ switch($method){
     $interviewInformationStatement->bindParam(':Name_of_Interviewer_Initial_Date',$individualRecord->nameOfInterviewer);
     $interviewInformationStatement->bindParam(':Name_of_Supervisor_Initial_Date',$individualRecord->nameOfSupervisorInitialAndDate);
     $interviewInformationStatement->execute();
-<<<<<<< Updated upstream
-=======
 
     //Insert value to individual_record_images
     $individualRecordimages= "INSERT INTO individual_record_images(id,Photo,Signature,Left_Thumb_Mark,Right_Thumb_Mark)
@@ -203,7 +198,6 @@ switch($method){
     $Individual_question_part_dStatement->bindParam(':Q58_Municipality',$questions->q58Municipality);
     $Individual_question_part_dStatement->bindParam(':Q58_Province',$questions->q58Province);
     $Individual_question_part_dStatement->execute();
->>>>>>> Stashed changes
     break;
 }
 
