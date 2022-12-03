@@ -4,9 +4,15 @@
 	*/
 	class DbConnect {
 		private $server = 'localhost';
+<<<<<<< Updated upstream
 		private $dbname = 'rbimdb';
 		private $user = 'root';
 		private $pass = '';
+=======
+		private $dbname = 'rbimdb';
+		private $user = 'root';
+		private $pass = '';
+>>>>>>> Stashed changes
 
 		public function connect() {
 			try {
