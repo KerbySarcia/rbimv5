@@ -94,13 +94,13 @@ switch($method){
         $householdQuestionsAStatement->bindParam(':Q11', $householdRecord->q11);
         $householdQuestionsAStatement->bindParam(':Q12', $householdRecord->q12);
         $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q13);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q14);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q15);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q16);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q17);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q18);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q19);
-        $householdQuestionsAStatement->bindParam(':Q13', $householdRecord->q20);
+        $householdQuestionsAStatement->bindParam(':Q14', $householdRecord->q14);
+        $householdQuestionsAStatement->bindParam(':Q15', $householdRecord->q15);
+        $householdQuestionsAStatement->bindParam(':Q16', $householdRecord->q16);
+        $householdQuestionsAStatement->bindParam(':Q17', $householdRecord->q17);
+        $householdQuestionsAStatement->bindParam(':Q18', $householdRecord->q18);
+        $householdQuestionsAStatement->bindParam(':Q19', $householdRecord->q19);
+        $householdQuestionsAStatement->bindParam(':Q20', $householdRecord->q20);
         $householdQuestionsAStatement->execute();
 
         break;
