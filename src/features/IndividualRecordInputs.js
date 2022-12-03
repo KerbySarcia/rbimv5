@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const valueTemplate = {
   recordNumber: "",
@@ -119,12 +120,21 @@ const imageInformationTemplate = {
   rightThumbMark: "",
 };
 
+const imageFileNameTemplate = {
+  photo: "",
+  signature: "",
+  leftThumbMark: "",
+  rightThumbMark: "",
+};
+
 export const individualSlice = createSlice({
   name: "IndividualRecord",
   initialState: {
+    imageFileName: imageFileNameTemplate,
     isEmpty: {
       isEmptyQuestions: true,
       isEmptyIndividualRecordQuestions: true,
+      isEmptyImageInformation: true,
     },
     imageInformation: imageInformationTemplate,
     value: valueTemplate,
@@ -153,17 +163,27 @@ export const individualSlice = createSlice({
     },
     onChangeImage: (state, action) => {
       state.imageInformation[action.payload.name] = action.payload.value;
+      state.imageFileName[action.payload.name] = action.payload.value.name;
+      for (const properties in state.imageInformation) {
+        if (state.imageInformation[properties] === "") {
+          state.isEmpty.isEmptyImageInformation = true;
+          return;
+        }
+      }
+      state.isEmpty.isEmptyImageInformation = false;
     },
     submitToDatabase: (state, action) => {
-      console.log([
-        action.payload.questions,
-        action.payload.individualRecordValue,
-      ]);
+      axios.post("http://localhost:80/rbimv5/server/Individual_Record.php", {
+        questions: action.payload.questions,
+        individualRecord: action.payload.individualRecordValue,
+        imageFileName: action.payload.imageFileName,
+      });
       alert(
         `${action.payload.questions.q1FirstName} ${action.payload.questions.q1Surname} has been recorded.`
       );
       state.value = valueTemplate;
       state.questions = questionsTemplate;
+      state.imageInformation = imageInformationTemplate;
     },
   },
 });
