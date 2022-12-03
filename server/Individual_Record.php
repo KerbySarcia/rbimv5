@@ -51,8 +51,20 @@ switch($method){
     $identificationStatement->bindParam(':Name_of_Respondent', $individualRecord->nameOfRespondent);
     $identificationStatement->execute();
 
-    // Inserts value to Encoding Information
-    
+    //Inserts value to interviewInformation
+    $interviewInformationQuery = "INSERT INTO interview_information(id,Visit, Date_of_Visit,Time_Start, Time_End,Result,Date_of_Next_Visit, Name_of_Interviewer_Initial_Date, Name_of_Supervisor_Initial_Date)
+                                VALUES(:id, :Visit, :Date_of_Visit, :Time_Start, :Time_End,:Result, :Date_of_Next_Visit, :Name_of_Interviewer_Initial_Date, :Name_of_Supervisor_Initial_Date)";
+    $interviewInformationStatement = $conn->prepare($interviewInformationQuery);
+    $interviewInformationStatement->bindParam(':id', $lastRowFetch['id']);
+    $interviewInformationStatement->bindParam(':Visit',$individualRecord->visit);
+    $interviewInformationStatement->bindParam(':Date_of_Visit',$individualRecord->dateOfVisit);
+    $interviewInformationStatement->bindParam(':Time_Start',$individualRecord->timeStart);
+    $interviewInformationStatement->bindParam(':Time_End',$individualRecord->timeEnd);
+    $interviewInformationStatement->bindParam(':Result',$individualRecord->result);
+    $interviewInformationStatement->bindParam(':Date_of_Next_Visit',$individualRecord->dateOfNextVisit);
+    $interviewInformationStatement->bindParam(':Name_of_Interviewer_Initial_Date',$individualRecord->nameOfInterviewer);
+    $interviewInformationStatement->bindParam(':Name_of_Supervisor_Initial_Date',$individualRecord->nameOfSupervisorInitialAndDate);
+    $interviewInformationStatement->execute();
     break;
 }
 
