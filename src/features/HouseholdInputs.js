@@ -90,6 +90,7 @@ const questionTemplate = {
 export const HouseholdSlice = createSlice({
   name: "HouseholdRecord",
   initialState: {
+    isEmpty: true,
     empty: true,
     value: {
       recordNumber: "",
@@ -122,6 +123,13 @@ export const HouseholdSlice = createSlice({
   reducers: {
     onChange: (state, action) => {
       state.value[action.payload.name] = action.payload.value;
+      for (const properties in state.value) {
+        if (state.value[properties] === "") {
+          state.isEmpty = true;
+          return;
+        }
+      }
+      state.isEmpty = false;
     },
     onChangeQuestions: (state, action) => {
       state.questions[action.payload.name] = action.payload.value;
@@ -155,6 +163,39 @@ export const HouseholdSlice = createSlice({
         (item) => item.id !== action.payload.id
       );
     },
+    submitToDatabase: (state, action) => {
+      console.log({
+        householdRecord: action.payload.householdRecord,
+        householdRecordList: action.payload.individual,
+      });
+
+      state.value = {
+        recordNumber: "",
+        household: "",
+        institutionalLivingQuarter: "",
+        province: "",
+        municipality: "",
+        barangay: "",
+        addressRoom: "",
+        addressHouse: "",
+        addressStreet: "",
+        nameOfRespondent: "",
+        householdHead: "",
+        totalNumberOfHouseholdMembers: "",
+        visit: "",
+        timeStart: "",
+        result: "",
+        nameOfInterviewer: "",
+        dateOfVisit: "",
+        timeEnd: "",
+        dateOfNextVisit: "",
+        nameOfSupervisor: "",
+        dateEncoded: "",
+        nameAndInitialOfEncoder: "",
+        nameOfSupervisorInitialAndDate: "",
+      };
+      state.individual = [];
+    },
     eraseQuestions: (state, action) => {
       state.questions = questionTemplate;
     },
@@ -174,5 +215,6 @@ export const {
   eraseQuestions,
   deleteHouseholdRecord,
   updateHouseholdRecord,
+  submitToDatabase,
 } = HouseholdSlice.actions;
 export default HouseholdSlice.reducer;
