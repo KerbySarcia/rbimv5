@@ -13,6 +13,13 @@ const IndividualRecordsQuestions = () => {
   const individualRecordValue = useSelector(
     (state) => state.individualRecord.value
   );
+  const imageInformation = useSelector(
+    (state) => state.individualRecord.imageInformation
+  );
+  const imageFileName = useSelector(
+    (state) => state.individualRecord.imageFileName
+  );
+
   const isEmpty = useSelector((state) => state.individualRecord.isEmpty);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -1480,7 +1487,8 @@ const IndividualRecordsQuestions = () => {
             <div
               className={`${
                 isEmpty.isEmptyQuestions ||
-                isEmpty.isEmptyIndividualRecordQuestions
+                isEmpty.isEmptyIndividualRecordQuestions ||
+                isEmpty.isEmptyImageInformation
                   ? "IndividualRecord__button__add__disabled"
                   : ""
               } IndividualRecord__button__add`}
@@ -1488,7 +1496,11 @@ const IndividualRecordsQuestions = () => {
               <button
                 onClick={() => {
                   dispatch(
-                    submitToDatabase({ questions, individualRecordValue })
+                    submitToDatabase({
+                      questions,
+                      individualRecordValue,
+                      imageFileName,
+                    })
                   );
                   navigate("/individual-records");
                 }}

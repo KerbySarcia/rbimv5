@@ -63,7 +63,6 @@ const MenuProps = {
 const HouseholdRecord = () => {
   const household = useSelector((state) => state.householdRecord.value);
   const dispatch = useDispatch();
-  console.log(household);
 
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
