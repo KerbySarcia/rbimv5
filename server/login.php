@@ -9,6 +9,7 @@ include 'DB_Connect.php';
 $objDb = new DbConnect;
 $conn = $objDb->connect();
 
+
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
   case "GET":

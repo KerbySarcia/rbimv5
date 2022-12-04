@@ -72,6 +72,22 @@
     background-color: gainsboro;
 }
 
+.Accounts__modal__table > td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Account__modal__btn {
+    display: block;
+    background-color: #425f57;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    height: 100%;
+    margin: auto;
+}
+
 @media (orientation: portrait) {
     .Accounts__modal__container {
         flex-direction: column;
