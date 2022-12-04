@@ -28,7 +28,7 @@
 					$individualRecordQuery = "CREATE TABLE individual_record(
   											  id int AUTO_INCREMENT NOT NULL,
   											  Name_of_Respondent varchar(50) NOT NULL,
-  											  NO int NOT NULL,
+  											  NO varchar(50) NOT NULL,
   											  Household varchar(50) NOT NULL,
   											  Institutional_Living_Quarter varchar(50) NOT NULL,
 											  PRIMARY KEY(id))";
@@ -210,7 +210,7 @@
 					$householdRecordQuery = "CREATE TABLE household_record(
   											  id int AUTO_INCREMENT NOT NULL,
   											  Name_of_Respondent varchar(50) NOT NULL,
-  											  NO int NOT NULL,
+  											  NO varchar(50) NOT NULL,
   											  Household varchar(50) NOT NULL,
   											  Institutional_Living_Quarter varchar(50) NOT NULL,
 											  PRIMARY KEY(id))";
@@ -220,7 +220,7 @@
   												Date_Encoded varchar(50) NOT NULL,
   												Name_and_Initial_of_Encoder varchar(50) NOT NULL,
   												Name_of_Supervisor_Initial_and_Date varchar(50) NOT NULL,
-												FOREIGN KEY (id) REFERENCES individual_record(id))";
+												FOREIGN KEY (id) REFERENCES household_record(id))";
 					
 					$identificationQuery = "CREATE TABLE household_identification(
   											id int NOT NULL,
@@ -232,7 +232,7 @@
   											Address_B varchar(50) NOT NULL,
   											Address_C varchar(50) NOT NULL,
   											Name_of_Respondent varchar(50) NOT NULL,
-											FOREIGN KEY (id) REFERENCES individual_record(id))";
+											FOREIGN KEY (id) REFERENCES household_record(id))";
 
 					$householdQuestionPartAQuery = "CREATE TABLE household_question_part_a (
   													id int NOT NULL,
@@ -259,7 +259,7 @@
   													Q18 varchar(50) NOT NULL,
   													Q19 varchar(50) NOT NULL,
   													Q20 varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id))";
+													FOREIGN KEY (id) REFERENCES household_record(id))";
 
 					$householdQuestionPartBQuery = "CREATE TABLE household_question_part_b (
   													id int NOT NULL,
@@ -286,7 +286,7 @@
 													Q36 varchar(50) NOT NULL,
 													Q37_Month varchar(50) NOT NULL,
 													Q37_Year varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id)
 													)";
 
 					$householdQuestionPartCQuery = "CREATE TABLE household_question_part_c(
@@ -314,7 +314,7 @@
 													Q51 varchar(50) NOT NULL,
 													Q52 varchar(50) NOT NULL,
 													Q53 varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id)
 													)";
 
 					$householdQuestionPartDQuery = "CREATE TABLE household_question_part_d(
@@ -333,17 +333,9 @@
 													Q58_Barangay varchar(50) NOT NULL,
 													Q58_Municipality varchar(50) NOT NULL,
 													Q58_Province varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id)
 													)";
 
-					$householdRecordImagesQuery = "CREATE TABLE household_record_images (
-													id int(11) NOT NULL,
-													Photo varchar(100) NOT NULL,
-													Signature varchar(100) NOT NULL,
-													Left_Thumb_Mark varchar(100) NOT NULL,
-													Right_Thumb_Mark varchar(100) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id)
-													)";
 
 					$interviewInformationQuery = "CREATE TABLE household_interview_information (
 												id int NOT NULL,
@@ -355,7 +347,7 @@
 												Date_of_Next_Visit varchar(50) NOT NULL,
 												Name_of_Interviewer_Initial_Date varchar(50) NOT NULL,
 												Name_of_Supervisor_Initial_Date varchar(50) NOT NULL,
-												FOREIGN KEY (id) REFERENCES individual_record(id)
+												FOREIGN KEY (id) REFERENCES household_record(id)
 												)";
 
 					

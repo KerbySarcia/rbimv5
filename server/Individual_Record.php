@@ -19,6 +19,7 @@ switch($method){
     $imageFileName = $user->imageFileName;
     $individualRecord = $user->individualRecord;
     
+    
     // Inserts value to Individual Record Table
     $individualRecordQuery = "INSERT INTO individual_record(Name_of_Respondent, NO, Household, Institutional_Living_Quarter) 
                               VALUES(:Name_of_Respondent, :NO, :Household, :Institutional_Living_Quarter)";
