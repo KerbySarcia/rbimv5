@@ -355,7 +355,6 @@
 					$encodingInformationStatement = $conn->prepare($encodingInformationQuery);
 					$identificationStatement = $conn->prepare($identificationQuery);
 					$interviewInformationStatement = $conn->prepare($interviewInformationQuery);
-					$individualRecordImagesStatement = $conn->prepare($householdRecordImagesQuery);
 					$individualQuestionPartAStatement = $conn->prepare($householdQuestionPartAQuery);
 					$individualQuestionPartBStatement = $conn->prepare($householdQuestionPartBQuery);
 					$individualQuestionPartCStatement = $conn->prepare($householdQuestionPartCQuery);
@@ -366,7 +365,6 @@
 					$encodingInformationStatement->execute();
 					$identificationStatement->execute();
 					$interviewInformationStatement->execute();
-					$individualRecordImagesStatement->execute();
 					$individualQuestionPartAStatement->execute();
 					$individualQuestionPartBStatement->execute();
 					$individualQuestionPartCStatement->execute();
