@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const questionTemplate = {
   id: 1,
@@ -169,6 +170,10 @@ export const HouseholdSlice = createSlice({
         householdRecordList: action.payload.individual,
       });
 
+      axios.post("http://localhost:80/rbimv5/server/Household_Record.php",{
+        householdRecord: action.payload.householdRecord,
+        householdRecordList: action.payload.individual,
+      });
       state.value = {
         recordNumber: "",
         household: "",
