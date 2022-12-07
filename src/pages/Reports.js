@@ -2,17 +2,28 @@ import React, { useEffect, useState } from "react";
 import "../styles/Reports.css";
 import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { updateDatabase } from "../features/IndividualRecordInputs";
+import { useNavigate } from "react-router-dom";
 
 const Reports = () => {
   const [reports, setReports] = useState([]);
   const [search, setSearch] = useState();
+  const [deleteTrigger, setDeleteTrigger] = useState();
+  const [updateTrigger, setUpdateTrigger] = useState();
+  const [updateData, setUpdateData] = useState();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:80/rbimv5/server/Reports.php").then((res) => {
       setReports(res.data);
       setSearch(res.data);
+      setDeleteTrigger(false);
+      setUpdateTrigger(false);
     });
-  }, []);
+  }, [deleteTrigger]);
 
   const filterBySearch = (event) => {
     const query = event.target.value;
@@ -26,12 +37,54 @@ const Reports = () => {
     setReports(updatedList);
   };
 
+  const handleDelete = (Total_Number_of_Household, deleteId) => {
+    let mode = "";
+    if (Number(Total_Number_of_Household) === 1) mode = "individual-record";
+    else mode = "household-record";
+    axios
+      .delete(
+        `http://localhost:80/rbimv5/server/Reports.php/${deleteId}/${mode}-delete`
+      )
+      .then((res) => setDeleteTrigger(true));
+  };
+
+  const handleUpdate = (Total_Number_of_Household, updateId) => {
+    let mode = "";
+    if (Number(Total_Number_of_Household) === 1) mode = "individual-record";
+    else mode = "household-record";
+    axios
+      .get(
+        `http://localhost:80/rbimv5/server/Update_Individual_Record.php/${updateId}/${mode}-update`
+      )
+      .then((res) => {
+        setUpdateTrigger(true);
+        setUpdateData(res.data);
+        dispatch(updateDatabase({ data: res.data }));
+        navigate("/individual-records");
+      });
+  };
+
   const reportsElement = reports.map((report) => {
     return (
       <tr>
         <td>{report.Name_of_Respondent}</td>
         <td>{report.NO}</td>
         <td>{report.Household}</td>
+        <button
+          onClick={() =>
+            handleDelete(report.Total_Number_of_Household, report.id)
+          }
+        >
+          Delete
+        </button>
+
+        <button
+          onClick={() =>
+            handleUpdate(report.Total_Number_of_Household, report.id)
+          }
+        >
+          Update
+        </button>
       </tr>
     );
   });
