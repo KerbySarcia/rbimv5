@@ -28,6 +28,7 @@
 					$individualRecordQuery = "CREATE TABLE individual_record(
   											  id int AUTO_INCREMENT NOT NULL,
   											  Name_of_Respondent varchar(50) NOT NULL,
+											  Total_Number_of_Household varchar(50) NOT NULL,
   											  NO varchar(50) NOT NULL,
   											  Household varchar(50) NOT NULL,
   											  Institutional_Living_Quarter varchar(50) NOT NULL,
@@ -38,7 +39,8 @@
   												Date_Encoded varchar(50) NOT NULL,
   												Name_and_Initial_of_Encoder varchar(50) NOT NULL,
   												Name_of_Supervisor_Initial_and_Date varchar(50) NOT NULL,
-												FOREIGN KEY (id) REFERENCES individual_record(id))";
+												FOREIGN KEY (id) REFERENCES individual_record(id)
+												ON DELETE CASCADE)";
 					
 					$identificationQuery = "CREATE TABLE identification(
   											id int NOT NULL,
@@ -50,7 +52,8 @@
   											Address_B varchar(50) NOT NULL,
   											Address_C varchar(50) NOT NULL,
   											Name_of_Respondent varchar(50) NOT NULL,
-											FOREIGN KEY (id) REFERENCES individual_record(id))";
+											FOREIGN KEY (id) REFERENCES individual_record(id)
+											ON DELETE CASCADE)";
 
 					$individualQuestionPartAQuery = "CREATE TABLE individual_question_part_a (
   													id int NOT NULL,
@@ -77,7 +80,8 @@
   													Q18 varchar(50) NOT NULL,
   													Q19 varchar(50) NOT NULL,
   													Q20 varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES individual_record(id))";
+													FOREIGN KEY (id) REFERENCES individual_record(id)
+													ON DELETE CASCADE)";
 
 					$individualQuestionPartBQuery = "CREATE TABLE individual_question_part_b (
   													id int NOT NULL,
@@ -105,6 +109,7 @@
 													Q37_Month varchar(50) NOT NULL,
 													Q37_Year varchar(50) NOT NULL,
 													FOREIGN KEY (id) REFERENCES individual_record(id)
+													ON DELETE CASCADE
 													)";
 
 					$individualQuestionPartCQuery = "CREATE TABLE individual_question_part_c(
@@ -133,6 +138,7 @@
 													Q52 varchar(50) NOT NULL,
 													Q53 varchar(50) NOT NULL,
 													FOREIGN KEY (id) REFERENCES individual_record(id)
+													ON DELETE CASCADE
 													)";
 
 					$individualQuestionPartDQuery = "CREATE TABLE individual_question_part_d(
@@ -152,6 +158,7 @@
 													Q58_Municipality varchar(50) NOT NULL,
 													Q58_Province varchar(50) NOT NULL,
 													FOREIGN KEY (id) REFERENCES individual_record(id)
+													ON DELETE CASCADE
 													)";
 
 					$individualRecordImagesQuery = "CREATE TABLE individual_record_images (
@@ -161,6 +168,7 @@
 													Left_Thumb_Mark varchar(100) NOT NULL,
 													Right_Thumb_Mark varchar(100) NOT NULL,
 													FOREIGN KEY (id) REFERENCES individual_record(id)
+													ON DELETE CASCADE
 													)";
 
 					$interviewInformationQuery = "CREATE TABLE interview_information (
@@ -174,6 +182,7 @@
 												Name_of_Interviewer_Initial_Date varchar(50) NOT NULL,
 												Name_of_Supervisor_Initial_Date varchar(50) NOT NULL,
 												FOREIGN KEY (id) REFERENCES individual_record(id)
+												ON DELETE CASCADE
 												)";
 
 					$userInfoQuery = "CREATE TABLE users_info (
@@ -210,6 +219,7 @@
 					$householdRecordQuery = "CREATE TABLE household_record(
   											  id int AUTO_INCREMENT NOT NULL,
   											  Name_of_Respondent varchar(50) NOT NULL,
+											  Total_Number_of_Household varchar(50) NOT NULL,
   											  NO varchar(50) NOT NULL,
   											  Household varchar(50) NOT NULL,
   											  Institutional_Living_Quarter varchar(50) NOT NULL,
@@ -220,7 +230,7 @@
   												Date_Encoded varchar(50) NOT NULL,
   												Name_and_Initial_of_Encoder varchar(50) NOT NULL,
   												Name_of_Supervisor_Initial_and_Date varchar(50) NOT NULL,
-												FOREIGN KEY (id) REFERENCES household_record(id))";
+												FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE)";
 					
 					$identificationQuery = "CREATE TABLE household_identification(
   											id int NOT NULL,
@@ -232,7 +242,7 @@
   											Address_B varchar(50) NOT NULL,
   											Address_C varchar(50) NOT NULL,
   											Name_of_Respondent varchar(50) NOT NULL,
-											FOREIGN KEY (id) REFERENCES household_record(id))";
+											FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE)";
 
 					$householdQuestionPartAQuery = "CREATE TABLE household_question_part_a (
   													id int NOT NULL,
@@ -259,7 +269,7 @@
   													Q18 varchar(50) NOT NULL,
   													Q19 varchar(50) NOT NULL,
   													Q20 varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES household_record(id))";
+													FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE)";
 
 					$householdQuestionPartBQuery = "CREATE TABLE household_question_part_b (
   													id int NOT NULL,
@@ -286,7 +296,7 @@
 													Q36 varchar(50) NOT NULL,
 													Q37_Month varchar(50) NOT NULL,
 													Q37_Year varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES household_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE
 													)";
 
 					$householdQuestionPartCQuery = "CREATE TABLE household_question_part_c(
@@ -314,7 +324,7 @@
 													Q51 varchar(50) NOT NULL,
 													Q52 varchar(50) NOT NULL,
 													Q53 varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES household_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE
 													)";
 
 					$householdQuestionPartDQuery = "CREATE TABLE household_question_part_d(
@@ -333,7 +343,7 @@
 													Q58_Barangay varchar(50) NOT NULL,
 													Q58_Municipality varchar(50) NOT NULL,
 													Q58_Province varchar(50) NOT NULL,
-													FOREIGN KEY (id) REFERENCES household_record(id)
+													FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE
 													)";
 
 
@@ -347,7 +357,7 @@
 												Date_of_Next_Visit varchar(50) NOT NULL,
 												Name_of_Interviewer_Initial_Date varchar(50) NOT NULL,
 												Name_of_Supervisor_Initial_Date varchar(50) NOT NULL,
-												FOREIGN KEY (id) REFERENCES household_record(id)
+												FOREIGN KEY (id) REFERENCES household_record(id) ON DELETE CASCADE
 												)";
 
 					

@@ -21,10 +21,11 @@ switch($method){
    echo ($householdRecordList[0]->q1Surname);
 
     // Inserts value to Individual Record Table
-    $individualRecordQuery = "INSERT INTO household_record(Name_of_Respondent, NO, Household, Institutional_Living_Quarter) 
-                              VALUES(:Name_of_Respondent, :NO, :Household, :Institutional_Living_Quarter)";
+    $individualRecordQuery = "INSERT INTO household_record(Name_of_Respondent,Total_Number_of_Household, NO, Household, Institutional_Living_Quarter) 
+                              VALUES(:Name_of_Respondent,:Total_Number_of_Household,:NO, :Household, :Institutional_Living_Quarter)";
     $stmt = $conn->prepare($individualRecordQuery);
     $stmt->bindParam(':Name_of_Respondent', $householdRecord->nameOfRespondent);
+    $stmt->bindParam(':Total_Number_of_Household', $householdRecord->totalNumberOfHouseholdMembers);
     $stmt->bindParam(':NO', $householdRecord->recordNumber);
     $stmt->bindParam(':Household', $householdRecord->household);
     $stmt->bindParam(':Institutional_Living_Quarter', $householdRecord->institutionalLivingQuarter);
