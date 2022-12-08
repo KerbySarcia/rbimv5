@@ -5,8 +5,11 @@ import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { onLogIn } from "../features/Session";
+import { TabTitle } from '../features/GeneralFunction'
 
 const Login = () => {
+  TabTitle('RBIM | Login')
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -15,7 +18,8 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [inputs, setInputs] = useState();
+
+  // const [inputs, setInputs] = useState();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -59,26 +63,33 @@ const Login = () => {
             onClick={(e) => {
               e.preventDefault();
               axios
-                .get("http://localhost:80/rbimv5/server/login.php")
+                .post("http://localhost:80/rbimv5/server/login.php", data)
                 .then((res) => {
-                  for (let i = 0; i < res.data.length; i++) {
-                    if (
-                      res.data[i].username === data.username &&
-                      res.data[i].password === data.password
-                    ) {
-                      dispatch(
-                        onLogIn({
-                          username: res.data[i].username,
-                          password: res.data[i].password,
-                          access_lvl: res.data[i].access_lvl,
-                        })
-                      );
-
-                      navigate("/");
-                      return;
-                    }
-                  }
-                  alert("Failed Login");
+                  console.log(res.data)
+                  if(res.data) {
+                    dispatch(
+                      onLogIn({
+                        username: res.data.username,
+                        password: res.data.password,
+                        access_lvl: res.data.access_lvl,
+                      })
+                    );
+                    navigate('/')
+                  } else alert('Wrong Credentials');
+                  
+                 
+                  // for (let i = 0; i < res.data.username.length; i++) {
+                  //   console.log(res.data.username[i])
+                  //   console.log(res.data.password)
+                  //   if (
+                  //     res.data.username[i] === data.username &&
+                  //     res.data.password === data.password
+                  //   ) {
+                      
+                  //     return;
+                  //   }
+                  // }
+                  // alert("Failed Login");
                 });
             }}
             className="Login__button"

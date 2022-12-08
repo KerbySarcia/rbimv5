@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/Dashboard.css";
 import DateTime from '../features/DateTime'
+import { TabTitle } from '../features/GeneralFunction'
 
 const Dashboard = () => {
+  TabTitle('RBIM | Dashboard')
   return (
     <div className="Dashboard">
       <div className="container-one">

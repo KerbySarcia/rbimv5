@@ -18,19 +18,19 @@ switch($method){
         $users = $accountStatement->fetchAll();
         echo json_encode($users);
         break;
-
     case 'POST':
         $user = json_decode(file_get_contents('php://input'));
         $id = $user->id;
         $username = $user->username;
         $password = $user->password;
         $access_lvl = $user->access_lvl;
+        $passHash = password_hash($password, PASSWORD_DEFAULT);
 
         $accountUpdateQuery = "UPDATE users_info SET id = :id, username = :username, password = :password, access_lvl = :access_lvl WHERE id = :id";
         $accountUpdateStatement = $conn->prepare($accountUpdateQuery);
         $accountUpdateStatement->bindparam(':id', $id);
         $accountUpdateStatement->bindParam(':username', $username);
-        $accountUpdateStatement->bindParam(':password', $password);
+        $accountUpdateStatement->bindParam(':password', $passHash);
         $accountUpdateStatement->bindParam(':access_lvl', $access_lvl);
         $accountUpdateStatement->execute();
         break;

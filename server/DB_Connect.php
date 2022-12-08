@@ -380,8 +380,10 @@
 					$individualQuestionPartCStatement->execute();
 					$individualQuestionPartDStatement->execute();
 					
-					$createAdminQuery = "INSERT INTO users_info(username,password,access_lvl) VALUES('admin','admin','admin')";
+					$passHash = password_hash('admin', PASSWORD_DEFAULT);
+					$createAdminQuery = "INSERT INTO users_info(username,password,access_lvl) VALUES('admin',:password,'admin')";
 					$createAdminStatement = $conn->prepare($createAdminQuery);
+					$createAdminStatement->bindParam(':password', $passHash);
 					$createAdminStatement->execute();
 				} 
 			}

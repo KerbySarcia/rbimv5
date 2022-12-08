@@ -24,12 +24,6 @@ export default function SettingsModal({open, onClose}) {
                   end
                   to=""
                   onClick={onClose}>
-                  <li>Account</li>
-                </Link>
-                <Link
-                  className="Settings__modal__btn"
-                  to=""
-                  onClick={onClose}>
                   <li>Import From Excel Data</li>
                 </Link>
                 <Link

@@ -5,8 +5,11 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateDatabase } from "../features/IndividualRecordInputs";
 import { useNavigate } from "react-router-dom";
+import { TabTitle } from '../features/GeneralFunction'
 
 const Reports = () => {
+  TabTitle('RBIM | Reports')
+
   const [reports, setReports] = useState([]);
   const [search, setSearch] = useState();
   const [deleteTrigger, setDeleteTrigger] = useState();
