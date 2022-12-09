@@ -11,6 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { TabTitle } from '../features/GeneralFunction'
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -61,6 +62,7 @@ const MenuProps = {
 };
 
 const HouseholdRecord = () => {
+  TabTitle('RBIM | Household Record')
   const household = useSelector((state) => state.householdRecord.value);
   const dispatch = useDispatch();
 

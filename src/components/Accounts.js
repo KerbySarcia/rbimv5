@@ -14,11 +14,15 @@ export default function Accounts({open, onClose}) {
 	})
 
 	const [update, setUpdate] = useState(false)
+	const [clickUpdate, setClickUpdate] =  useState([])
 
 	const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
     setInputs((previousValue) => ({ ...previousValue, [name]: value }));
+		if(value == ''){
+			setClickUpdate('')
+		}
   };
 
 	useEffect(() => {
@@ -28,26 +32,96 @@ export default function Accounts({open, onClose}) {
 	}, [update]);
 
 	const usersElement = users.map(user => {
+		const confirmAction = () => {
+			if (window.confirm("Delete Account?")) {
+				axios.post("http://localhost:80/rbimv5/server/Accounts_Delete.php", user);
+        alert('Account Deleted!')
+      } else {
+        alert("Delete Cancelled!");
+      }
+		};
 		return(
 		<tr>
 			<td>{user.id}</td>
 			<td>{user.username}</td>
-			<td>{'●'.repeat(user.password.length)}</td>
+			<td>{'●●●●●'}</td>
 			<td>{user.access_lvl}</td>
 			<button
-				className='Account__modal__btn'
-				onClick={(e) => {
+				className='Accounts__modal__select__btn'
+				onClick={() => {
 					setInputs({
 						id: user.id,
 						username: user.username,
-						password: user.password,
+						password: '',
 						access_lvl: user.access_lvl
 					})
+					setClickUpdate(user.id)
 				}}>
-					Select</button>
+					Select
+			</button>
+			<button
+					className='Accounts__modal__danger__btn'
+					onClick={(e) => {
+						e.preventDefault()
+						confirmAction();
+						setUpdate(previousValue => !previousValue)
+					}}>
+					Delete
+				</button>
 		</tr>
 		)
 	})
+
+	const buttons = (id) => {
+		if(id != '' && inputs.username && inputs.password && inputs.access_lvl){
+			return(
+				<button
+					className='Accounts__modal__main__btn'
+					onClick={(e) => {
+						e.preventDefault()
+						axios.post("http://localhost:80/rbimv5/server/Accounts.php", inputs);
+						alert('Credentials Changed!')
+						setUsers(prevValue => {
+							return prevValue.map(user => {
+								if(inputs.id === user.id){
+									return {
+										id: inputs.id,
+										username: inputs.username,
+										password: inputs.password,
+										access_lvl: inputs.access_lvl
+									}
+								} else return user
+							})
+						})
+						setInputs({
+							id:'',
+							username:'',
+							password:'',
+							access_lvl:''
+						})
+					}}>
+						Update
+				</button>)
+		} else if(id =='' && inputs.username && inputs.password) {
+				return(
+					<button
+					className='Accounts__modal__main__btn'
+					onClick={(e) => {
+						e.preventDefault();
+						axios.post("http://localhost:80/rbimv5/server/Accounts_SignUp.php", inputs);
+						alert('Credentials Saved!')
+						setUpdate(previousValue => !previousValue)
+						setInputs({
+							id:'',
+							username:'',
+							password:'',
+							access_lvl:''
+						})
+					}}>
+						Save
+				</button>)
+					}
+	}
 
 	if(!open) return null;
 
@@ -79,31 +153,12 @@ export default function Accounts({open, onClose}) {
 								placeholder='' 
 								value={inputs.password} />
 							<label for='access_lvl'>Access Level</label>
-							<input
-								onChange={(e) => handleChange(e)}
-								type='text' 
-								id='' 
-								name='access_lvl' 
-								placeholder='' 
-								value={inputs.access_lvl} />
-							<button
-								onClick={(e) => {
-									e.preventDefault()
-									axios.post("http://localhost:80/rbimv5/server/Accounts.php", inputs);
-									setUsers(prevValue => {
-										return prevValue.map(user => {
-											if(inputs.id === user.id){
-												return {
-													id: inputs.id,
-													username: inputs.username,
-													password: inputs.password,
-													access_lvl: inputs.access_lvl
-												}
-											} else return user
-										})
-									})
-								}}>
-									Update</button>
+							<select id='' name='access_lvl' onChange={(e) => handleChange(e)}>
+								<option value='admin'>admin</option>
+								<option value='secretary'>secretary</option>
+								<option value='on-site'>on-site</option>
+							</select>
+							{ buttons(clickUpdate) }
 						</div>
 					</form>
 					<div className='Accounts__modal__table'>

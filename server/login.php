@@ -9,15 +9,23 @@ include 'DB_Connect.php';
 $objDb = new DbConnect;
 $conn = $objDb->connect();
 
-
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
-  case "GET":
-    $sql = "SELECT * FROM users_info";
+  case "POST":
+    $user = json_decode(file_get_contents('php://input'));
+    $sql = "SELECT * FROM users_info WHERE username = :username";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':username', $user->username);
     $stmt->execute();
-    $users = $stmt->fetchAll();
-    echo json_encode($users);
+
+    if($stmt->rowCount()) {
+      $result = $stmt->fetch();
+
+      if(password_verify($user->password, $result['password'])) {
+          echo json_encode($result);
+      }
+    } 
+    $stmt = null;
     break;
 }
 ?>
