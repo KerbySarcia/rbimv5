@@ -70,8 +70,8 @@ switch($method) {
                           'questionPartB' => $questionPartBFetch,
                           'questionPartC' => $questionPartCFetch,
                           'questionPartD' => $questionPartDFetch,
-
-  );
+    );
+    
     echo json_encode($data);
     break;
 }

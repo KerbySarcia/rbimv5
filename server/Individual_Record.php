@@ -16,9 +16,9 @@ switch($method){
     case "POST":
     $user = json_decode(file_get_contents('php://input'));
     $questions = $user->questions;
-    $imageFileName = $user->imageFileName;
     $individualRecord = $user->individualRecord;
     
+
     
     // Inserts value to Individual Record Table
     $individualRecordQuery = "INSERT INTO individual_record(Name_of_Respondent,Total_Number_of_Household, NO, Household, Institutional_Living_Quarter) 
@@ -69,16 +69,6 @@ switch($method){
     $interviewInformationStatement->bindParam(':Name_of_Supervisor_Initial_Date',$individualRecord->nameOfSupervisorInitialAndDate);
     $interviewInformationStatement->execute();
 
-    //Insert value to individual_record_images
-    $individualRecordimages= "INSERT INTO individual_record_images(id,Photo,Signature,Left_Thumb_Mark,Right_Thumb_Mark)
-                              VALUES(:id,:Photo,:Signature,:Left_Thumb_Mark,:Right_Thumb_Mark)";
-    $individualRecordimagesStatement=$conn->prepare($individualRecordimages);                         
-    $individualRecordimagesStatement->bindParam(':id', $lastRowFetch['id']);
-    $individualRecordimagesStatement->bindParam(':Photo',$imageFileName->photo);
-    $individualRecordimagesStatement->bindParam(':Signature',$imageFileName->signature);
-    $individualRecordimagesStatement->bindParam(':Left_Thumb_Mark',$imageFileName->leftThumbMark);
-    $individualRecordimagesStatement->bindParam(':Right_Thumb_Mark',$imageFileName->rightThumbMark);
-    $individualRecordimagesStatement->execute();
 
     //Insert value to encoding_information
     $encodingInformation= "INSERT INTO encoding_information(id,Date_Encoded,Name_and_Initial_of_Encoder,Name_of_Supervisor_Initial_and_Date)
