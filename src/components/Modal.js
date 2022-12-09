@@ -12,8 +12,15 @@ export default function Modal({ open, onClose }) {
   const imageInfo = useSelector(
     (state) => state.individualRecord.imageInformation
   );
+  const individualRecordValue = useSelector(
+    (state) => state.individualRecord.value
+  );
 
+  const imageFileName = useSelector(
+    (state) => state.individualRecord.imageFileName
+  );
   const dispatch = useDispatch();
+  console.log(imageFileName);
 
   const [images, setImages] = useState({
     photo: null,
@@ -21,12 +28,23 @@ export default function Modal({ open, onClose }) {
     leftThumbMark: null,
     rightThumbMark: null,
   });
+  const [imagesFile, setImagesFile] = useState({
+    photo: null,
+    signature: null,
+    leftThumbMark: null,
+    rightThumbMark: null,
+  });
+
   const [notImage, setNotImage] = useState({
     photo: false,
     signature: false,
     leftThumbMark: false,
     rightThumbMark: false,
   });
+
+  useEffect(() => {
+    setImagesFile(imageFileName);
+  }, [imageFileName]);
 
   useEffect(() => {
     setImages(imageInfo);
@@ -91,7 +109,16 @@ export default function Modal({ open, onClose }) {
                       alt=""
                     />
                   ) : (
-                    <img src={Photo} alt="Interviewee" />
+                    <img
+                      width={200}
+                      src={
+                        imagesFile.photo
+                          ? process.env.PUBLIC_URL +
+                            `/images-person/${imagesFile.photo}`
+                          : Photo
+                      }
+                      alt="Interviewee"
+                    />
                   )}
                 </div>
                 <label
@@ -127,7 +154,16 @@ export default function Modal({ open, onClose }) {
                       alt=""
                     />
                   ) : (
-                    <img src={Signature} alt="Interviewee" />
+                    <img
+                      width={200}
+                      src={
+                        imagesFile.signature
+                          ? process.env.PUBLIC_URL +
+                            `/images-person/${imagesFile.signature}`
+                          : Signature
+                      }
+                      alt="Interviewee"
+                    />
                   )}
                 </div>
                 <label
@@ -166,7 +202,16 @@ export default function Modal({ open, onClose }) {
                       alt=""
                     />
                   ) : (
-                    <img src={ThumbL} alt="Interviewee" />
+                    <img
+                      width={200}
+                      src={
+                        imagesFile.leftThumbMark
+                          ? process.env.PUBLIC_URL +
+                            `/images-person/${imagesFile.leftThumbMark}`
+                          : ThumbL
+                      }
+                      alt="Interviewee"
+                    />
                   )}
                 </div>
                 <label
@@ -203,7 +248,16 @@ export default function Modal({ open, onClose }) {
                       alt=""
                     />
                   ) : (
-                    <img src={ThumbR} alt="Interviewee" />
+                    <img
+                      width={200}
+                      src={
+                        imagesFile.rightThumbMark
+                          ? process.env.PUBLIC_URL +
+                            `/images-person/${imagesFile.rightThumbMark}`
+                          : ThumbR
+                      }
+                      alt="Interviewee"
+                    />
                   )}
                 </div>
                 <label

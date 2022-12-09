@@ -1493,20 +1493,24 @@ const IndividualRecordsQuestions = () => {
                   : ""
               } IndividualRecord__button__add`}
             >
-              <button
-                onClick={() => {
-                  dispatch(
-                    submitToDatabase({
-                      questions,
-                      individualRecordValue,
-                      imageFileName,
-                    })
-                  );
-                  navigate("/individual-records");
-                }}
-              >
-                Submit
-              </button>
+              {individualRecordValue.id ? (
+                <button>Update</button>
+              ) : (
+                <button
+                  onClick={() => {
+                    dispatch(
+                      submitToDatabase({
+                        questions,
+                        individualRecordValue,
+                        imageFileName,
+                      })
+                    );
+                    navigate("/individual-records");
+                  }}
+                >
+                  Submit
+                </button>
+              )}
             </div>
           </div>
         </div>

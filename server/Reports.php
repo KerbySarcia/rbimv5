@@ -29,9 +29,15 @@ switch($method) {
     $individualOrHousehold =  $path[5];
     if($individualOrHousehold === "individual-record-delete")
     {
+      // Delete Images from localhost
+      $getImagesQuery = "SELECT * FROM individual_record_images WHERE id = :id";
+      $getImagesStatement = $conn->prepare($getImagesQuery);
+      
+
       $deleteQuery = "DELETE FROM individual_record WHERE id = :id";
     } else $deleteQuery = "DELETE FROM household_record WHERE id = :id";
-    echo $deleteId;
+    
+    // Prepare and Execute
     $deleteStatement = $conn->prepare($deleteQuery);
     $deleteStatement->bindParam(":id", $deleteId);
     $deleteStatement->execute();
