@@ -85,12 +85,13 @@ switch($method) {
 
     // Individual Record Table Update
     $individualRecordUpdate = "UPDATE individual_record
-                               SET NO = :NO, Household = :Household, Institutional_Living_Quarter = :Institutional_Living_Quarter
+                               SET NO = :NO, Name_of_Respondent = :Name_of_Respondent, Household = :Household, Institutional_Living_Quarter = :Institutional_Living_Quarter
                                WHERE id = :id";
     $individualRecordStmt = $conn->prepare($individualRecordUpdate);
     $individualRecordStmt->bindParam(":NO",$individualRecord->recordNumber);
     $individualRecordStmt->bindParam(":Household",$individualRecord->household);
     $individualRecordStmt->bindParam(":Institutional_Living_Quarter",$individualRecord->institutionalLivingQuarter);
+    $individualRecordStmt->bindParam(":Name_of_Respondent",$individualRecord->nameOfRespondent);
     $individualRecordStmt->bindParam(":id",$updateId);    
     $individualRecordStmt->execute();
 
@@ -101,7 +102,7 @@ switch($method) {
     $identificationStmt = $conn->prepare($identificationUpdate);
     $identificationStmt->bindParam(":Province",$individualRecord->recordNumber);
     $identificationStmt->bindParam(":City_Municipality",$individualRecord->household);
-    $identificationStmt->bindParam(":Barangay",$individualRecord->institutionalLivingQuarter);
+    $identificationStmt->bindParam(":Barangay",$individualRecord->barangay);
     $identificationStmt->bindParam(":Household_Head",$individualRecord->householdHead);
     $identificationStmt->bindParam(":Address_A",$individualRecord->addressRoom);
     $identificationStmt->bindParam(":Address_B",$individualRecord->addressHouse);
@@ -169,7 +170,7 @@ switch($method) {
     $individual_question_part_aStmt->execute();  
     
     // individual_question_part_b Update
-    $individual_questionpart_bUpdate = "UPDATE individual_questionpart_b
+    $individual_question_part_bUpdate = "UPDATE individual_question_part_b
                                         SET Q21=:Q21, Q22_A=:Q22_A, Q22_B=:Q22_B, Q23=:Q23, Q24=:Q24, Q25_A=:Q25_A, Q25_B=:Q25_B, Q26=:Q26, Q27=:Q27, Q28=:Q28, Q29=:Q29, Q30=:Q30, Q31=:Q31, Q32=:Q32, Q33_Barangay=:Q33_Barangay, Q33_Municipality=:Q33_Municipality, Q34_Barangay=:Q34_Barangay, Q34_Municipality=:Q34_Municipality, Q35_Year=:Q35_Year, Q35_Month=:Q35_Month, Q36=:Q36, Q37_Month=:Q37_Month, Q37_Year=:Q37_Year 
                                         WHERE id = :id";
     $individual_question_part_bStmt= $conn->prepare($individual_question_part_bUpdate);                                    
@@ -197,7 +198,7 @@ switch($method) {
     $individual_question_part_bStmt->bindParam(":Q37_Month",$questions->q37A);
     $individual_question_part_bStmt->bindParam(":Q37_Year",$questions->q37B);
     $individual_question_part_bStmt->bindParam(":id",$updateId);
-    $individual_question_part_bStmt->execute(); 
+    $individual_question_part_bStmt->execute();
     
     // individual_questionpart_c Update
     $individual_question_part_cUpdate = "UPDATE individual_question_part_c
