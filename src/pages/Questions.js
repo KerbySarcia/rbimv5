@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   onChangeQuestions,
   submitToDatabase,
+  defaultValue,
+  updateTable,
 } from "../features/IndividualRecordInputs";
 import { useNavigate } from "react-router-dom";
 
@@ -1494,7 +1496,22 @@ const IndividualRecordsQuestions = () => {
               } IndividualRecord__button__add`}
             >
               {individualRecordValue.id ? (
-                <button>Update</button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      updateTable({
+                        id: individualRecordValue.id,
+                        questions: questions,
+                        individualRecord: individualRecordValue,
+                      })
+                    );
+                    dispatch(defaultValue());
+                    navigate("/reports");
+                  }}
+                >
+                  Update
+                </button>
               ) : (
                 <button
                   onClick={() => {
@@ -1512,6 +1529,16 @@ const IndividualRecordsQuestions = () => {
                 </button>
               )}
             </div>
+            {individualRecordValue.id && (
+              <button
+                onClick={() => {
+                  dispatch(defaultValue());
+                  navigate("/reports");
+                }}
+              >
+                Cancel
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -168,18 +168,23 @@ export const individualSlice = createSlice({
 
       for (const properties in state.imageInformation) {
         if (state.imageInformation[properties] === "") {
-          state.isEmpty.isEmptyImageInformation = true;
+          if (!state.imageFileName[action.payload.name]) {
+            state.isEmpty.isEmptyImageInformation = true;
+          }
           return;
         }
       }
       state.isEmpty.isEmptyImageInformation = false;
     },
     submitToDatabase: (state, action) => {
-      axios.post("http://localhost:80/rbimv5/server/imagesphp.php", fd);
-      axios.post("http://localhost:80/rbimv5/server/Individual_Record.php", {
-        questions: action.payload.questions,
-        individualRecord: action.payload.individualRecordValue,
-      });
+      axios
+        .post("http://localhost:80/rbimv5/server/Individual_Record.php", {
+          questions: action.payload.questions,
+          individualRecord: action.payload.individualRecordValue,
+        })
+        .then(() => {
+          axios.post("http://localhost:80/rbimv5/server/imagesphp.php", fd);
+        });
 
       alert(
         `${action.payload.questions.q1FirstName} ${action.payload.questions.q1Surname} has been recorded.`
@@ -193,6 +198,28 @@ export const individualSlice = createSlice({
       state.isEmpty.isEmptyImageInformation = true;
       state.isEmpty.isEmptyIndividualRecordQuestions = true;
       state.isEmpty.isEmptyQuestions = true;
+    },
+    defaultValue: (state, action) => {
+      state.value = valueTemplate;
+      state.questions = questionsTemplate;
+      state.imageInformation = imageInformationTemplate;
+      state.imageFileName = imageFileNameTemplate;
+      state.isEmpty.isEmptyImageInformation = true;
+      state.isEmpty.isEmptyIndividualRecordQuestions = true;
+      state.isEmpty.isEmptyQuestions = true;
+    },
+    updateTable: (state, action) => {
+      axios.post(
+        `http://localhost:80/rbimv5/server/Update_Individual_Record.php/${action.payload.id}`,
+        {
+          individualRecord: action.payload.individualRecord,
+          questions: action.payload.questions,
+        }
+      );
+      axios.post(
+        `http://localhost:80/rbimv5/server/updateImages.php/${action.payload.id}`,
+        fd
+      );
     },
     updateDatabase: (state, action) => {
       const individual = action.payload.data.individual[0];
@@ -339,5 +366,7 @@ export const {
   submitToDatabase,
   onChangeImage,
   updateDatabase,
+  defaultValue,
+  updateTable,
 } = individualSlice.actions;
 export default individualSlice.reducer;
