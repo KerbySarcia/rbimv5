@@ -20,7 +20,6 @@ export default function Modal({ open, onClose }) {
     (state) => state.individualRecord.imageFileName
   );
   const dispatch = useDispatch();
-  console.log(imageFileName);
 
   const [images, setImages] = useState({
     photo: null,

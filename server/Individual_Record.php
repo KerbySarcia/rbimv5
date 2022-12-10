@@ -18,7 +18,6 @@ switch($method){
     $questions = $user->questions;
     $individualRecord = $user->individualRecord;
     
-
     
     // Inserts value to Individual Record Table
     $individualRecordQuery = "INSERT INTO individual_record(Name_of_Respondent,Total_Number_of_Household, NO, Household, Institutional_Living_Quarter) 

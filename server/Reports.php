@@ -32,7 +32,20 @@ switch($method) {
       // Delete Images from localhost
       $getImagesQuery = "SELECT * FROM individual_record_images WHERE id = :id";
       $getImagesStatement = $conn->prepare($getImagesQuery);
-      
+      $getImagesStatement->bindParam(":id", $deleteId);
+      $getImagesStatement->execute();
+      $images = $getImagesStatement->fetch();
+
+      $photo = $images["Photo"];
+      $signature = $images["Signature"];
+      $leftThumb = $images["Left_Thumb_Mark"];
+      $rightThumb = $images["Right_Thumb_Mark"];
+
+      unlink("../public/images-person/$photo");
+      unlink("../public/images-person/$signature");
+      unlink("../public/images-person/$leftThumb");
+      unlink("../public/images-person/$rightThumb");
+
 
       $deleteQuery = "DELETE FROM individual_record WHERE id = :id";
     } else $deleteQuery = "DELETE FROM household_record WHERE id = :id";

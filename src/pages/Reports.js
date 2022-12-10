@@ -5,14 +5,14 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateDatabase } from "../features/IndividualRecordInputs";
 import { useNavigate } from "react-router-dom";
-import { TabTitle } from '../features/GeneralFunction'
+import { TabTitle } from "../features/GeneralFunction";
 
 const Reports = () => {
-  TabTitle('RBIM | Reports')
+  TabTitle("RBIM | Reports");
 
   const [reports, setReports] = useState([]);
   const [search, setSearch] = useState();
-  const [deleteTrigger, setDeleteTrigger] = useState();
+  const [deleteTrigger, setDeleteTrigger] = useState(false);
   const [updateTrigger, setUpdateTrigger] = useState();
   const [updateData, setUpdateData] = useState();
 
@@ -60,11 +60,11 @@ const Reports = () => {
         `http://localhost:80/rbimv5/server/Update_Individual_Record.php/${updateId}/${mode}-update`
       )
       .then((res) => {
-        setUpdateTrigger(true);
         setUpdateData(res.data);
         dispatch(updateDatabase({ data: res.data }));
-        navigate("/individual-records");
       });
+    setUpdateTrigger(true);
+    navigate("/individual-records");
   };
 
   const reportsElement = reports.map((report) => {

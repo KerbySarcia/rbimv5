@@ -74,5 +74,27 @@ switch($method) {
     
     echo json_encode($data);
     break;
+  case "POST":
+    $updateInfo = json_decode(file_get_contents('php://input'));
+    $path = explode('/', $_SERVER['REQUEST_URI']);
+    $updateId =  $path[4];
+
+    $individualRecord = $updateInfo->individualRecord;
+    $questions = $updateInfo->questions;
+
+    // Individual Record Table Update
+    $individualRecordUpdate = "UPDATE individual_record
+                               SET NO = :NO, Household = :Household, Institutional_Living_Quarter = :Institutional_Living_Quarter
+                               WHERE id = :id";
+    $individualRecordStmt = $conn->prepare($individualRecordUpdate);
+    $individualRecordStmt->bindParam(":NO",$individualRecord->recordNumber);
+    $individualRecordStmt->bindParam(":Household",$individualRecord->household);
+    $individualRecordStmt->bindParam(":Institutional_Living_Quarter",$individualRecord->institutionalLivingQuarter);
+    $individualRecordStmt->bindParam(":id",$updateId);    
+    $individualRecordStmt->execute();
+
+   
+
+    break;
 }
 ?>
