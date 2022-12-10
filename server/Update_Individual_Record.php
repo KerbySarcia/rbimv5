@@ -94,20 +94,20 @@ switch($method) {
     $individualRecordStmt->execute();
 
    //identification Update
-    // $identificationUpdate = "UPDATE identification
-    //                          SET Province = :Province, City_Municipality= :City_Municipality, Barangay= :Barangay, Household_Head=:Household_Head, Address_A=:Address_A, Address_B=:Address_B, Address_C=:Address_C, Name_of_Respondent=:Name_of_Respondent
-    //                          WHERE id = :id";
-    // $identificationStmt = $conn->prepare($identificationUpdate);
-    // $identificationStmt->bindParam(":Province",$individualRecord->recordNumber);
-    // $identificationStmt->bindParam(":City_Municipality",$individualRecord->household);
-    // $identificationStmt->bindParam(":Barangay",$individualRecord->institutionalLivingQuarter);
-    // $identificationStmt->bindParam(":Household_Head",$individualRecord->householdHead);
-    // $identificationStmt->bindParam(":Address_A",$individualRecord->addressRoom);
-    // $identificationStmt->bindParam(":Address_B",$individualRecord->addressHouse);
-    // $identificationStmt->bindParam(":Address_C",$individualRecord->addressStreet);
-    // $identificationStmt->bindParam(":Name_of_Respondent",$individualRecord->nameOfRespondent);
-    // $identificationStmt->bindParam(":id",$updateId);    
-    // $identificationStmt->execute();
+    $identificationUpdate = "UPDATE identification
+                             SET Province = :Province, City_Municipality= :City_Municipality, Barangay= :Barangay, Household_Head=:Household_Head, Address_A=:Address_A, Address_B=:Address_B, Address_C=:Address_C, Name_of_Respondent=:Name_of_Respondent
+                             WHERE id = :id";
+    $identificationStmt = $conn->prepare($identificationUpdate);
+    $identificationStmt->bindParam(":Province",$individualRecord->recordNumber);
+    $identificationStmt->bindParam(":City_Municipality",$individualRecord->household);
+    $identificationStmt->bindParam(":Barangay",$individualRecord->institutionalLivingQuarter);
+    $identificationStmt->bindParam(":Household_Head",$individualRecord->householdHead);
+    $identificationStmt->bindParam(":Address_A",$individualRecord->addressRoom);
+    $identificationStmt->bindParam(":Address_B",$individualRecord->addressHouse);
+    $identificationStmt->bindParam(":Address_C",$individualRecord->addressStreet);
+    $identificationStmt->bindParam(":Name_of_Respondent",$individualRecord->nameOfRespondent);
+    $identificationStmt->bindParam(":id",$updateId);    
+    $identificationStmt->execute();
 
     // interview_information Update
     // $interview_informationUpdate = "UPDATE interview_information
