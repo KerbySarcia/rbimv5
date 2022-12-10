@@ -72,23 +72,22 @@
     background-color: gainsboro;
 }
 
-.Accounts__modal__table > td {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Accounts__modal__table tr {
+    border-bottom: 2px solid gray;
 }
 
 .Accounts__modal__select__btn {
-    background-color: rgba(255, 255, 0, 0.8);
+    background-color: rgb(233, 233, 0);
     border: none;
     border-radius: 5px;
+    color: #425f57;
     cursor: pointer;
     height: 100%;
     width: 100%;
 }
 
 .Accounts__modal__danger__btn {
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: rgb(194, 0, 0);
     border: none;
     border-radius: 5px;
     color: white;
