@@ -1507,6 +1507,7 @@ const IndividualRecordsQuestions = () => {
                       })
                     );
                     dispatch(defaultValue());
+                    alert(`${individualRecordValue.nameOfRespondent} Updated`);
                     navigate("/reports");
                   }}
                 >
