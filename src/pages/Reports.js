@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateDatabase } from "../features/IndividualRecordInputs";
 import { useNavigate } from "react-router-dom";
 import { TabTitle } from "../features/GeneralFunction";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
 const Reports = () => {
   TabTitle("RBIM | Reports");
@@ -73,21 +75,26 @@ const Reports = () => {
         <td>{report.Name_of_Respondent}</td>
         <td>{report.NO}</td>
         <td>{report.Household}</td>
-        <button
-          onClick={() =>
-            handleDelete(report.Total_Number_of_Household, report.id)
-          }
-        >
-          Delete
-        </button>
+        <td className="Reports__btn__group">
+          <button
+            className="Reports__danger__btn"
+            onClick={() =>
+              handleDelete(report.Total_Number_of_Household, report.id)
+            }
+          >
+           < DeleteForeverRoundedIcon sx={{ fontSize: "large" }} /> <span className="Reports_span_btn">Delete</span>
+          </button>
 
-        <button
-          onClick={() =>
-            handleUpdate(report.Total_Number_of_Household, report.id)
-          }
-        >
-          Update
-        </button>
+          <button
+            className="Reports__update__btn"
+            onClick={() =>
+              handleUpdate(report.Total_Number_of_Household, report.id)
+            }
+          >
+            
+            < EditIcon sx={{ fontSize: "large" }} /> <span className="Reports_span_btn">Update</span>
+          </button>
+        </td>
       </tr>
     );
   });
@@ -112,6 +119,7 @@ const Reports = () => {
             <th>Name of Respondent</th>
             <th>NO</th>
             <th>Household</th>
+            <th>Delete | Update</th>
           </tr>
           {reportsElement}
         </table>
