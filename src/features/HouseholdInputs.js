@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const questionTemplate = {
-  id: 1,
+  num: 1,
   q1Surname: "",
   q1FirstName: "",
   q1MiddleName: "",
@@ -105,7 +105,7 @@ export const HouseholdSlice = createSlice({
       addressStreet: "",
       nameOfRespondent: "",
       householdHead: "",
-      totalNumberOfHouseholdMembers: "",
+      totalNumberOfHouseholdMembers: "2",
       visit: "",
       timeStart: "",
       result: "",
@@ -146,7 +146,7 @@ export const HouseholdSlice = createSlice({
     },
     updateHouseholdRecord: (state, action) => {
       state.individual = state.individual.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.num !== action.payload.id
       );
 
       state.individual.push(state.questions);
@@ -155,13 +155,13 @@ export const HouseholdSlice = createSlice({
     },
     questionModal: (state, action) => {
       const temp = state.individual.filter(
-        (item) => item.id === action.payload.id
+        (item) => item.num === action.payload.id
       );
       state.questions = temp[0];
     },
     deleteHouseholdRecord: (state, action) => {
       state.individual = state.individual.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item.num !== action.payload.id
       );
     },
     submitToDatabase: (state, action) => {
@@ -170,7 +170,7 @@ export const HouseholdSlice = createSlice({
         householdRecordList: action.payload.individual,
       });
 
-      axios.post("http://localhost:80/rbimv5/server/Household_Record.php",{
+      axios.post("http://localhost:80/rbimv5/server/Household_Record.php", {
         householdRecord: action.payload.householdRecord,
         householdRecordList: action.payload.individual,
       });
@@ -186,7 +186,7 @@ export const HouseholdSlice = createSlice({
         addressStreet: "",
         nameOfRespondent: "",
         householdHead: "",
-        totalNumberOfHouseholdMembers: "",
+        totalNumberOfHouseholdMembers: "2",
         visit: "",
         timeStart: "",
         result: "",
@@ -205,9 +205,169 @@ export const HouseholdSlice = createSlice({
       state.questions = questionTemplate;
     },
     addToIndividual: (state, action) => {
-      state.questions.id = state.questions.id + state.individual.length;
+      state.questions.num = state.questions.num + state.individual.length;
       state.individual.push(state.questions);
       state.questions = questionTemplate;
+    },
+    defaultValue: (state, action) => {
+      state.individual = [];
+      state.questions = questionTemplate;
+      state.value = {
+        recordNumber: "",
+        household: "",
+        institutionalLivingQuarter: "",
+        province: "",
+        municipality: "",
+        barangay: "",
+        addressRoom: "",
+        addressHouse: "",
+        addressStreet: "",
+        nameOfRespondent: "",
+        householdHead: "",
+        totalNumberOfHouseholdMembers: "2",
+        visit: "",
+        timeStart: "",
+        result: "",
+        nameOfInterviewer: "",
+        dateOfVisit: "",
+        timeEnd: "",
+        dateOfNextVisit: "",
+        nameOfSupervisor: "",
+        dateEncoded: "",
+        nameAndInitialOfEncoder: "",
+        nameOfSupervisorInitialAndDate: "",
+      };
+    },
+    updateHouseholdDB: (state, action) => {
+      const individual = action.payload.data.individual[0];
+      const encoding = action.payload.data.encoding[0];
+      const identification = action.payload.data.identification[0];
+      const interview = action.payload.data.interview[0];
+
+      state.value = {
+        id: individual.id,
+        recordNumber: individual.NO,
+        household: individual.Household,
+        institutionalLivingQuarter: individual.Institutional_Living_Quarter,
+        province: identification.Province,
+        municipality: identification.City_Municipality,
+        barangay: identification.Barangay,
+        addressRoom: identification.Address_A,
+        addressHouse: identification.Address_B,
+        addressStreet: identification.Address_C,
+        nameOfRespondent: identification.Name_of_Respondent,
+        householdHead: identification.Household_Head,
+        totalNumberOfHouseholdMembers: individual.Total_Number_of_Household,
+        visit: interview.Visit,
+        timeStart: interview.Time_Start,
+        result: interview.Result,
+        nameOfInterviewer: interview.Name_of_Interviewer_Initial_Date,
+        dateOfVisit: interview.Date_of_Visit,
+        timeEnd: interview.Time_End,
+        dateOfNextVisit: interview.Date_of_Next_Visit,
+        nameOfSupervisor: interview.Name_of_Supervisor_Initial_Date,
+        dateEncoded: encoding.Date_Encoded,
+        nameAndInitialOfEncoder: encoding.Name_and_Initial_of_Encoder,
+        nameOfSupervisorInitialAndDate:
+          encoding.Name_of_Supervisor_Initial_and_Date,
+      };
+
+      for (let i = 0; i < action.payload.data.individuals.length; i++) {
+        const temp = action.payload.data.individuals[i];
+        const partA = temp[0];
+        const partB = temp[1];
+        const partC = temp[2];
+        const partD = temp[3];
+
+        const questionHolder = {
+          id: partA.id,
+          num: partA.num,
+          q1Surname: partA.Q1_Surname,
+          q1FirstName: partA.Q1_Middle_Name,
+          q1MiddleName: partA.Q1_First_Name,
+          q2: partA.Q2,
+          q3: partA.Q3,
+          q4: partA.Q4,
+          q5Month: partA.Date_of_Birth_Month,
+          q5Year: partA.Date_of_Birth_Year,
+          q6: partA.Q6,
+          q7: partA.Q7,
+          q8: partA.Q8,
+          q9: partA.Q9,
+          q10: partA.Q10,
+          q11: partA.Q11,
+          q12: partA.Q12,
+          q13: partA.Q13,
+          q14: partA.Q14,
+          q15: partA.Q15,
+          q16: partA.Q16,
+          q17: partA.Q17,
+          q18: partA.Q18,
+          q19: partA.Q19,
+          q20: partA.Q20,
+          q21: partB.Q21,
+          q22A: partB.Q22_A,
+          q22B: partB.Q22_B,
+          q23: partB.Q23,
+          q24: partB.Q24,
+          q25A: partB.Q25_A,
+          q25B: partB.Q25_B,
+          q26: partB.Q26,
+          q27: partB.Q27,
+          q28: partB.Q28,
+          q29: partB.Q29,
+          q30: partB.Q30,
+          q31: partB.Q31,
+          q32: partB.Q32,
+          q33A: partB.Q33_Barangay,
+          q33B: partB.Q33_Municipality,
+          q34A: partB.Q34_Barangay,
+          q34B: partB.Q34_Municipality,
+          q35A: partB.Q35_Year,
+          q35B: partB.Q35_Month,
+          q36: partB.Q36,
+          q37A: partB.Q37_Month,
+          q37B: partB.Q37_Year,
+          q38A: partC.Q38_A,
+          q38B: partC.Q38_B,
+          q38C: partC.Q38_C,
+          q39A: partC.Q39_Month,
+          q39B: partC.Q39_Year,
+          q40A: partC.Q40_A,
+          q40B: partC.Q40_B,
+          q40C: partC.Q40C,
+          q41: partC.Q41,
+          q42A: partC.Q42_A,
+          q42B: partC.Q42_B,
+          q43: partC.Q43,
+          q44: partC.Q44,
+          q45: partC.Q45,
+          q46: partC.Q46,
+          q47: partC.Q47,
+          q48: partC.Q48,
+          q49: partC.Q49,
+          q50A: partC.Q50_A,
+          q50B: partC.Q50_B,
+          q51: partC.Q51,
+          q52: partC.Q52,
+          q53: partC.Q53,
+          q54Age: partD.Q54_Age,
+          q54CauseOfDeath: partD.Q54_Cause_of_Death,
+          q55Age: partD.Q55_Age,
+          q55Sex: partD.Q55_Sex,
+          q55CauseOfDeath: partD.Q55_Cause_of_Death,
+          q56A: partD.Q56_A,
+          q56B: partD.Q56_B,
+          q56C: partD.Q56_C,
+          q57A: partD.Q57_A,
+          q57B: partD.Q57_B,
+          q57C: partD.Q57_C,
+          q58Barangay: partD.Q58_Barangay,
+          q58Municipality: partD.Q58_Municipality,
+          q58Province: partD.Q58_Province,
+        };
+        state.individual.push(questionHolder);
+      }
     },
   },
 });
@@ -221,5 +381,7 @@ export const {
   deleteHouseholdRecord,
   updateHouseholdRecord,
   submitToDatabase,
+  updateHouseholdDB,
+  defaultValue,
 } = HouseholdSlice.actions;
 export default HouseholdSlice.reducer;

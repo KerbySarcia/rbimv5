@@ -4,10 +4,11 @@ import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { updateDatabase } from "../features/IndividualRecordInputs";
+import { updateHouseholdDB } from "../features/HouseholdInputs";
 import { useNavigate } from "react-router-dom";
 import { TabTitle } from "../features/GeneralFunction";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 
 const Reports = () => {
   TabTitle("RBIM | Reports");
@@ -16,7 +17,6 @@ const Reports = () => {
   const [search, setSearch] = useState();
   const [deleteTrigger, setDeleteTrigger] = useState(false);
   const [updateTrigger, setUpdateTrigger] = useState();
-  const [updateData, setUpdateData] = useState();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -62,11 +62,15 @@ const Reports = () => {
         `http://localhost:80/rbimv5/server/Update_Individual_Record.php/${updateId}/${mode}-update`
       )
       .then((res) => {
-        setUpdateData(res.data);
-        dispatch(updateDatabase({ data: res.data }));
+        if (mode === "individual-record") {
+          dispatch(updateDatabase({ data: res.data }));
+        } else {
+          dispatch(updateHouseholdDB({ data: res.data }));
+        }
       });
     setUpdateTrigger(true);
-    navigate("/individual-records");
+    if (mode === "individual-record") navigate("/individual-records");
+    else navigate("/household-record");
   };
 
   const reportsElement = reports.map((report) => {
@@ -82,7 +86,8 @@ const Reports = () => {
               handleDelete(report.Total_Number_of_Household, report.id)
             }
           >
-           < DeleteForeverRoundedIcon sx={{ fontSize: "large" }} /> <span className="Reports_span_btn">Delete</span>
+            <DeleteForeverRoundedIcon sx={{ fontSize: "large" }} />{" "}
+            <span className="Reports_span_btn">Delete</span>
           </button>
 
           <button
@@ -91,8 +96,8 @@ const Reports = () => {
               handleUpdate(report.Total_Number_of_Household, report.id)
             }
           >
-            
-            < EditIcon sx={{ fontSize: "large" }} /> <span className="Reports_span_btn">Update</span>
+            <EditIcon sx={{ fontSize: "large" }} />{" "}
+            <span className="Reports_span_btn">Update</span>
           </button>
         </td>
       </tr>

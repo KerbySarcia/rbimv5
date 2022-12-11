@@ -4,10 +4,11 @@ import "../styles/IndividualRecordLinks.css";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import logo from "../images/RBIM_LOGO.png";
 import { useSelector, useDispatch } from "react-redux";
-import { submitToDatabase } from "../features/HouseholdInputs";
+import { submitToDatabase, defaultValue } from "../features/HouseholdInputs";
 
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const HouseholdRecordLinks = () => {
   const individual = useSelector((state) => state.householdRecord.individual);
@@ -15,6 +16,40 @@ const HouseholdRecordLinks = () => {
   const isEmpty = useSelector((state) => state.householdRecord.isEmpty);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const updateButton = () => {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            axios
+              .post("http://localhost:80/rbimv5/server/Update_Household.php", {
+                Household_Value: householdValue,
+                individuals: individual,
+              })
+              .then(() => {
+                dispatch(defaultValue());
+                alert(
+                  `${householdValue.nameOfRespondent} Successfully Updated!`
+                );
+                navigate("/reports");
+              });
+          }}
+        >
+          Update
+        </button>
+        <button
+          onClick={() => {
+            dispatch(defaultValue());
+            navigate("/reports");
+          }}
+        >
+          Cancel
+        </button>
+      </div>
+    );
+  };
+
   const submitButton = () => {
     if (individual.length > 0 && isEmpty === false)
       return (
@@ -42,7 +77,7 @@ const HouseholdRecordLinks = () => {
             <h1>Household Records</h1>
           </div>
           <div className="IndividualLinks__row">
-            {submitButton()}
+            {!householdValue.id && submitButton()}
             <NavLink
               style={({ isActive }) => {
                 return isActive
@@ -72,6 +107,7 @@ const HouseholdRecordLinks = () => {
                 Household Records
               </span>
             </NavLink>
+            {householdValue.id && updateButton()}
           </div>
         </div>
       </section>
