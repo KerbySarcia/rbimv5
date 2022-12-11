@@ -26,8 +26,8 @@ const TableRow = ({ lastname, firstname, mi, sex, age, dateofbirth, id }) => {
         <button
           className="TableRow__question"
           onClick={() => {
-            dispatch(questionModal({ id: id }));
             setIsOpen(true);
+            dispatch(questionModal({ id: id }));
           }}
         >
           Question

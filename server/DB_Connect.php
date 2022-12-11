@@ -246,6 +246,7 @@
 
 					$householdQuestionPartAQuery = "CREATE TABLE household_question_part_a (
   													id int NOT NULL,
+													num varchar(50),
   													Q1_Surname varchar(50) NOT NULL,
  													Q1_Middle_Name varchar(50) NOT NULL,
   													Q1_First_Name varchar(50) NOT NULL,
@@ -273,6 +274,7 @@
 
 					$householdQuestionPartBQuery = "CREATE TABLE household_question_part_b (
   													id int NOT NULL,
+													num varchar(50),
   													Q21 varchar(50) NOT NULL,
   													Q22_A varchar(50) NOT NULL,
   													Q22_B varchar(50) NOT NULL,
@@ -301,6 +303,7 @@
 
 					$householdQuestionPartCQuery = "CREATE TABLE household_question_part_c(
 													id int NOT NULL,
+													num varchar(50),
 													Q38_A varchar(50) NOT NULL,
 													Q38_B varchar(50) NOT NULL,
 													Q38_C varchar(50) NOT NULL,
@@ -329,6 +332,7 @@
 
 					$householdQuestionPartDQuery = "CREATE TABLE household_question_part_d(
 													id int NOT NULL,
+													num varchar(50),
 													Q54_Age varchar(50) NOT NULL,
 													Q54_Cause_of_Death varchar(50) NOT NULL,
 													Q55_Age varchar(50) NOT NULL,

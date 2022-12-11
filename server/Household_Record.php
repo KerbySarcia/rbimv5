@@ -81,10 +81,11 @@ switch($method){
 
     for($i=0; $i<sizeof($householdRecordList);$i++){
             //Insert value to Individual_question_part_a    
-        $household_question_part_a= "INSERT INTO household_question_part_a(id, Q1_Surname, Q1_Middle_Name, Q1_First_Name, Q2, Q3, Q4, Date_of_Birth_Month, Date_of_Birth_Year, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20)
-                                     Values (:id, :Q1_Surname, :Q1_Middle_Name, :Q1_First_Name, :Q2, :Q3, :Q4, :Date_of_Birth_Month, :Date_of_Birth_Year, :Q6, :Q7, :Q8, :Q9, :Q10, :Q11, :Q12, :Q13, :Q14, :Q15, :Q16, :Q17, :Q18, :Q19, :Q20)";
+        $household_question_part_a= "INSERT INTO household_question_part_a(id,num, Q1_Surname, Q1_Middle_Name, Q1_First_Name, Q2, Q3, Q4, Date_of_Birth_Month, Date_of_Birth_Year, Q6, Q7, Q8, Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16, Q17, Q18, Q19, Q20)
+                                     Values (:id, :num, :Q1_Surname, :Q1_Middle_Name, :Q1_First_Name, :Q2, :Q3, :Q4, :Date_of_Birth_Month, :Date_of_Birth_Year, :Q6, :Q7, :Q8, :Q9, :Q10, :Q11, :Q12, :Q13, :Q14, :Q15, :Q16, :Q17, :Q18, :Q19, :Q20)";
         $household_question_part_aStatement=$conn->prepare($household_question_part_a); 
         $household_question_part_aStatement->bindParam(':id', $lastRowFetch['id']);
+        $household_question_part_aStatement->bindParam(':num', $householdRecordList[$i]->num);
         $household_question_part_aStatement->bindParam(':Q1_Surname',$householdRecordList[$i]->q1Surname);
         $household_question_part_aStatement->bindParam(':Q1_Middle_Name',$householdRecordList[$i]->q1FirstName);
         $household_question_part_aStatement->bindParam(':Q1_First_Name',$householdRecordList[$i]->q1MiddleName);
@@ -111,10 +112,11 @@ switch($method){
         $household_question_part_aStatement->execute();
 
         //Insert value to Individual_question_part_b
-        $Individual_question_part_b= "INSERT INTO household_question_part_b(id, Q21, Q22_A, Q22_B, Q23, Q24, Q25_A, Q25_B, Q26, Q27, Q28, Q29, Q30, Q31, Q32, Q33_Barangay, Q33_Municipality, Q34_Barangay, Q34_Municipality, Q35_Year, Q35_Month, Q36, Q37_Month, Q37_Year)
-                                      VALUES (:id, :Q21, :Q22_A, :Q22_B, :Q23, :Q24, :Q25_A, :Q25_B, :Q26, :Q27,:Q28, :Q29, :Q30, :Q31, :Q32, :Q33_Barangay, :Q33_Municipality, :Q34_Barangay,:Q34_Municipality, :Q35_Year, :Q35_Month, :Q36, :Q37_Month, :Q37_Year)";
+        $Individual_question_part_b= "INSERT INTO household_question_part_b(id,num, Q21, Q22_A, Q22_B, Q23, Q24, Q25_A, Q25_B, Q26, Q27, Q28, Q29, Q30, Q31, Q32, Q33_Barangay, Q33_Municipality, Q34_Barangay, Q34_Municipality, Q35_Year, Q35_Month, Q36, Q37_Month, Q37_Year)
+                                      VALUES (:id,:num, :Q21, :Q22_A, :Q22_B, :Q23, :Q24, :Q25_A, :Q25_B, :Q26, :Q27,:Q28, :Q29, :Q30, :Q31, :Q32, :Q33_Barangay, :Q33_Municipality, :Q34_Barangay,:Q34_Municipality, :Q35_Year, :Q35_Month, :Q36, :Q37_Month, :Q37_Year)";
         $Individual_question_part_bStatement=$conn->prepare($Individual_question_part_b); 
         $Individual_question_part_bStatement->bindParam(':id', $lastRowFetch['id']);
+        $Individual_question_part_bStatement->bindParam(':num', $householdRecordList[$i]->num);
         $Individual_question_part_bStatement->bindParam(':Q21',$householdRecordList[$i]->q21);
         $Individual_question_part_bStatement->bindParam(':Q22_A',$householdRecordList[$i]->q22A);
         $Individual_question_part_bStatement->bindParam(':Q22_B',$householdRecordList[$i]->q22B);
@@ -141,10 +143,11 @@ switch($method){
         $Individual_question_part_bStatement->execute();
 
         //Insert value to Individual_question_part_c
-        $Individual_question_part_c= "INSERT INTO  household_question_part_c(id, Q38_A, Q38_B, Q38_C, Q39_Month, Q39_Year, Q40_A, Q40_B, Q40C, Q41, Q42_A, Q42_B, 	Q43, Q44, Q45, Q46, Q47, Q48, Q49, Q50_A, Q50_B, Q51, Q52, Q53)
-                                      VALUES (:id, :Q38_A, :Q38_B, :Q38_C, :Q39_Month, :Q39_Year, :Q40_A, :Q40_B, :Q40C, :Q41, :Q42_A, :Q42_B, :Q43, :Q44, :Q45, :Q46, :Q47, :Q48, :Q49, :Q50_A, :Q50_B, :Q51, :Q52, :Q53)";
+        $Individual_question_part_c= "INSERT INTO  household_question_part_c(id,num, Q38_A, Q38_B, Q38_C, Q39_Month, Q39_Year, Q40_A, Q40_B, Q40C, Q41, Q42_A, Q42_B, 	Q43, Q44, Q45, Q46, Q47, Q48, Q49, Q50_A, Q50_B, Q51, Q52, Q53)
+                                      VALUES (:id,:num, :Q38_A, :Q38_B, :Q38_C, :Q39_Month, :Q39_Year, :Q40_A, :Q40_B, :Q40C, :Q41, :Q42_A, :Q42_B, :Q43, :Q44, :Q45, :Q46, :Q47, :Q48, :Q49, :Q50_A, :Q50_B, :Q51, :Q52, :Q53)";
         $Individual_question_part_cStatement=$conn->prepare($Individual_question_part_c);
         $Individual_question_part_cStatement->bindParam(':id', $lastRowFetch['id']);
+        $Individual_question_part_cStatement->bindParam(':num', $householdRecordList[$i]->num);
         $Individual_question_part_cStatement->bindParam(':Q38_A',$householdRecordList[$i]->q38A);
         $Individual_question_part_cStatement->bindParam(':Q38_B',$householdRecordList[$i]->q38B);
         $Individual_question_part_cStatement->bindParam(':Q38_C',$householdRecordList[$i]->q38C);
@@ -171,10 +174,11 @@ switch($method){
         $Individual_question_part_cStatement->execute();
 
         //Insert value to Individual_question_part_d
-         $Individual_question_part_d= "INSERT INTO household_question_part_d(id, Q54_Age, Q54_Cause_of_Death, Q55_Age, Q55_Sex, Q55_Cause_of_Death, Q56_A, Q56_B, Q56_C, Q57_A, Q57_B, Q57_C, Q58_Barangay, Q58_Municipality, Q58_Province)
-                                       VALUES(:id, :Q54_Age, :Q54_Cause_of_Death, :Q55_Age, :Q55_Sex, :Q55_Cause_of_Death, :Q56_A, :Q56_B, :Q56_C, :Q57_A, :Q57_B, :Q57_C, :Q58_Barangay, :Q58_Municipality, :Q58_Province)";
+         $Individual_question_part_d= "INSERT INTO household_question_part_d(id,num, Q54_Age, Q54_Cause_of_Death, Q55_Age, Q55_Sex, Q55_Cause_of_Death, Q56_A, Q56_B, Q56_C, Q57_A, Q57_B, Q57_C, Q58_Barangay, Q58_Municipality, Q58_Province)
+                                       VALUES(:id,:num, :Q54_Age, :Q54_Cause_of_Death, :Q55_Age, :Q55_Sex, :Q55_Cause_of_Death, :Q56_A, :Q56_B, :Q56_C, :Q57_A, :Q57_B, :Q57_C, :Q58_Barangay, :Q58_Municipality, :Q58_Province)";
          $Individual_question_part_dStatement=$conn->prepare($Individual_question_part_d);
          $Individual_question_part_dStatement->bindParam(':id', $lastRowFetch['id']);
+         $Individual_question_part_dStatement->bindParam(':num', $householdRecordList[$i]->num);
          $Individual_question_part_dStatement->bindParam(':Q54_Age',$householdRecordList[$i]->q54Age);
          $Individual_question_part_dStatement->bindParam(':Q54_Cause_of_Death',$householdRecordList[$i]->q54CauseOfDeath);
          $Individual_question_part_dStatement->bindParam(':Q55_Age',$householdRecordList[$i]->q55Age);

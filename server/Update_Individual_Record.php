@@ -15,65 +15,134 @@ switch($method) {
   case "GET":
     $path = explode('/', $_SERVER['REQUEST_URI']);
     $updateId =  $path[4];
+    $mode = $path[5];
 
-    $individualQuery = "SELECT * FROM individual_record WHERE id = $updateId";
-    $individualStatement = $conn->prepare($individualQuery);
-    $individualStatement->execute();
-    $individualFetch = $individualStatement->fetchAll();
+    if($mode === "individual-record-update") {
+      $individualQuery = "SELECT * FROM individual_record WHERE id = $updateId";
+      $individualStatement = $conn->prepare($individualQuery);
+      $individualStatement->execute();
+      $individualFetch = $individualStatement->fetchAll();
 
-    $identificationQuery = "SELECT * FROM identification WHERE id = $updateId";
-    $identificationStatement = $conn->prepare($identificationQuery);
-    $identificationStatement->execute();
-    $identificationFetch = $identificationStatement->fetchAll();
+      $identificationQuery = "SELECT * FROM identification WHERE id = $updateId";
+      $identificationStatement = $conn->prepare($identificationQuery);
+      $identificationStatement->execute();
+      $identificationFetch = $identificationStatement->fetchAll();
 
-    $encodingQuery = "SELECT * FROM encoding_information WHERE id = $updateId";
-    $encodingStatement = $conn->prepare($encodingQuery);
-    $encodingStatement->execute();
-    $encodingFetch = $encodingStatement->fetchAll();
+      $encodingQuery = "SELECT * FROM encoding_information WHERE id = $updateId";
+      $encodingStatement = $conn->prepare($encodingQuery);
+      $encodingStatement->execute();
+      $encodingFetch = $encodingStatement->fetchAll();
 
-    $individualImagesQuery = "SELECT * FROM individual_record_images WHERE id = $updateId";
-    $individualImagesStatement = $conn->prepare($individualImagesQuery);
-    $individualImagesStatement->execute();
-    $individualImagesFetch = $individualImagesStatement->fetchAll();
+      $individualImagesQuery = "SELECT * FROM individual_record_images WHERE id = $updateId";
+      $individualImagesStatement = $conn->prepare($individualImagesQuery);
+      $individualImagesStatement->execute();
+      $individualImagesFetch = $individualImagesStatement->fetchAll();
 
-    $interviewQuery = "SELECT * FROM interview_information WHERE id = $updateId";
-    $interviewStatement = $conn->prepare($interviewQuery);
-    $interviewStatement->execute();
-    $interviewFetch = $interviewStatement->fetchAll();
+      $interviewQuery = "SELECT * FROM interview_information WHERE id = $updateId";
+      $interviewStatement = $conn->prepare($interviewQuery);
+      $interviewStatement->execute();
+      $interviewFetch = $interviewStatement->fetchAll();
 
-    $questionPartAQuery = "SELECT * FROM individual_question_part_a WHERE id = $updateId";
-    $questionPartAStatement = $conn->prepare($questionPartAQuery);
-    $questionPartAStatement->execute();
-    $questionPartAFetch = $questionPartAStatement->fetchAll();
+      $questionPartAQuery = "SELECT * FROM individual_question_part_a WHERE id = $updateId";
+      $questionPartAStatement = $conn->prepare($questionPartAQuery);
+      $questionPartAStatement->execute();
+      $questionPartAFetch = $questionPartAStatement->fetchAll();
+      
+      $questionPartBQuery = "SELECT * FROM individual_question_part_b WHERE id = $updateId";
+      $questionPartBStatement = $conn->prepare($questionPartBQuery);
+      $questionPartBStatement->execute();
+      $questionPartBFetch = $questionPartBStatement->fetchAll();
+
+      $questionPartCQuery = "SELECT * FROM individual_question_part_c WHERE id = $updateId";
+      $questionPartCStatement = $conn->prepare($questionPartCQuery);
+      $questionPartCStatement->execute();
+      $questionPartCFetch = $questionPartCStatement->fetchAll();
+
+      $questionPartDQuery = "SELECT * FROM individual_question_part_d WHERE id = $updateId";
+      $questionPartDStatement = $conn->prepare($questionPartDQuery);
+      $questionPartDStatement->execute();
+      $questionPartDFetch = $questionPartDStatement->fetchAll();
+
+      $data = (object)array('individual' => $individualFetch,
+                            'identification' => $identificationFetch,
+                            'encoding' => $encodingFetch,
+                            'images' => $individualImagesFetch,
+                            'interview' => $interviewFetch,
+                            'questionPartA' => $questionPartAFetch,
+                            'questionPartB' => $questionPartBFetch,
+                            'questionPartC' => $questionPartCFetch,
+                            'questionPartD' => $questionPartDFetch,
+      );
     
-    $questionPartBQuery = "SELECT * FROM individual_question_part_b WHERE id = $updateId";
-    $questionPartBStatement = $conn->prepare($questionPartBQuery);
-    $questionPartBStatement->execute();
-    $questionPartBFetch = $questionPartBStatement->fetchAll();
+      echo json_encode($data);
+    } else {
+      $individualQuery = "SELECT * FROM household_record WHERE id = $updateId";
+      $individualStatement = $conn->prepare($individualQuery);
+      $individualStatement->execute();
+      $individualFetch = $individualStatement->fetchAll();
 
-    $questionPartCQuery = "SELECT * FROM individual_question_part_c WHERE id = $updateId";
-    $questionPartCStatement = $conn->prepare($questionPartCQuery);
-    $questionPartCStatement->execute();
-    $questionPartCFetch = $questionPartCStatement->fetchAll();
+      $identificationQuery = "SELECT * FROM household_identification WHERE id = $updateId";
+      $identificationStatement = $conn->prepare($identificationQuery);
+      $identificationStatement->execute();
+      $identificationFetch = $identificationStatement->fetchAll();
 
-    $questionPartDQuery = "SELECT * FROM individual_question_part_d WHERE id = $updateId";
-    $questionPartDStatement = $conn->prepare($questionPartDQuery);
-    $questionPartDStatement->execute();
-    $questionPartDFetch = $questionPartDStatement->fetchAll();
+      $encodingQuery = "SELECT * FROM household_encoding_information WHERE id = $updateId";
+      $encodingStatement = $conn->prepare($encodingQuery);
+      $encodingStatement->execute();
+      $encodingFetch = $encodingStatement->fetchAll();
 
-    $data = (object)array('individual' => $individualFetch,
-                          'identification' => $identificationFetch,
-                          'encoding' => $encodingFetch,
-                          'images' => $individualImagesFetch,
-                          'interview' => $interviewFetch,
-                          'questionPartA' => $questionPartAFetch,
-                          'questionPartB' => $questionPartBFetch,
-                          'questionPartC' => $questionPartCFetch,
-                          'questionPartD' => $questionPartDFetch,
-    );
-    
-    echo json_encode($data);
-    break;
+      $interviewQuery = "SELECT * FROM household_interview_information WHERE id = $updateId";
+      $interviewStatement = $conn->prepare($interviewQuery);
+      $interviewStatement->execute();
+      $interviewFetch = $interviewStatement->fetchAll();
+
+      $questionPartAQuery = "SELECT * FROM household_question_part_a WHERE id = $updateId";
+      $questionPartAStatement = $conn->prepare($questionPartAQuery);
+      $questionPartAStatement->execute();
+      $questionPartAFetch = $questionPartAStatement->fetchAll();
+      
+      $questionPartBQuery = "SELECT * FROM household_question_part_b WHERE id = $updateId";
+      $questionPartBStatement = $conn->prepare($questionPartBQuery);
+      $questionPartBStatement->execute();
+      $questionPartBFetch = $questionPartBStatement->fetchAll();
+
+      $questionPartCQuery = "SELECT * FROM household_question_part_c WHERE id = $updateId";
+      $questionPartCStatement = $conn->prepare($questionPartCQuery);
+      $questionPartCStatement->execute();
+      $questionPartCFetch = $questionPartCStatement->fetchAll();
+
+      $questionPartDQuery = "SELECT * FROM household_question_part_d WHERE id = $updateId";
+      $questionPartDStatement = $conn->prepare($questionPartDQuery);
+      $questionPartDStatement->execute();
+      $questionPartDFetch = $questionPartDStatement->fetchAll();
+
+      $individuals = array();
+      for($i = 0; $i < sizeof($questionPartAFetch); $i++) {
+        $temp = array();
+
+        array_push($temp, 
+                  $questionPartAFetch[$i], 
+                  $questionPartBFetch[$i],
+                  $questionPartCFetch[$i],
+                  $questionPartDFetch[$i]
+        );
+
+        array_push($individuals, $temp);
+      }
+
+      
+
+
+      $data = (object)array('individual' => $individualFetch,
+                            'identification' => $identificationFetch,
+                            'encoding' => $encodingFetch,
+                            'interview' => $interviewFetch,
+                            'individuals' => $individuals
+      );
+      echo json_encode($data);
+    }
+
+  break;
     
   case "POST":
     $updateInfo = json_decode(file_get_contents('php://input'));

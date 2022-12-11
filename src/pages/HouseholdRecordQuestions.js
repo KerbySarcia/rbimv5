@@ -55,7 +55,7 @@ const HouseholdRecordQuestions = () => {
                   age={item.q4}
                   mi={item.q1MiddleName}
                   dateofbirth={item.q5Year}
-                  id={item.id}
+                  id={item.num}
                 />
               );
             })}
