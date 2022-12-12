@@ -22,6 +22,13 @@ const HouseholdRecordLinks = () => {
       <div>
         <button
           onClick={() => {
+            if (
+              individual.length !==
+              Number(householdValue.totalNumberOfHouseholdMembers)
+            ) {
+              alert("Make sure the Total Number of Household is correct");
+              return;
+            }
             axios
               .post("http://localhost:80/rbimv5/server/Update_Household.php", {
                 Household_Value: householdValue,
@@ -51,7 +58,7 @@ const HouseholdRecordLinks = () => {
   };
 
   const submitButton = () => {
-    if (individual.length > 0 && isEmpty === false)
+    if (individual.length > 1 && isEmpty === false)
       return (
         <button
           onClick={() => {
@@ -61,6 +68,7 @@ const HouseholdRecordLinks = () => {
                 individual: individual,
               })
             );
+            alert(`${householdValue.nameOfRespondent} Added`);
             navigate("/household-record");
           }}
         >

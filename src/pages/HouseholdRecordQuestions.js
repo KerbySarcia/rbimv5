@@ -11,7 +11,10 @@ const HouseholdRecordQuestions = () => {
   const householdList = useSelector(
     (state) => state.householdRecord.individual
   );
-  console.log(householdList);
+  const numberOfHousehold = useSelector(
+    (state) => state.householdRecord.value.totalNumberOfHouseholdMembers
+  );
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -27,7 +30,14 @@ const HouseholdRecordQuestions = () => {
             right: 10,
             cursor: "pointer",
           }}
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            // if (Number(numberOfHousehold) === householdList.length) {
+            //   alert("Add number of household if you want to append more");
+            // } else if (Number(numberOfHousehold) < householdList.length) {
+            //   alert("Try to increase the total number of household");
+            // } else
+            setIsOpen(true);
+          }}
         />
         <HouseholdModal open={isOpen} onClose={() => setIsOpen(false)} />
         {householdList.length === 0 ? (
