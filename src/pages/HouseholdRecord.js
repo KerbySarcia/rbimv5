@@ -280,6 +280,7 @@ const HouseholdRecord = () => {
                       className="IndividualRecord__input"
                       type="number"
                       min="2"
+                      disabled
                       name="totalNumberOfHouseholdMembers"
                       value={household.totalNumberOfHouseholdMembers}
                       onChange={(e) =>

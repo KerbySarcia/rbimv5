@@ -150,7 +150,6 @@ export const HouseholdSlice = createSlice({
       );
 
       state.individual.push(state.questions);
-
       state.questions = questionTemplate;
     },
     questionModal: (state, action) => {
@@ -205,9 +204,37 @@ export const HouseholdSlice = createSlice({
       state.questions = questionTemplate;
     },
     addToIndividual: (state, action) => {
-      state.questions.num = state.questions.num + state.individual.length;
-      state.individual.push(state.questions);
+      state.questions.num = `${state.questions.num + state.individual.length}${
+        state.questions.q1FirstName
+      }${state.questions.q1Surname}${state.questions.q5Year}`;
+
+      if (state.value.id) {
+        state.individual.push({
+          id: state.value.id,
+          newRecord: true,
+          ...state.questions,
+        });
+        state.value = {
+          ...state.value,
+          totalNumberOfHouseholdMembers: state.individual.length,
+        };
+      } else {
+        state.individual.push(state.questions);
+
+        state.value = {
+          ...state.value,
+          totalNumberOfHouseholdMembers: state.individual.length,
+        };
+      }
+
       state.questions = questionTemplate;
+    },
+    decrementHousehold: (state, action) => {
+      state.value = {
+        ...state.value,
+        totalNumberOfHouseholdMembers:
+          state.value.totalNumberOfHouseholdMembers - 1,
+      };
     },
     defaultValue: (state, action) => {
       state.individual = [];
@@ -383,5 +410,6 @@ export const {
   submitToDatabase,
   updateHouseholdDB,
   defaultValue,
+  decrementHousehold,
 } = HouseholdSlice.actions;
 export default HouseholdSlice.reducer;

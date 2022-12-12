@@ -3,6 +3,7 @@ import Modal from "./HouseholdModal";
 import {
   questionModal,
   deleteHouseholdRecord,
+  decrementHousehold,
 } from "../features/HouseholdInputs";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/TableRow.css";
@@ -35,7 +36,10 @@ const TableRow = ({ lastname, firstname, mi, sex, age, dateofbirth, id }) => {
         <Modal open={isOpen} onClose={() => setIsOpen(false)} id={id} />
         <button
           className="TableRow__delete"
-          onClick={() => dispatch(deleteHouseholdRecord({ id: id }))}
+          onClick={() => {
+            dispatch(deleteHouseholdRecord({ id: id }));
+            dispatch(decrementHousehold());
+          }}
         >
           delete
         </button>
