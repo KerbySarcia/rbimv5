@@ -2,8 +2,11 @@ import React from 'react'
 import '../styles/AboutUs.css'
 import photo from '../images/profile-rain.jpg'
 import logo from '../images/RBIM_LOGO.png'
+import { TabTitle } from '../features/GeneralFunction'
 
 const AboutUs = () => {
+  TabTitle('RBIM | The Team BesThe')
+
   return (
     <div className='AboutUs'>
       <section className="AboutUs__Sections">
@@ -20,21 +23,28 @@ const AboutUs = () => {
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
-            <p>chuchuchu</p>
+            <h3>Kerby Matthew Sarcia</h3>
+            <p>Time is Gold I'm Watching Rold</p>
+          </div>
+        </div>
+        <div className='AboutUs__Team__Card'>
+          <img src={photo} alt='Teammate'/>
+          <div className='AboutUs__Team__Card__Info'>
+            <h3>Kurtliam Pangilinan</h3>
+            <p>I don't know what's the difference between Coding and Programming.</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Mark Leigh L. David</h3>
-            <p>chuchuchu</p>
+            <p>Roses are Red Violets are Blue BUt bobo si Genasky</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
+            <h3>Kenneth Rodriguez Rana</h3>
             <p>chuchuchu</p>
           </div>
         </div>
@@ -43,28 +53,28 @@ const AboutUs = () => {
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
+            <h3>Dohn Luel De Leon</h3>
             <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
+            <h3>Zhernan Manaloto</h3>
             <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
+            <h3>Dawson Manlutac</h3>
             <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
           <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
-            <h3>Mark Leigh L. David</h3>
+            <h3>Rikkimae Mallari</h3>
             <p>chuchuchu</p>
           </div>
         </div>

@@ -21,6 +21,7 @@ const HouseholdRecordLinks = () => {
     return (
       <div>
         <button
+          className="IndividualLinks__main__btn"
           onClick={() => {
             if (
               individual.length !==
@@ -46,6 +47,7 @@ const HouseholdRecordLinks = () => {
           Update
         </button>
         <button
+          className="IndividualLinks__btn"
           onClick={() => {
             dispatch(defaultValue());
             navigate("/reports");
@@ -61,6 +63,7 @@ const HouseholdRecordLinks = () => {
     if (individual.length > 1 && isEmpty === false)
       return (
         <button
+          className="IndividualLinks__main__btn"
           onClick={() => {
             dispatch(
               submitToDatabase({
