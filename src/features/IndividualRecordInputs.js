@@ -139,6 +139,7 @@ export const individualSlice = createSlice({
     imageInformation: imageInformationTemplate,
     value: valueTemplate,
     questions: questionsTemplate,
+    isUpdate: false,
   },
   reducers: {
     onChange: (state, action) => {

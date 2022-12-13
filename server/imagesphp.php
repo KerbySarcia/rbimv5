@@ -18,23 +18,33 @@ switch($method){
     $lastRowIdExe = $conn->prepare($lastRowId);
     $lastRowIdExe->execute();
     $lastRowFetch = $lastRowIdExe->fetch();
+    $lastId = $lastRowFetch['id'];
 
+    $get_last_row = $conn->query("SELECT * FROM individual_question_part_a WHERE id = $lastId");
+    $last_row = $get_last_row->fetch();
+    
+    
+    $photoString = $last_row['Q1_Surname'] . "-" . $lastRowFetch['id'] . "-photo." . strtolower(end(explode(".", $_FILES['photo']['name'])));
+    $signatureString = $last_row['Q1_Surname'] . "-" . $lastRowFetch['id'] . "-signature." . strtolower(end(explode(".", $_FILES['signature']['name'])));
+    $leftString = $last_row['Q1_Surname'] . "-" . $lastRowFetch['id'] . "-left." . strtolower(end(explode(".", $_FILES['leftThumbMark']['name'])));
+    $rightString = $last_row['Q1_Surname'] . "-" . $lastRowFetch['id'] . "-right." . strtolower(end(explode(".", $_FILES['rightThumbMark']['name'])));
+    
     //Insert value to individual_record_images
     $individualRecordimages= "INSERT INTO individual_record_images(id,Photo,Signature,Left_Thumb_Mark,Right_Thumb_Mark)
                               VALUES(:id,:Photo,:Signature,:Left_Thumb_Mark,:Right_Thumb_Mark)";
-    $individualRecordimagesStatement=$conn->prepare($individualRecordimages);                         
+    $individualRecordimagesStatement=$conn->prepare($individualRecordimages);                       
     $individualRecordimagesStatement->bindParam(':id', $lastRowFetch['id']);
-    $individualRecordimagesStatement->bindParam(':Photo',$_FILES['photo']['name']);
-    $individualRecordimagesStatement->bindParam(':Signature',$_FILES['signature']['name']);
-    $individualRecordimagesStatement->bindParam(':Left_Thumb_Mark',$_FILES['leftThumbMark']['name']);
-    $individualRecordimagesStatement->bindParam(':Right_Thumb_Mark',$_FILES['rightThumbMark']['name']);
+    $individualRecordimagesStatement->bindParam(':Photo',  $photoString);
+    $individualRecordimagesStatement->bindParam(':Signature', $signatureString);
+    $individualRecordimagesStatement->bindParam(':Left_Thumb_Mark', $leftString);
+    $individualRecordimagesStatement->bindParam(':Right_Thumb_Mark', $rightString);
     $individualRecordimagesStatement->execute();
 
     // Move Files
-        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/images-person/" . $_FILES["photo"]["name"]);
-        move_uploaded_file($_FILES["signature"]["tmp_name"], "../public/images-person/" . $_FILES["signature"]["name"]);
-        move_uploaded_file($_FILES["leftThumbMark"]["tmp_name"], "../public/images-person/" . $_FILES["leftThumbMark"]["name"]);
-        move_uploaded_file($_FILES["rightThumbMark"]["tmp_name"], "../public/images-person/" . $_FILES["rightThumbMark"]["name"]);
+        move_uploaded_file($_FILES["photo"]["tmp_name"], "../public/images-person/" .  $photoString);
+        move_uploaded_file($_FILES["signature"]["tmp_name"], "../public/images-person/" . $signatureString);
+        move_uploaded_file($_FILES["leftThumbMark"]["tmp_name"], "../public/images-person/" . $leftString);
+        move_uploaded_file($_FILES["rightThumbMark"]["tmp_name"], "../public/images-person/" . $rightString);
     break;
 }
 ?>
