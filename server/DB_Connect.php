@@ -14,8 +14,8 @@
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 				return $conn;
-			} catch (\Exception $e) {
-				echo "error";
+			} catch (PDOException $e) {
+				echo $e;
 				$conn = new PDO('mysql:host=' .$this->server .';', $this->user, $this->pass);
 				$createDatabaseQuery = "CREATE DATABASE rbimdb";
 				$stmt = $conn->prepare($createDatabaseQuery);
