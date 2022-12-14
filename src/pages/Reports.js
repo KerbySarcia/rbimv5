@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "../styles/Reports.css";
 import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateDatabase } from "../features/IndividualRecordInputs";
 import { updateHouseholdDB } from "../features/HouseholdInputs";
 import { useNavigate } from "react-router-dom";
 import { TabTitle } from "../features/GeneralFunction";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
+import Error404 from './Error404'
 
 const Reports = () => {
   TabTitle("RBIM | Reports");
@@ -103,6 +104,14 @@ const Reports = () => {
       </tr>
     );
   });
+
+  if(JSON.parse(sessionStorage.getItem('dataKey'))){
+    const items = JSON.parse(sessionStorage.getItem('dataKey'))
+    if(items.access_lvl === 'on-site') {
+      return(<Error404 />)
+    }
+  }
+
   return (
     <div className="Reports">
       <div className="Reports__top-nav">

@@ -17,7 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { defaultValue } from "../features/IndividualRecordInputs";
 import { defaultValueHousehold } from "../features/HouseholdInputs";
 
-const ButtonGroup = ({ button }) => {
+const ButtonGroup = ({ access_lvl }) => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const [navigateTo, setNavigateTo] = useState();
@@ -28,28 +28,6 @@ const ButtonGroup = ({ button }) => {
   const isEmptyHousehold = useSelector(
     (state) => state.householdRecord.isContain
   );
-
-  // const [isClicked, setIsClicked] = useState([
-  //   {
-  //     name: "Home",
-  //     click: location.pathname === "/" ? true : false,
-  //   },
-
-  //   {
-  //     name: "Add",
-  //     click: location.pathname.includes("individual-records") ? true : false,
-  //   },
-
-  //   {
-  //     name: "Map",
-  //     click: location.pathname.includes("household-record") ? true : false,
-  //   },
-
-  //   {
-  //     name: "Table",
-  //     click: location.pathname.includes("reports") ? true : false,
-  //   },
-  // ]);
 
   const handleClose = (e) => {
     const btn = e.target.name;
@@ -80,19 +58,21 @@ const ButtonGroup = ({ button }) => {
 
   return (
     <div className="ButtonGroup">
+      { access_lvl === 'admin' || access_lvl === 'secretary' ?
+          <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<HomeIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={<HomeOutlinedIcon sx={{ fontSize: "xx-large" }} />}
+            isClicked={location.pathname === "/" ? true : false}
+            name="/"
+          />
+          </div> : ''
+      }
       <AlertModal
         isOpen={open}
         navigate={navigateTo}
         handleClick={(e) => handleClose(e)}
       />
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<HomeIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={<HomeOutlinedIcon sx={{ fontSize: "xx-large" }} />}
-          isClicked={location.pathname === "/" ? true : false}
-          name="/"
-        />
-      </div>
       <div className="ButtonGroup__container" onClick={handleClick}>
         <Button
           iconSelected={<NoteAddIcon sx={{ fontSize: "xx-large" }} />}
@@ -115,14 +95,16 @@ const ButtonGroup = ({ button }) => {
           name="household-record"
         />
       </div>
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<TableChartIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={<TableChartOutlinedIcon sx={{ fontSize: "xx-large" }} />}
-          isClicked={location.pathname.includes("reports") ? true : false}
-          name="/reports"
-        />
-      </div>
+      { access_lvl === 'admin' || access_lvl === 'secretary' ? 
+        <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<TableChartIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={<TableChartOutlinedIcon sx={{ fontSize: "xx-large" }} />}
+            isClicked={location.pathname.includes("reports") ? true : false}
+            name="/reports"
+          />
+        </div> : ''
+      }
     </div>
   );
 };

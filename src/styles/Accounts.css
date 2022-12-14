@@ -72,8 +72,15 @@
     background-color: gainsboro;
 }
 
+.Accounts__modal__inside__table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px #888888;
+}
+
 .Accounts__modal__table tr {
-    border-bottom: 2px solid gray;
+    border: hidden;
 }
 
 .Accounts__modal__select__btn {
