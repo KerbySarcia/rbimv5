@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/ButtonGroup.css";
 import Button from "./Button";
 
@@ -11,118 +11,91 @@ import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
 import NoteAddOutlinedIcon from "@mui/icons-material/NoteAddOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import AlertModal from "./AlertModal";
-import { useSelector, useDispatch } from "react-redux";
-import { defaultValue } from "../features/IndividualRecordInputs";
-import { defaultValueHousehold } from "../features/HouseholdInputs";
-
+import { Link, useLocation } from "react-router-dom";
 const ButtonGroup = ({ button }) => {
   const location = useLocation();
-  const [open, setOpen] = useState(false);
-  const [navigateTo, setNavigateTo] = useState();
-  const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-  const isEmpty = useSelector((state) => state.individualRecord.isEmpty);
-  const isEmptyHousehold = useSelector(
-    (state) => state.householdRecord.isContain
-  );
+  const [isClicked, setIsClicked] = useState([
+    {
+      name: "Home",
+      click: location.pathname === "/" ? true : false,
+    },
 
-  // const [isClicked, setIsClicked] = useState([
-  //   {
-  //     name: "Home",
-  //     click: location.pathname === "/" ? true : false,
-  //   },
+    {
+      name: "Add",
+      click: location.pathname.includes("individual-records") ? true : false,
+    },
 
-  //   {
-  //     name: "Add",
-  //     click: location.pathname.includes("individual-records") ? true : false,
-  //   },
+    {
+      name: "Map",
+      click: location.pathname.includes("household-record") ? true : false,
+    },
 
-  //   {
-  //     name: "Map",
-  //     click: location.pathname.includes("household-record") ? true : false,
-  //   },
-
-  //   {
-  //     name: "Table",
-  //     click: location.pathname.includes("reports") ? true : false,
-  //   },
-  // ]);
-
-  const handleClose = (e) => {
-    const btn = e.target.name;
-    if (btn === "okay") {
-      if (location.pathname.includes("individual-records")) {
-        dispatch(defaultValue());
-      } else dispatch(defaultValueHousehold());
-      navigate(navigateTo);
-    }
-    setOpen(false);
-  };
+    {
+      name: "Table",
+      click: location.pathname.includes("reports") ? true : false,
+    },
+  ]);
 
   const handleClick = (e) => {
     const name = e.target.getAttribute("name");
-
-    setNavigateTo(name);
-    if (location.pathname.includes("individual-records") && isEmpty.isContain) {
-      setOpen(true);
-    } else if (
-      location.pathname.includes("household-record") &&
-      isEmptyHousehold
-    ) {
-      setOpen(true);
-    } else {
-      navigate(name);
-    }
+    setIsClicked((prevValue) => {
+      return prevValue.map((icon) => {
+        if (name === icon.name) return { ...icon, click: true };
+        else return { ...icon, click: false };
+      });
+    });
   };
 
   return (
     <div className="ButtonGroup">
-      <AlertModal
-        isOpen={open}
-        navigate={navigateTo}
-        handleClick={(e) => handleClose(e)}
-      />
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<HomeIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={<HomeOutlinedIcon sx={{ fontSize: "xx-large" }} />}
-          isClicked={location.pathname === "/" ? true : false}
-          name="/"
-        />
-      </div>
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<NoteAddIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={<NoteAddOutlinedIcon sx={{ fontSize: "xx-large" }} />}
-          isClicked={
-            location.pathname.includes("individual-records") ? true : false
-          }
-          name="/individual-records"
-        />
-      </div>
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<MapsHomeWorkIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={
-            <MapsHomeWorkOutlinedIcon sx={{ fontSize: "xx-large" }} />
-          }
-          isClicked={
-            location.pathname.includes("household-record") ? true : false
-          }
-          name="household-record"
-        />
-      </div>
-      <div className="ButtonGroup__container" onClick={handleClick}>
-        <Button
-          iconSelected={<TableChartIcon sx={{ fontSize: "xx-large" }} />}
-          iconDefault={<TableChartOutlinedIcon sx={{ fontSize: "xx-large" }} />}
-          isClicked={location.pathname.includes("reports") ? true : false}
-          name="/reports"
-        />
-      </div>
+      <Link to="">
+        <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<HomeIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={<HomeOutlinedIcon sx={{ fontSize: "xx-large" }} />}
+            isClicked={isClicked[0].click}
+            name="Home"
+          />
+        </div>
+      </Link>
+
+      <Link to="individual-records">
+        <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<NoteAddIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={<NoteAddOutlinedIcon sx={{ fontSize: "xx-large" }} />}
+            isClicked={isClicked[1].click}
+            name="Add"
+          />
+        </div>
+      </Link>
+
+      <Link to="household-record">
+        <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<MapsHomeWorkIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={
+              <MapsHomeWorkOutlinedIcon sx={{ fontSize: "xx-large" }} />
+            }
+            isClicked={isClicked[2].click}
+            name="Map"
+          />
+        </div>
+      </Link>
+
+      <Link to="reports">
+        <div className="ButtonGroup__container" onClick={handleClick}>
+          <Button
+            iconSelected={<TableChartIcon sx={{ fontSize: "xx-large" }} />}
+            iconDefault={
+              <TableChartOutlinedIcon sx={{ fontSize: "xx-large" }} />
+            }
+            isClicked={isClicked[3].click}
+            name="Table"
+          />
+        </div>
+      </Link>
     </div>
   );
 };

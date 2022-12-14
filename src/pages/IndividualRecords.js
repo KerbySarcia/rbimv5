@@ -12,8 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import { TabTitle } from "../features/GeneralFunction";
-import AlertModal from "../components/AlertModal";
+import { TabTitle } from '../features/GeneralFunction'
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   "& .MuiInputBase-input": {
@@ -66,7 +65,7 @@ const MenuProps = {
 };
 
 const IndividualRecord = () => {
-  TabTitle("RBIM | Individual Record");
+  TabTitle('RBIM | Individual Record')
   const dispatch = useDispatch();
   const [items, setItems] = useState([]);
   const individualRecord = useSelector((state) => state.individualRecord.value);

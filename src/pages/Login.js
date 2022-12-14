@@ -5,10 +5,10 @@ import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { onLogIn } from "../features/Session";
-import { TabTitle } from "../features/GeneralFunction";
+import { TabTitle } from '../features/GeneralFunction'
 
 const Login = () => {
-  TabTitle("RBIM | Login");
+  TabTitle('RBIM | Login')
 
   const dispatch = useDispatch();
 
@@ -65,8 +65,8 @@ const Login = () => {
               axios
                 .post("http://localhost:80/rbimv5/server/login.php", data)
                 .then((res) => {
-                  console.log(res.data);
-                  if (res.data) {
+                  console.log(res.data)
+                  if(res.data) {
                     dispatch(
                       onLogIn({
                         username: res.data.username,
@@ -74,9 +74,10 @@ const Login = () => {
                         access_lvl: res.data.access_lvl,
                       })
                     );
-                    navigate("/");
-                  } else alert("Wrong Credentials");
-
+                    navigate('/')
+                  } else alert('Wrong Credentials');
+                  
+                 
                   // for (let i = 0; i < res.data.username.length; i++) {
                   //   console.log(res.data.username[i])
                   //   console.log(res.data.password)
@@ -84,7 +85,7 @@ const Login = () => {
                   //     res.data.username[i] === data.username &&
                   //     res.data.password === data.password
                   //   ) {
-
+                      
                   //     return;
                   //   }
                   // }
