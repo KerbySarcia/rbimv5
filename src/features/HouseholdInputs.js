@@ -92,6 +92,7 @@ export const HouseholdSlice = createSlice({
   name: "HouseholdRecord",
   initialState: {
     isEmpty: true,
+    isContain: false,
     empty: true,
     value: {
       recordNumber: "",
@@ -126,6 +127,7 @@ export const HouseholdSlice = createSlice({
       state.value[action.payload.name] = action.payload.value;
       for (const properties in state.value) {
         if (state.value[properties] === "") {
+          state.isContain = true;
           state.isEmpty = true;
           return;
         }
@@ -133,6 +135,7 @@ export const HouseholdSlice = createSlice({
       state.isEmpty = false;
     },
     onChangeQuestions: (state, action) => {
+      state.isContain = true;
       state.questions[action.payload.name] = action.payload.value;
     },
     isEmpty: (state, action) => {
@@ -168,6 +171,7 @@ export const HouseholdSlice = createSlice({
         householdRecord: action.payload.householdRecord,
         householdRecordList: action.payload.individual,
       });
+      state.isContain = false;
 
       axios.post("http://localhost:80/rbimv5/server/Household_Record.php", {
         householdRecord: action.payload.householdRecord,
@@ -236,7 +240,11 @@ export const HouseholdSlice = createSlice({
           state.value.totalNumberOfHouseholdMembers - 1,
       };
     },
-    defaultValue: (state, action) => {
+    onClickContain: (state, action) => {
+      state.isContain = action.payload.isCon;
+    },
+    defaultValueHousehold: (state, action) => {
+      state.isContain = false;
       state.individual = [];
       state.questions = questionTemplate;
       state.value = {
@@ -266,6 +274,7 @@ export const HouseholdSlice = createSlice({
       };
     },
     updateHouseholdDB: (state, action) => {
+      state.isContain = true;
       const individual = action.payload.data.individual[0];
       const encoding = action.payload.data.encoding[0];
       const identification = action.payload.data.identification[0];
@@ -409,7 +418,8 @@ export const {
   updateHouseholdRecord,
   submitToDatabase,
   updateHouseholdDB,
-  defaultValue,
+  defaultValueHousehold,
   decrementHousehold,
+  onClickContain,
 } = HouseholdSlice.actions;
 export default HouseholdSlice.reducer;
