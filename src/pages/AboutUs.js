@@ -1,14 +1,7 @@
 import React from 'react'
 import '../styles/AboutUs.css'
+import photo from '../images/profile-rain.jpg'
 import logo from '../images/RBIM_LOGO.png'
-import Kerby from '../images/KerbyPhoto.jpg'
-import Kurt from '../images/KurtPhoto.jpg'
-import Leigh from '../images/LeighPhoto.jpg'
-import Dohn from '../images/DLProfile.jpg'
-import Dos from '../images/DawsonPhoto.jpg'
-import Kenneth from '../images/KennethPhoto.jpg'
-import Zhern from '../images/ZhernanPhoto.jpg'
-import Rikki from '../images/RikkiPhoto.jpg'
 import { TabTitle } from '../features/GeneralFunction'
 
 const AboutUs = () => {
@@ -28,69 +21,61 @@ const AboutUs = () => {
       </section>
       <section className='AboutUs__Sections'>
         <div className='AboutUs__Team__Card'>
-          <img src={Kerby} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Kerby Matthew Sarcia</h3>
-            <p>Do you want to play? Let's Play</p>
-            <h6>HELLO WORLD!</h6>
+            <p>Time is Gold I'm Watching Rold</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Kurt} alt='Teammate' />
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Kurtliam Pangilinan</h3>
             <p>I don't know what's the difference between Coding and Programming.</p>
-            <h6>GOODBYE WORLD!</h6>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Leigh} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Mark Leigh L. David</h3>
-            <p>If you're not a good shot today, don't worry there are other ways to be useful</p>
-            <h6>SHAKDART</h6>
+            <p>Roses are Red Violets are Blue BUt bobo si Genasky</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Kenneth} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Kenneth Rodriguez Rana</h3>
-            <p>Kenneth Pogi Kahit Tres Lang</p>
-            <h6>HATDOG!</h6>
+            <p>chuchuchu</p>
           </div>
         </div>
       </section>
       <section className='AboutUs__Sections'>
         <div className='AboutUs__Team__Card'>
-          <img src={Dohn} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Dohn Luel De Leon</h3>
-            <p>Kung kaya ng iba Paggawa mo Sakanila</p>
-            <h6>PANCIT CANTON</h6>
+            <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Zhern} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Zhernan Manaloto</h3>
-            <p>Three days kong ginawa pero hindi ginamit</p>
-            <h6>TIMESTAMP</h6>
+            <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Dos} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Dawson Manlutac</h3>
-            <p>Pogi Pogi</p>
-            <h6>WALANG AMBAG</h6>
+            <p>chuchuchu</p>
           </div>
         </div>
         <div className='AboutUs__Team__Card'>
-          <img src={Rikki} alt='Teammate'/>
+          <img src={photo} alt='Teammate'/>
           <div className='AboutUs__Team__Card__Info'>
             <h3>Rikkimae Mallari</h3>
-            <p>Walong Mata Pag May Pogi</p>
-            <h6>SECRETARY</h6>
+            <p>chuchuchu</p>
           </div>
         </div>
       </section>
@@ -100,7 +85,7 @@ const AboutUs = () => {
             <img 
               className='AboutUs__Logo'
               src={logo} alt='RBIM Logo'/>
-              <span>RBIM | GROUP 3</span>
+              <span>RBIM</span>
           </section>
           <section>
             <p>Copyright - 2022</p>

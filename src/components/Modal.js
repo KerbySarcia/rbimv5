@@ -278,6 +278,13 @@ export default function Modal({ open, onClose }) {
             </div>
           </div>
           <div className="IndividualRecord__modal__submit__btn">
+            <button
+              className="IndividualRecord__modal__upload__label"
+              name="upload-submit-btn"
+              id="upload-submit-btn"
+            >
+              Upload
+            </button>
           </div>
         </form>
       </div>

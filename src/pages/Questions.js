@@ -1496,9 +1496,7 @@ const IndividualRecordsQuestions = () => {
               } IndividualRecord__button__add`}
             >
               {individualRecordValue.id ? (
-                <>
                 <button
-                  className="IndividualRecord__button__update"
                   onClick={(e) => {
                     e.preventDefault();
                     dispatch(
@@ -1515,16 +1513,6 @@ const IndividualRecordsQuestions = () => {
                 >
                   Update
                 </button>
-                <button
-                    className="IndividualRecord__button__cancel"
-                    onClick={() => {
-                      dispatch(defaultValue());
-                      navigate("/reports");
-                    }}
-                  >
-                    Cancel
-                </button>
-                </>
               ) : (
                 <button
                   onClick={() => {
@@ -1542,7 +1530,16 @@ const IndividualRecordsQuestions = () => {
                 </button>
               )}
             </div>
-            {/* {individualRecordValue.id && } */}
+            {individualRecordValue.id && (
+              <button
+                onClick={() => {
+                  dispatch(defaultValue());
+                  navigate("/reports");
+                }}
+              >
+                Cancel
+              </button>
+            )}
           </div>
         </div>
       </div>
