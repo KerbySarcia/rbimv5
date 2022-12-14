@@ -325,7 +325,8 @@
   font-weight: bold;
 }
 
-.IndividualRecord__button__add > button {
+.IndividualRecord__button__update {
+  margin: 0 5px;
   color: white;
   background-color: #425f57;
   border: none;
@@ -334,6 +335,23 @@
   text-transform: capitalize;
   opacity: 100%;
   transition: 0.3s ease-in-out;
+}
+
+.IndividualRecord__button__cancel {
+  margin: 0 5px;
+  color: white;
+  background-color: rgb(194, 0, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 0.2rem 2rem;
+  text-transform: capitalize;
+  opacity: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.IndividualRecord__button__update:hover,
+.IndividualRecord__button__cancel:hover {
+  transform: scale(1.05);
 }
 
 .IndividualRecord__button__add__disabled > button {

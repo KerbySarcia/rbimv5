@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDom from 'react-dom'
 import { Link } from "react-router-dom";
 import "../styles/Settings.css"
 
+
 export default function SettingsModal({open, onClose}) {
+  const [isAdmin, setIsAdmin] = useState()
+  
+  useEffect(() => {
+    const items = JSON.parse(sessionStorage.getItem('dataKey'))
+    setIsAdmin(items.access_lvl)
+  }, [])
 
   if (!open) return null;
 
@@ -19,19 +26,22 @@ export default function SettingsModal({open, onClose}) {
         <h1>Settings</h1>
           <div className='Settings__modal__container'>
               <ul>
-                <Link
-                  className="Settings__modal__btn"
-                  end
-                  to=""
-                  onClick={onClose}>
-                  <li>Import From Excel Data</li>
-                </Link>
-                <Link
-                  className="Settings__modal__btn"
-                  to=""
-                  onClick={onClose}>
-                  <li>Export To Excel Data</li>
-                </Link>
+                { isAdmin !== 'on-site' ? 
+                  <>
+                    <Link
+                      className="Settings__modal__btn"
+                      end
+                      to=""
+                      onClick={onClose}>
+                      <li>Import From Excel Data</li>
+                    </Link>
+                    <Link
+                      className="Settings__modal__btn"
+                      to=""
+                      onClick={onClose}>
+                      <li>Export To Excel Data</li>
+                    </Link>
+                  </> :'' }
                 <Link
                   className="Settings__modal__btn"
                   to="about-the-team"

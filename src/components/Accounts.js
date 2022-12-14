@@ -120,7 +120,7 @@ export default function Accounts({open, onClose}) {
 					}}>
 						Save
 				</button>)
-					}
+		}
 	}
 
 	if(!open) return null;
@@ -162,7 +162,7 @@ export default function Accounts({open, onClose}) {
 						</div>
 					</form>
 					<div className='Accounts__modal__table'>
-						<table>
+						<table className="Accounts__modal__inside__table">
 							<tr>
 								<th>ID</th>
 								<th>Username</th>
