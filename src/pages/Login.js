@@ -5,10 +5,10 @@ import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { onLogIn } from "../features/Session";
-import { TabTitle } from "../features/GeneralFunction";
+import { TabTitle } from '../features/GeneralFunction'
 
 const Login = () => {
-  TabTitle("RBIM | Login");
+  TabTitle('RBIM | Login')
 
   const dispatch = useDispatch();
 
@@ -18,6 +18,8 @@ const Login = () => {
     username: "",
     password: "",
   });
+
+  // const [inputs, setInputs] = useState();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -63,7 +65,8 @@ const Login = () => {
               axios
                 .post("http://localhost:80/rbimv5/server/login.php", data)
                 .then((res) => {
-                  if (res.data) {
+                  console.log(res.data)
+                  if(res.data) {
                     dispatch(
                       onLogIn({
                         username: res.data.username,
@@ -71,10 +74,22 @@ const Login = () => {
                         access_lvl: res.data.access_lvl,
                       })
                     );
-                    res.data.access_lvl === 'on-site' ? 
-                    navigate("/individual-records"):
-                    navigate("/");
-                  } else alert("Wrong Credentials");
+                    navigate('/')
+                  } else alert('Wrong Credentials');
+                  
+                 
+                  // for (let i = 0; i < res.data.username.length; i++) {
+                  //   console.log(res.data.username[i])
+                  //   console.log(res.data.password)
+                  //   if (
+                  //     res.data.username[i] === data.username &&
+                  //     res.data.password === data.password
+                  //   ) {
+                      
+                  //     return;
+                  //   }
+                  // }
+                  // alert("Failed Login");
                 });
             }}
             className="Login__button"

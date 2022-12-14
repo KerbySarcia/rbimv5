@@ -12,13 +12,13 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 
 const Sidebar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [logOut, setlogOut] = useState(false);
   const [accounts, setAccounts] = useState(false);
-  const [isAdmin, setIsAdmin] = useState();
 
   const isLoggedIn = useSelector(state => state.sessionRecord.login);
-  
+   
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -42,9 +42,13 @@ const Sidebar = () => {
 
   return (
     <div className="Sidebar">
-      <ButtonGroup access_lvl = {isAdmin} />
+      <ButtonGroup />
       <div className="Sidebar__bottom">
-        { isAdmin === 'admin' && Admin() }
+        <button
+          onClick={() => setAccounts(true)}
+          className="Sidebar__btn">
+          <AccountBoxOutlinedIcon sx={{ fontSize: "xx-large" }} />
+        </button>
         <button
           onClick={() => setlogOut(true)}
           className="Sidebar__btn">

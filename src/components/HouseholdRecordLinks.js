@@ -4,17 +4,11 @@ import "../styles/IndividualRecordLinks.css";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import logo from "../images/RBIM_LOGO.png";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  submitToDatabase,
-  defaultValueHousehold,
-  onClickContain,
-} from "../features/HouseholdInputs";
+import { submitToDatabase, defaultValue } from "../features/HouseholdInputs";
 
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import AlertModal from './AlertModal'
-import { defaultValue } from "../features/IndividualRecordInputs";
 
 const HouseholdRecordLinks = () => {
   const individual = useSelector((state) => state.householdRecord.individual);
@@ -22,20 +16,6 @@ const HouseholdRecordLinks = () => {
   const isEmpty = useSelector((state) => state.householdRecord.isEmpty);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
-  const [open, setOpen] = useState(false);
-
-  const handleClose = (e) => {
-    const btn = e.target.name;
-
-    if (btn === "okay") {
-      if (location.pathname.includes("individual-records")) {
-        dispatch(defaultValue());
-      } else dispatch(defaultValueHousehold());
-      navigate('/reports');
-    }
-    setOpen(false);
-  };
 
   const updateButton = () => {
     return (
@@ -56,11 +36,10 @@ const HouseholdRecordLinks = () => {
                 individuals: individual,
               })
               .then(() => {
-                dispatch(defaultValueHousehold());
+                dispatch(defaultValue());
                 alert(
                   `${householdValue.nameOfRespondent} Successfully Updated!`
                 );
-                dispatch(onClickContain({ isCon: false }));
                 navigate("/reports");
               });
           }}
@@ -70,7 +49,8 @@ const HouseholdRecordLinks = () => {
         <button
           className="IndividualLinks__btn"
           onClick={() => {
-            setOpen(true)
+            dispatch(defaultValue());
+            navigate("/reports");
           }}
         >
           Cancel
@@ -92,7 +72,6 @@ const HouseholdRecordLinks = () => {
               })
             );
             alert(`${householdValue.nameOfRespondent} Added`);
-            dispatch(defaultValueHousehold());
             navigate("/household-record");
           }}
         >
@@ -110,7 +89,6 @@ const HouseholdRecordLinks = () => {
           </div>
           <div className="IndividualLinks__row">
             {!householdValue.id && submitButton()}
-            {householdValue.id && updateButton()}
             <NavLink
               style={({ isActive }) => {
                 return isActive
@@ -140,13 +118,10 @@ const HouseholdRecordLinks = () => {
                 Household Records
               </span>
             </NavLink>
+            {householdValue.id && updateButton()}
           </div>
         </div>
       </section>
-      <AlertModal
-        isOpen={open}
-        handleClick={(e) => handleClose(e)}
-      />
     </>
   );
 };
