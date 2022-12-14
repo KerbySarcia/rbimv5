@@ -17,11 +17,11 @@ const MobileNavbar = () => {
   const isLoggedIn = useSelector((state) => state.sessionRecord.login);
 
   useEffect(() => {
-    const items = JSON.parse(sessionStorage.getItem('dataKey'))
     if(isLoggedIn){
+      const items = JSON.parse(sessionStorage.getItem('dataKey'))
       setIsAdmin(items.access_lvl)
-    }
-  }, [isLoggedIn, isAdmin])
+    } 
+  }, [isLoggedIn])
 
   return (
     <div className="MobileNavbar">
