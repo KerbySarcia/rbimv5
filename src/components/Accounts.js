@@ -19,7 +19,7 @@ export default function Accounts({open, onClose}) {
 	const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    setInputs((previousValue) => ({ ...previousValue, [name]: value })); // eslint-disable-next-line
+    setInputs((previousValue) => ({ ...previousValue, [name]: value }));
 		if(value == ''){
 			setClickUpdate('')
 		}
@@ -72,7 +72,7 @@ export default function Accounts({open, onClose}) {
 		)
 	})
 
-	const buttons = (id) => { // eslint-disable-next-line
+	const buttons = (id) => {
 		if(id != '' && inputs.username && inputs.password && inputs.access_lvl){
 			return(
 				<button
@@ -101,7 +101,7 @@ export default function Accounts({open, onClose}) {
 						})
 					}}>
 						Update
-				</button>) // eslint-disable-next-line
+				</button>)
 		} else if(id =='' && inputs.username && inputs.password) {
 				return(
 					<button

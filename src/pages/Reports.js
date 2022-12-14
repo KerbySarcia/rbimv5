@@ -15,7 +15,7 @@ const Reports = () => {
 
   const [reports, setReports] = useState([]);
   const [search, setSearch] = useState();
-  const [deleteTrigger, setDeleteTrigger] = useState(false); // eslint-disable-next-line
+  const [deleteTrigger, setDeleteTrigger] = useState(false);
   const [updateTrigger, setUpdateTrigger] = useState();
 
   const dispatch = useDispatch();
