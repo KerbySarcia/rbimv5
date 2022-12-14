@@ -4,11 +4,7 @@ import "../styles/IndividualRecordLinks.css";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import logo from "../images/RBIM_LOGO.png";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  submitToDatabase,
-  defaultValueHousehold,
-  onClickContain,
-} from "../features/HouseholdInputs";
+import { submitToDatabase, defaultValue } from "../features/HouseholdInputs";
 
 import Groups2OutlinedIcon from "@mui/icons-material/Groups2Outlined";
 import { useNavigate } from "react-router-dom";
@@ -47,11 +43,10 @@ const HouseholdRecordLinks = () => {
                 individuals: individual,
               })
               .then(() => {
-                dispatch(defaultValueHousehold());
+                dispatch(defaultValue());
                 alert(
                   `${householdValue.nameOfRespondent} Successfully Updated!`
                 );
-                dispatch(onClickContain({ isCon: false }));
                 navigate("/reports");
               });
           }}
@@ -61,7 +56,7 @@ const HouseholdRecordLinks = () => {
         <button
           className="IndividualLinks__btn"
           onClick={() => {
-            dispatch(defaultValueHousehold());
+            dispatch(defaultValue());
             navigate("/reports");
           }}
         >
@@ -84,7 +79,6 @@ const HouseholdRecordLinks = () => {
               })
             );
             alert(`${householdValue.nameOfRespondent} Added`);
-            dispatch(defaultValueHousehold());
             navigate("/household-record");
           }}
         >

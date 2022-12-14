@@ -139,7 +139,6 @@ export const individualSlice = createSlice({
       isEmptyQuestions: true,
       isEmptyIndividualRecordQuestions: true,
       isEmptyImageInformation: true,
-      isContain: false,
     },
     imageInformation: imageInformationTemplate,
     value: valueTemplate,
@@ -148,7 +147,6 @@ export const individualSlice = createSlice({
   },
   reducers: {
     onChange: (state, action) => {
-      state.isEmpty.isContain = true;
       state.value[action.payload.name] = action.payload.value;
       for (const properties in state.value) {
         if (state.value[properties] === "") {
@@ -174,7 +172,6 @@ export const individualSlice = createSlice({
       }
     },
     onChangeQuestions: (state, action) => {
-      state.isEmpty.isContain = true;
       state.questions[action.payload.name] = action.payload.value;
       for (const properties in state.questions) {
         if (state.questions[properties] === "") {
@@ -200,8 +197,6 @@ export const individualSlice = createSlice({
       }
     },
     onChangeImage: (state, action) => {
-      state.isEmpty.isContain = true;
-
       state.imageInformation[action.payload.name] = action.payload.value;
 
       fd.append(action.payload.name, action.payload.value);
@@ -232,7 +227,6 @@ export const individualSlice = createSlice({
       }
     },
     submitToDatabase: (state, action) => {
-      state.isEmpty.isContain = false;
       axios
         .post("http://localhost:80/rbimv5/server/Individual_Record.php", {
           questions: action.payload.questions,
@@ -263,7 +257,6 @@ export const individualSlice = createSlice({
       state.isEmpty.isEmptyImageInformation = true;
       state.isEmpty.isEmptyIndividualRecordQuestions = true;
       state.isEmpty.isEmptyQuestions = true;
-      state.isEmpty.isContain = false;
     },
     updateTable: (state, action) => {
       state.updateChange = "";

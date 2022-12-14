@@ -18,10 +18,16 @@ export default function Accounts({ open, onClose }) {
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
+
     setInputs((previousValue) => ({ ...previousValue, [name]: value }));
     if (value == "") {
       setClickUpdate("");
     }
+
+    setInputs((previousValue) => ({ ...previousValue, [name]: value })); // eslint-disable-next-line
+		if(value == ''){
+			setClickUpdate('')
+		}
   };
 
   useEffect(() => {
@@ -75,6 +81,7 @@ export default function Accounts({ open, onClose }) {
       </tr>
     );
   });
+
 
   const buttons = (id) => {
     if (id != "" && inputs.username && inputs.password && inputs.access_lvl) {
@@ -136,6 +143,58 @@ export default function Accounts({ open, onClose }) {
       );
     }
   };
+
+	const buttons = (id) => { // eslint-disable-next-line
+		if(id != '' && inputs.username && inputs.password && inputs.access_lvl){
+			return(
+				<button
+					className='Accounts__modal__main__btn'
+					onClick={(e) => {
+						e.preventDefault()
+						axios.post("http://localhost:80/rbimv5/server/Accounts.php", inputs);
+						alert('Credentials Changed!')
+						setUsers(prevValue => {
+							return prevValue.map(user => {
+								if(inputs.id === user.id){
+									return {
+										id: inputs.id,
+										username: inputs.username,
+										password: inputs.password,
+										access_lvl: inputs.access_lvl
+									}
+								} else return user
+							})
+						})
+						setInputs({
+							id:'',
+							username:'',
+							password:'',
+							access_lvl:''
+						})
+					}}>
+						Update
+				</button>) // eslint-disable-next-line
+		} else if(id =='' && inputs.username && inputs.password) {
+				return(
+					<button
+					className='Accounts__modal__main__btn'
+					onClick={(e) => {
+						e.preventDefault();
+						axios.post("http://localhost:80/rbimv5/server/Accounts_SignUp.php", inputs);
+						alert('Credentials Saved!')
+						setUpdate(previousValue => !previousValue)
+						setInputs({
+							id:'',
+							username:'',
+							password:'',
+							access_lvl:''
+						})
+					}}>
+						Save
+				</button>)
+					}
+	}
+
 
   if (!open) return null;
 
