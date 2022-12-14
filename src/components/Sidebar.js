@@ -17,7 +17,7 @@ const Sidebar = () => {
   const [accounts, setAccounts] = useState(false);
   const [isAdmin, setIsAdmin] = useState();
 
-  const isLoggedIn = useSelector((state) => state.sessionRecord.login);
+  const isLoggedIn = useSelector(state => state.sessionRecord.login);
   
   const navigate = useNavigate()
 
@@ -27,8 +27,8 @@ const Sidebar = () => {
       navigate('/login')
       return
     }  
-    setIsAdmin(items.access_lvl)
-  }, [])
+    setIsAdmin(items.access_lvl) // eslint-disable-next-line
+  }, [isLoggedIn])
 
   const Admin = () => {
     return(
