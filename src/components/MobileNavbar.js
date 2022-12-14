@@ -10,13 +10,25 @@ const MobileNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [logOut, setlogOut] = useState(false);
 
+  const [accounts, setAccounts] = useState(false);
+  const [isAdmin, setIsAdmin] = useState();
+
+  const isLoggedIn = useSelector((state) => state.sessionRecord.login);
+
+  useEffect(() => {
+    if(isLoggedIn){
+      const items = JSON.parse(sessionStorage.getItem('dataKey'))
+      setIsAdmin(items.access_lvl)
+    } 
+  }, [isLoggedIn])
+
+
   return (
     <div className="MobileNavbar">
       <div className="" onClick={() => setIsClicked((prevValue) => !prevValue)}>
         <MenuIcon className="MobileNavbar__icon" />
       </div>
       <h3 className="MobileNavbar__title">RBIM</h3>
-
       <div
         // TODO: when overlay clicked close sidemenu
         className={`SlideMenu ${isClicked ? "SlideMenu-show" : ""} `}>

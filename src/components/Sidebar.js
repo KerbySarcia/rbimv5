@@ -16,9 +16,24 @@ const Sidebar = () => {
   const [logOut, setlogOut] = useState(false);
   const [accounts, setAccounts] = useState(false);
 
+
+  const isLoggedIn = useSelector(state => state.sessionRecord.login);
+  
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const items = JSON.parse(sessionStorage.getItem('dataKey'))
+    if(isLoggedIn === false && !items){
+      navigate('/login')
+      return
+    }  
+    setIsAdmin(items.access_lvl) // eslint-disable-next-line
+  }, [isLoggedIn])
+
   const isLoggedIn = useSelector((state) => state.sessionRecord.login);
 
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const items = JSON.parse(sessionStorage.getItem("dataKey"));
