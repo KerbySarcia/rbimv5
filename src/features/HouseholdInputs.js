@@ -92,6 +92,12 @@ export const HouseholdSlice = createSlice({
   name: "HouseholdRecord",
   initialState: {
     isEmpty: true,
+
+    isContain: false,
+    isUpdateChangeHousehold: false,
+    updateHolderHousehold: "",
+    updateHolderList: [],
+
     empty: true,
     value: {
       recordNumber: "",
@@ -123,6 +129,7 @@ export const HouseholdSlice = createSlice({
   },
   reducers: {
     onChange: (state, action) => {
+      state.isContain = true;
       state.value[action.payload.name] = action.payload.value;
       for (const properties in state.value) {
         if (state.value[properties] === "") {
@@ -131,6 +138,20 @@ export const HouseholdSlice = createSlice({
         }
       }
       state.isEmpty = false;
+
+      if (state.value.id) {
+        for (const props in state.value) {
+          if (
+            state.value[props] !== state.updateHolderHousehold[props] &&
+            state.value[props] !== ""
+          ) {
+            state.isUpdateChangeHousehold = true;
+
+            return;
+          }
+        }
+        state.isUpdateChangeHousehold = false;
+      }
     },
     onChangeQuestions: (state, action) => {
       state.questions[action.payload.name] = action.payload.value;
@@ -150,6 +171,20 @@ export const HouseholdSlice = createSlice({
       );
 
       state.individual.push(state.questions);
+
+      for (let i = 0; i < state.individual.length; i++) {
+        const temp = state.individual[i];
+        const tempUpdate = state.updateHolderList[i];
+
+        for (const props in temp) {
+          if (temp[props] !== tempUpdate[props] && temp[props] !== "") {
+            state.isUpdateChangeHousehold = true;
+            return;
+          }
+        }
+        state.isUpdateChangeHousehold = false;
+      }
+
       state.questions = questionTemplate;
     },
     questionModal: (state, action) => {
@@ -266,12 +301,44 @@ export const HouseholdSlice = createSlice({
       };
     },
     updateHouseholdDB: (state, action) => {
+
+      state.isUpdateChangeHousehold = false;
+      state.isContain = true;
+
       const individual = action.payload.data.individual[0];
       const encoding = action.payload.data.encoding[0];
       const identification = action.payload.data.identification[0];
       const interview = action.payload.data.interview[0];
 
       state.value = {
+        id: individual.id,
+        recordNumber: individual.NO,
+        household: individual.Household,
+        institutionalLivingQuarter: individual.Institutional_Living_Quarter,
+        province: identification.Province,
+        municipality: identification.City_Municipality,
+        barangay: identification.Barangay,
+        addressRoom: identification.Address_A,
+        addressHouse: identification.Address_B,
+        addressStreet: identification.Address_C,
+        nameOfRespondent: identification.Name_of_Respondent,
+        householdHead: identification.Household_Head,
+        totalNumberOfHouseholdMembers: individual.Total_Number_of_Household,
+        visit: interview.Visit,
+        timeStart: interview.Time_Start,
+        result: interview.Result,
+        nameOfInterviewer: interview.Name_of_Interviewer_Initial_Date,
+        dateOfVisit: interview.Date_of_Visit,
+        timeEnd: interview.Time_End,
+        dateOfNextVisit: interview.Date_of_Next_Visit,
+        nameOfSupervisor: interview.Name_of_Supervisor_Initial_Date,
+        dateEncoded: encoding.Date_Encoded,
+        nameAndInitialOfEncoder: encoding.Name_and_Initial_of_Encoder,
+        nameOfSupervisorInitialAndDate:
+          encoding.Name_of_Supervisor_Initial_and_Date,
+      };
+
+      state.updateHolderHousehold = {
         id: individual.id,
         recordNumber: individual.NO,
         household: individual.Household,
@@ -393,6 +460,7 @@ export const HouseholdSlice = createSlice({
           q58Municipality: partD.Q58_Municipality,
           q58Province: partD.Q58_Province,
         };
+        state.updateHolderList.push(questionHolder);
         state.individual.push(questionHolder);
       }
     },

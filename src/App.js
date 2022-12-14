@@ -9,7 +9,7 @@ import HouseholdRecord from "./pages/HouseholdRecord";
 import Reports from "./pages/Reports";
 import SharedLayout from "./pages/SharedLayout";
 import HouseholdRecordQuestions from "./pages/HouseholdRecordQuestions";
-import AboutUs from './pages/AboutUs';
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
   return (

@@ -4,11 +4,17 @@ import "../styles/Login.css";
 import logo from "../images/RBIM_LOGO.png";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import { getDataGender } from "../features/DashboardData";
 import { onLogIn } from "../features/Session";
 import { TabTitle } from '../features/GeneralFunction'
 
 const Login = () => {
+
+  TabTitle("RBIM | Login");
+  console.log(1);
+
   TabTitle('RBIM | Login')
+
 
   const dispatch = useDispatch();
 
@@ -28,6 +34,12 @@ const Login = () => {
   };
   useEffect(() => {
     axios.get("http://localhost:80/rbimv5/server/firstLoadWithNoDB.php");
+
+    axios
+      .get("http://localhost:80/rbimv5/server/Get_Gender.php")
+      .then((res) => {
+        dispatch(getDataGender({ data: res.data }));
+      });
   }, []);
 
   return (
@@ -62,6 +74,7 @@ const Login = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
+
               axios
                 .post("http://localhost:80/rbimv5/server/login.php", data)
                 .then((res) => {
