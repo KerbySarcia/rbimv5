@@ -19,6 +19,8 @@ const Login = () => {
     password: "",
   });
 
+  // const [inputs, setInputs] = useState();
+
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -63,6 +65,7 @@ const Login = () => {
               axios
                 .post("http://localhost:80/rbimv5/server/login.php", data)
                 .then((res) => {
+                  console.log(res.data);
                   if (res.data) {
                     dispatch(
                       onLogIn({
@@ -71,10 +74,21 @@ const Login = () => {
                         access_lvl: res.data.access_lvl,
                       })
                     );
-                    res.data.access_lvl === 'on-site' ? 
-                    navigate("/individual-records"):
                     navigate("/");
                   } else alert("Wrong Credentials");
+
+                  // for (let i = 0; i < res.data.username.length; i++) {
+                  //   console.log(res.data.username[i])
+                  //   console.log(res.data.password)
+                  //   if (
+                  //     res.data.username[i] === data.username &&
+                  //     res.data.password === data.password
+                  //   ) {
+
+                  //     return;
+                  //   }
+                  // }
+                  // alert("Failed Login");
                 });
             }}
             className="Login__button"
