@@ -18,6 +18,9 @@ const HouseholdRecordLinks = () => {
   const individual = useSelector((state) => state.householdRecord.individual);
   const householdValue = useSelector((state) => state.householdRecord.value);
   const isEmpty = useSelector((state) => state.householdRecord.isEmpty);
+  const isUpdateHousehold = useSelector(
+    (state) => state.householdRecord.isUpdateChangeHousehold
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -26,6 +29,10 @@ const HouseholdRecordLinks = () => {
       <div>
         <button
           className="IndividualLinks__main__btn"
+          style={{
+            pointerEvents: isUpdateHousehold ? "auto" : "none",
+            opacity: isUpdateHousehold ? "100%" : "50%",
+          }}
           onClick={() => {
             if (
               individual.length !==

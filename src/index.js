@@ -6,13 +6,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import individualReducer from "./features/IndividualRecordInputs";
 import householdReducer from "./features/HouseholdInputs";
-import sessionReducer from './features/Session'
+import sessionReducer from "./features/Session";
+import dashboardReducer from "./features/DashboardData";
 
 const store = configureStore({
   reducer: {
     individualRecord: individualReducer,
     householdRecord: householdReducer,
     sessionRecord: sessionReducer,
+    dashboard: dashboardReducer,
   },
 });
 

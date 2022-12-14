@@ -23,6 +23,10 @@ const IndividualRecordsQuestions = () => {
   );
 
   const isEmpty = useSelector((state) => state.individualRecord.isEmpty);
+  const isUpdateChange = useSelector(
+    (state) => state.individualRecord.updateChange
+  );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
